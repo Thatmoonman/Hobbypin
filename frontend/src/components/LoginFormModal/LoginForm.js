@@ -54,6 +54,7 @@ const LoginFormPage = () => {
     
     return (
         <div className="loginForm">
+            <div>X</div>
             <div>LOGO GOES HERE</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <form onSubmit={handleSubmit}>

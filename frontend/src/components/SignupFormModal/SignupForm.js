@@ -61,6 +61,7 @@ const SignupFormPage = () => {
 
     return (
         <div className="signupForm">
+            <div>X</div>
             <div>LOGO GOES HERE</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <div>tagline goes here</div>

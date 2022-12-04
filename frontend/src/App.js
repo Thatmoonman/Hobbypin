@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
+import LoginFormPage from "./components/LoginFormModal";
+import SignupFormPage from "./components/SignupFormModal";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -9,12 +9,6 @@ function App() {
       <Navigation />
       <h1>Hobbypin WIP</h1>
       < Switch>
-        <Route exact path='/login'>
-          <LoginFormPage />
-        </Route>
-        <Route exact path='/signup'>
-          <SignupFormPage />
-        </Route>
       </Switch>
     </>
 

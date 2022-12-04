@@ -5,7 +5,7 @@ import './Modal.css';
 const ModalContext = React.createContext()
 
 export const ModalProvider = ({children}) => {
-    const ModalRef = useRef();
+    const modalRef = useRef();
     const [value, setValue] = useState('')
     
     useEffect(() => {
