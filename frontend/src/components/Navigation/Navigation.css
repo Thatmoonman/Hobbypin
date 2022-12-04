@@ -1,0 +1,16 @@
+
+.navContainer {
+    display: flex;
+}
+
+.navLink {
+    color: white;
+    background-color: black;
+    padding: 2%;
+    border: none;
+    border-radius: 32px;
+    margin: 1%;
+    width: 10%;
+    text-decoration: none;
+    text-align: center;
+}

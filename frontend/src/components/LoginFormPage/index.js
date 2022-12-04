@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
-import './LoginFormPage.css'
+import './LoginForm.css'
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
@@ -14,13 +14,11 @@ const LoginFormPage = () => {
 
     if (sessionUser) return <Redirect to="/" />;
 
-    const finePrint = () => (
-        <p className="finePrint">
-            By continuing you agree in a non-legally binding way that you are really impressed and are dying to know more about the developer.
-        </p>
-    ) 
+    const setDemoUser = () => {
+        setEmail('demo.user@demo.io')
+        setPassword('password')
+    }
         
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -47,6 +45,12 @@ const LoginFormPage = () => {
             </ul>
         )
     }
+
+    const finePrint = () => (
+        <p className="finePrint">
+            By continuing you agree in a totally non-legally binding way that you are really impressed and are dying to know more about the developer.
+        </p>
+    ) 
     
     return (
         <div className="loginForm">
@@ -57,7 +61,7 @@ const LoginFormPage = () => {
                 <label htmlFor="email">Email:</label>
                 <input 
                     id="email"
-                    type="text"
+                    type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -71,7 +75,7 @@ const LoginFormPage = () => {
                     required
                 />
                 <button className="login button">Log In</button>
-                <button className="demo button">Log in as Demo User</button>
+                <button className="demo button" onClick={setDemoUser}>Log in as Demo User</button>
             </form>
             {finePrint()}
         </div>

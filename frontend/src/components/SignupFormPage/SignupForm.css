@@ -1,5 +1,4 @@
-
-.loginForm {
+.signupForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,18 +10,9 @@
 .welcome {
     font-weight: 800;
     font-size: 150%;
-    --font-weight-bold: 700;
-    --font-weight-semibold: 600;
-    --font-weight-normal: 400;
-    --font-size-600: 36px;
-    --font-size-500: 28px;
-    --font-size-400: 20px;
-    --font-size-300: 16px;
-    --font-size-200: 14px;
-    --font-size-100: 12px;
 }
 
-.loginForm > form {
+.signupForm > form {
     display: flex;
     flex-direction: column;
     padding: 2%;
@@ -33,18 +23,14 @@ label:first-child {
 }
 
 input {
-    border: 2px solid lightgray;
-    border-radius: 16px;
     background-color: #E8F0FE;
     height: 30px;
     width: 200px;
     margin-top: 1%;
     margin-bottom: 5%;
-}
-
-.finePrint {
-    font-size: 75%;
-    align-self: center;
+    border: 2px solid lightgray;
+    border-radius: 16px;
+    padding: 1% 5%;
 }
 
 .button {
@@ -54,7 +40,7 @@ input {
     height: 30px;
 }
 
-.login {
+.signup {
     color: white;
     background-color: #E60023;
 }
