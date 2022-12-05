@@ -1,4 +1,29 @@
 
+.loginFormButton {
+    color: white;
+    background-color: #E60023;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 32px;
+    margin-right: 10px;
+    width: 70px;
+    height: 40px;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.loginFormButton:hover {
+    background-color: #AD081B;
+}
+
+.loginFormButtonText {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+
 .loginForm {
     display: flex;
     flex-direction: column;
@@ -9,6 +34,25 @@
     border-radius: 16px;
     padding: 5%;
     font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
+}
+
+.buttonBox {
+    position: absolute;
+    right: 16%;
+    top: 16%
+}
+
+.xButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    padding: 15px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.xButton:hover {
+    background-color: #EFEFEF;
 }
 
 .welcome {
@@ -26,7 +70,7 @@ label:first-child {
     margin-top: 10%;
 }
 
-input {
+.loginForm > form > input {
     background-color: #E8F0FE;
     height: 30px;
     width: 200px;

@@ -5,9 +5,10 @@ import * as sessionActions from "../../store/session";
 import './SignupForm.css'
 
 
-const SignupFormPage = () => {
+const SignupFormPage = (props) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
+    const setShowModal = props.setShowModal
     
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -17,11 +18,6 @@ const SignupFormPage = () => {
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
-
-    const setDemoUser = (e) => {
-        e.preventDefault();
-        return
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,10 +54,16 @@ const SignupFormPage = () => {
         </p>
     ) 
 
+    const closeModal = (e) => {
+        e.preventDefault();
+        setShowModal(false)
+    }
 
     return (
         <div className="signupForm">
-            <div>X</div>
+            <div className="buttonBox">
+                <button className="xButton" onClick={closeModal}>X</button>
+            </div>
             <div>LOGO GOES HERE</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <div>tagline goes here</div>
@@ -96,11 +98,10 @@ const SignupFormPage = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <button className="signup button">Sign Up</button>
-                <button className="demo button" onClick={setDemoUser}>Log in as Demo User</button>
             </form>
             {finePrint()}
         </div>
     )
- }
+}
 
 export default SignupFormPage

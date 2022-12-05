@@ -4,9 +4,10 @@ import { Redirect } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import './LoginForm.css'
 
-const LoginFormPage = () => {
+const LoginFormPage = (props) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const setShowModal = props.setShowModal
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -51,10 +52,17 @@ const LoginFormPage = () => {
             By continuing you agree in a totally non-legally binding way that you are really impressed and are dying to know more about the developer.
         </p>
     ) 
+
+    const closeModal = (e) => {
+        e.preventDefault();
+        setShowModal(false)
+    }
     
     return (
         <div className="loginForm">
-            <div>X</div>
+            <div className="buttonBox">
+                <button onClick={closeModal} className="xButton">X</button>
+            </div>
             <div>LOGO GOES HERE</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <form onSubmit={handleSubmit}>

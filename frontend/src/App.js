@@ -1,6 +1,4 @@
 import { Switch, Route } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormModal";
-import SignupFormPage from "./components/SignupFormModal";
 import Navigation from "./components/Navigation";
 
 function App() {

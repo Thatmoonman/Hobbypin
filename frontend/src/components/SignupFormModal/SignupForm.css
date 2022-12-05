@@ -1,3 +1,26 @@
+
+.signupFormButton {
+    background-color: #EFEFEF;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 32px;
+    width: 80px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.signupFormButton:hover {
+    background-color: #E2E2E2;
+}
+
+.signupFormButtonText {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
 .signupForm {
     display: flex;
     flex-direction: column;
@@ -25,7 +48,7 @@ label:first-child {
     margin-top: 10%;
 }
 
-input {
+.loginForm > form > input {
     background-color: #E8F0FE;
     height: 30px;
     width: 200px;
@@ -41,6 +64,7 @@ input {
     border-radius: 16px;
     margin: 2%;
     height: 30px;
+    cursor: pointer;
 }
 
 .signup {
