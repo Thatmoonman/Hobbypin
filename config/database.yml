@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: hobbypin_production
-  username: hobbypin
-  password: <%= ENV["HOBBYPIN_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
