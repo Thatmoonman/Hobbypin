@@ -12,14 +12,16 @@ const SearchBar = () => {
    
 
     return (
-        <div className="searchBar">
-            {magnifyingGlass()}
-            <input 
-                type='text'
-                placeholder='Search'
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
+        <div className="searchContainer">
+            <div className="searchBar">
+                {magnifyingGlass()}
+                <input 
+                    type='text'
+                    placeholder='Search'
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
         </div>
     )
 }

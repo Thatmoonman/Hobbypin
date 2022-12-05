@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import SearchBar from './SearchBar';
+import CreateDropdown from './CreateDropdown';
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
@@ -16,13 +17,13 @@ function Navigation(){
         sessionLinks = (
         <div className="navBar">
             <NavLink exact to="/">H-logo</NavLink>
-            <NavLink exact to="/">Home</NavLink>
-            <NavLink exact to="/">Today</NavLink>
-            <div>Create dropdown</div>
+            <NavLink exact to="/" className="homeNavLink"><p>Home</p></NavLink>
+            <NavLink exact to="/" className="todayNavLink">Today</NavLink>
+            <CreateDropdown />
             <SearchBar />
-            <div>notifications</div>
-            <div>messages</div>
-            <div>profile page</div>
+            <div className='navIcon'><i class="fa-solid fa-bell"></i></div>
+            <div className='navIcon'><i class="fa-solid fa-comment-dots"></i></div>
+            <div className='navIcon'><i class="fa-sharp fa-solid fa-face-smile"></i></div>
             <ProfileButton user={sessionUser} />
         </div>
         );
@@ -43,12 +44,9 @@ function Navigation(){
         );
     }
 
-    const navContainer = () => (
-      sessionUser ? 'navContainer loggedIn' : 'navContainer'
-    )
 
     return (
-        <div className={navContainer()}>
+        <div className="navContainer">
             {sessionLinks}
         </div>
     );
