@@ -59,26 +59,28 @@ const LoginFormPage = (props) => {
     }
     
     return (
-        <div className="loginForm">
+        <div className="loginModal">
             <div className="buttonBox">
                 <button onClick={closeModal} className="xButton">X</button>
             </div>
             <div>LOGO GOES HERE</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="loginForm">
                 {errors.length ? renderErrors() : <></>}
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email</label>
                 <input 
                     id="email"
                     type="email"
+                    placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                <label htmlFor="password">Password:</label>
+                <label htmlFor="password">Password</label>
                 <input 
                     id="password"
                     type="password"
+                    placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required

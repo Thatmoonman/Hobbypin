@@ -24,7 +24,7 @@
 }
 
 
-.loginForm {
+.loginModal {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,7 +60,7 @@
     font-size: 150%;
 }
 
-.loginForm > form {
+.loginForm {
     display: flex;
     flex-direction: column;
     padding: 2%;
@@ -70,7 +70,7 @@ label:first-child {
     margin-top: 10%;
 }
 
-.loginForm > form > input {
+.loginForm > input {
     background-color: #E8F0FE;
     height: 30px;
     width: 200px;

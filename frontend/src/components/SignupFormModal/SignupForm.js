@@ -14,36 +14,48 @@ const SignupFormPage = (props) => {
     const [email, setEmail] = useState('')
     const [age, setAge] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (password === confirmPassword) {
+       
         setErrors([]);
         setUsername(email.split('@')[0])
-        return dispatch(sessionActions.signup({ username, email, age, password }))
+        dispatch(sessionActions.signup({ username, email, age, password }))
             .catch(async (res) => {
-            let data;
-            try {
-            data = await res.clone().json();
-            } catch {
-            data = await res.text();
-            }
-            if (data?.errors) setErrors(data.errors);
-            else if (data) setErrors([data]);
-            else setErrors([res.statusText]);
+                let data;
+                try {
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text();
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
             });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
-    const renderErrors = () => {
+    const renderErrors = (errorType) => {
+        const renderedErrors = []
+
+        errors.map(error => {
+            const errorCode = error.split(" ")[0]
+            const errorMessage = error.split(" ").slice(1).join(" ")
+
+            if (errorCode === errorType && !renderedErrors.includes(errorMessage)) {
+                renderedErrors.push(errorMessage)
+            }
+
+            const errorInput = document.getElementById(`${errorCode}`.toLowerCase())
+            if (errorInput) errorInput.style.borderColor = 'red'
+        })
+
         return (
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
+            <ul className="renderErrors">
+                {renderedErrors.length ? <i className="fa-solid fa-triangle-exclamation"></i> : <></> }
+                {renderedErrors.map(error => <li key={error}>{error}</li>)}
             </ul>
         )
     }
@@ -60,46 +72,45 @@ const SignupFormPage = (props) => {
     }
 
     return (
-        <div className="signupForm">
+        <div className="signupModal">
             <div className="buttonBox">
                 <button className="xButton" onClick={closeModal}>X</button>
             </div>
             <div>LOGO GOES HERE</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <div>tagline goes here</div>
-            {errors.length ? renderErrors() : <></>}
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='email'>Email:</label>
+            <form onSubmit={handleSubmit} className="signupForm">
+                <label htmlFor='email'>Email</label>
                 <input 
                     id='email'
                     type='email'
+                    placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <label htmlFor='age'>Age:</label>
-                <input 
-                    id='age'
-                    type='number'
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
-                />
-                <label htmlFor='password'>Password:</label>
+                <div>{renderErrors('Email')}</div>
+                <label htmlFor='password'>Password</label>
                 <input 
                     id='password'
                     type='password'
+                    placeholder="Create a password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <label htmlFor='confirmPassword'> Confirm Password:</label>
+                <div>{renderErrors('Password')}</div>
+                <label htmlFor='age'>Age</label>
                 <input 
-                    id='confirmPassword'
-                    type='password'
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    id='age'
+                    type='text'
+                    placeholder="Age"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
                 />
+                <div>{renderErrors('Age')}</div>
                 <button className="signup button">Sign Up</button>
             </form>
             {finePrint()}
+            <div>member login link</div>
         </div>
     )
 }

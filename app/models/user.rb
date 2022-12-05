@@ -20,8 +20,9 @@ class User < ApplicationRecord
     format: { without: URI::MailTo::EMAIL_REGEXP, message:  "Username can't be an email" }
   validates :email, 
     uniqueness: true, 
-    length: { in: 3..255, message: "Invalid email" }, 
-    format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email" }
+    length: { in: 3..255, message: "Hmmm...that doesn't look like an email addess" }, 
+    format: { with: URI::MailTo::EMAIL_REGEXP, message: "Hmmm...that doesn't look like an email addess" }
+  validates :age, numericality: { greater_than: 0, message: "Age must be greater than 0"}, allow_nil: true
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..255, message: "Invalid password" }, allow_nil: true
 
