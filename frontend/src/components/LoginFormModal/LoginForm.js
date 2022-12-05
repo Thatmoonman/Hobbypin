@@ -22,8 +22,8 @@ const LoginFormPage = (props) => {
         
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         setErrors([]);
-
         return dispatch(sessionActions.login({email, password}))
         .catch(async (res) => {
             let data;
@@ -39,10 +39,25 @@ const LoginFormPage = (props) => {
         });
     }
 
-    const renderErrors = () => {
+    const renderErrors = (errorType) => {
+        const renderedErrors = []
+
+        errors.map(error => {
+            const errorCode = error.split(" ")[1]
+            const errorMessage = error
+
+            if (errorCode === errorType && !renderedErrors.includes(errorMessage)) {
+                renderedErrors.push(errorMessage)
+            }
+
+            const errorInput = document.getElementById(`${errorCode}`.toLowerCase())
+            if (errorInput) errorInput.style.borderColor = 'red'
+        })
+
         return (
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
+            <ul className="renderErrors">
+                {renderedErrors.length ? <i className="fa-solid fa-triangle-exclamation"></i> : <></> }
+                {renderedErrors.map(error => <li key={error}>{error}</li>)}
             </ul>
         )
     }
@@ -76,6 +91,7 @@ const LoginFormPage = (props) => {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
+                <div>{renderErrors('Email')}</div>
                 <label htmlFor="password">Password</label>
                 <input 
                     id="password"
@@ -85,6 +101,7 @@ const LoginFormPage = (props) => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
+                 <div>{renderErrors('Password')}</div>
                 <button className="login button">Log In</button>
                 <button className="demo button" onClick={setDemoUser}>Log in as Demo User</button>
             </form>

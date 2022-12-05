@@ -78,11 +78,6 @@ label:first-child {
     background-color: #E60023;
 }
 
-.demo {
-    color: white;
-    background-color: #4267B2;
-}
-
 .renderErrors {
     color: #CC0000;
     display: flex;

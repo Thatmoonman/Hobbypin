@@ -6,7 +6,7 @@ const SearchBar = () => {
     
     const magnifyingGlass = () => (
         <div style={{ color: '#767676', fontSize: "16px"}}>
-           <i class="fa-solid fa-magnifying-glass"></i>
+           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
       );
    

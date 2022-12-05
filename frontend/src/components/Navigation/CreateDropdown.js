@@ -10,7 +10,7 @@ const CreateDropdown = () => {
         <div className="createDropdown">
             <p>Create</p>
             <button onClick={openMenu}>
-                <i class="fa-solid fa-chevron-down"></i>
+                <i className="fa-solid fa-chevron-down"></i>
             </button>
         </div>
     )

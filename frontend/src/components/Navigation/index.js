@@ -21,9 +21,9 @@ function Navigation(){
             <NavLink exact to="/" className="todayNavLink">Today</NavLink>
             <CreateDropdown />
             <SearchBar />
-            <div className='navIcon'><i class="fa-solid fa-bell"></i></div>
-            <div className='navIcon'><i class="fa-solid fa-comment-dots"></i></div>
-            <div className='navIcon'><i class="fa-sharp fa-solid fa-face-smile"></i></div>
+            <div className='navIcon'><i className="fa-solid fa-bell"></i></div>
+            <div className='navIcon'><i className="fa-solid fa-comment-dots"></i></div>
+            <div className='navIcon'><i className="fa-sharp fa-solid fa-face-smile"></i></div>
             <ProfileButton user={sessionUser} />
         </div>
         );
@@ -33,9 +33,9 @@ function Navigation(){
                 <NavLink exact to="/">H-logo: Hobbypin</NavLink>
                 <div className='rightNav'>
                     <div className='externalLinks'>
-                        <Link className='externalLink'>About</Link>
-                        <Link className='externalLink'>Business</Link>
-                        <Link className='externalLink'>Blog</Link>
+                        <NavLink to="/" className='externalLink'>About</NavLink>
+                        <Link to={{pathname: "https://github.com/Thatmoonman"}} target="_blank" className='externalLink'>Github</Link>
+                        <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='externalLink'>LinkedIn</Link>
                     </div>
                     <LoginFormModal />
                     <SignupFormModal />

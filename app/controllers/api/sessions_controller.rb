@@ -18,7 +18,12 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render 'api/users/show'
     else
-      render json: { errors: ['The provided credentials were invalid.'] }, status: :unauthorized
+      email = User.find_by(email: params[:email])
+      if email
+        render json: { errors: ['The Email account you entered does not belong to an account.']}, status: unauthorized
+      else
+        render json: { errors: ['The Password you entered is incorrect.'] }, status: :unauthorized
+      end
     end
   end
 

@@ -23,7 +23,7 @@ const SignupFormPage = (props) => {
        
         setErrors([]);
         setUsername(email.split('@')[0])
-        dispatch(sessionActions.signup({ username, email, age, password }))
+        return dispatch(sessionActions.signup({ username, email, age, password }))
             .catch(async (res) => {
                 let data;
                 try {
