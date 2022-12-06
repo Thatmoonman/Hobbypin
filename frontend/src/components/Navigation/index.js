@@ -55,7 +55,7 @@ function Navigation(){
                     onMouseOut={() => handleMouseOut('notifications')}>
                 </i>
             </div>
-                {notificationIsHovering && <div className='navNotifications'>Notifications</div>}
+                {notificationIsHovering && <div className='navTooltip navNotifications'>Notifications</div>}
             <div className='navIcon' 
                 onMouseEnter={() => handleMouseOver('messages')} 
                 onMouseOut={() => handleMouseOut('messages')}>
@@ -64,7 +64,7 @@ function Navigation(){
                     onMouseOut={() => handleMouseOut('messages')}>
                 </i>
             </div>
-                {messageIsHovering && <div className='navNotifications'>Messages</div>}
+                {messageIsHovering && <div className='navTooltip navMessages'>Messages</div>}
             <NavLink exact to={`/users/${username}`} className='navIcon' 
                 onMouseEnter={() => handleMouseOver('profile')} 
                 onMouseOut={() => handleMouseOut('profile')}>
@@ -73,7 +73,7 @@ function Navigation(){
                     onMouseOut={() => handleMouseOut('profile')}>
                 </i>
             </NavLink>
-                {profileIsHovering && <div className='navNotifications' >Your profile</div>}
+                {profileIsHovering && <div className='navTooltip navProfile' >Your profile</div>}
             <ProfileButton user={sessionUser} />
         </div>
         );

@@ -2,14 +2,20 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
-#  email           :string           not null
-#  username        :string           not null
-#  age             :integer
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :bigint           not null, primary key
+#  email              :string           not null
+#  username           :string           not null
+#  age                :integer
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  first_name         :string
+#  last_name          :string
+#  about              :text
+#  preferred_pronouns :string
+#  img_url            :string
+#  website            :string
 #
 class User < ApplicationRecord
   has_secure_password

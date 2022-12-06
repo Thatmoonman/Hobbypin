@@ -74,7 +74,7 @@ function ProfileButton({ user }) {
               onMouseOut={() => handleMouseOut('account')}>
           </i>
       </button>
-      {accountIsHovering && <div className='navNotifications' >Account and more options</div>}
+      {accountIsHovering && <div className='navTooltip navAccount' >Account and more options</div>}
       {showMenu && menu()}
     </>
   );

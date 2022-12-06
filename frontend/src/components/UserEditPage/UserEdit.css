@@ -1,0 +1,66 @@
+
+.editPageContainer {
+    display: flex;
+    padding-top: 50px;
+}
+
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-left: 20px;
+}
+
+.sideBar > button {
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+}
+
+.editFormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.editForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.photoEditBox {
+    display: flex;
+}
+
+.photoEditBox > div {
+    border-radius: 50%;
+}
+
+.nameEditContainer {
+    display: flex;
+}
+
+.nameEditInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-weight: 400;
+    font-size: 12px;
+    padding: 16px 0 8px;
+}
+
+.input {
+    border: 2px solid #cdcdcd;
+    border-radius: 16px;
+    padding: 8px 16px;
+    margin-right: 8px;
+    font-size: 16px;
+    resize: none;
+}
+
+.editButtonContainer {
+    display: flex;
+}

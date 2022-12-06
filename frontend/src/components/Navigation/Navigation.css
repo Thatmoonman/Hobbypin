@@ -157,14 +157,31 @@
     background-color: #EFEFEF;
 }
 
-.navNotifications {
+.navTooltip {
     position: absolute;
     background-color: black;
     color: white;
     z-index: 1;
-    left: 80%;
-    top: 8%;
     font-size: 12px;
     border-radius: 8px;
     padding: 8px;
+    top: 9%;
+}
+
+.navNotifications {
+    left: 79.75%;
+    
+}
+
+.navMessages {
+    left: 85.25%;
+}
+
+.navProfile{
+    left: 90%;
+}
+
+.navAccount {
+    left: 92%;
+    margin-right: .1%;
 }
