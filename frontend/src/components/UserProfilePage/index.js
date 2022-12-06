@@ -1,32 +1,25 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { useParams, Redirect } from "react-router-dom";
-import { fetchUser, getUser } from "../../store/user";
+import React from "react";
+import { useSelector } from "react-redux"
+import { NavLink, Redirect } from "react-router-dom";
 import './UserProfile.css'
 
 
 const UserProfilePage = () => {
-    const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const { userId } = useParams()
-
-    useEffect(() => {
-        dispatch(fetchUser(userId))
-    }, [userId])
 
     if (!user) return <Redirect to="/" />;
 
     return (
         <div className="userProfileContainer">
-            <div>profile image</div>
-            <h1>{user.username}</h1>
-            <p>{user.email}</p>
-            <p>follows</p>
-            <div>
-                <button>share</button>
-                <button>edit</button>
+            <div className="profileImage">profile image</div>
+            <h1 className="profileName">{user.username}</h1>
+            <p className="profileEmail">{user.email}</p>
+            <p className="profile profileFollows">follows</p>
+            <div className="profile profileButtons">
+                <button className='shareDropdownMenu'>Share</button>
+                <NavLink to={`/users/${user.username}/edit`} className='renderEditButton'>Edit Profile</NavLink>
             </div>
-            <div>Board Index Container</div>
+            <div className="profile profileBoardIndex">Board Index Container</div>
         </div>
     )
 }

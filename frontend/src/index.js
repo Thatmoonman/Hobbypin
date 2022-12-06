@@ -8,6 +8,7 @@ import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import './reset.css'
+import './index.css'
 import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
@@ -45,5 +46,6 @@ if (
 ) {
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
-  renderApplication();
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+  // renderApplication();
 }

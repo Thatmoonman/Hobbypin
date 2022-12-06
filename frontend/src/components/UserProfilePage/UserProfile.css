@@ -6,3 +6,66 @@
     align-items: center;
 }
 
+.profileImage {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profileName {
+    text-align: center;
+    font-weight: 600;
+    font-size: 36px;
+    margin: 3px;
+}
+
+.profileEmail {
+    color: #767676;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 3px;
+}
+
+.profileFollows {
+    margin: 3px;
+}
+
+.profileButtons {
+    display: flex;
+    margin: 5px;
+}
+
+.profileButtons > * {
+    display: flex;
+    color: black;
+    background-color: #EFEFEF;
+    height: 48px;
+    border-radius: 32px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.shareDropdownMenu {
+    width: 75px;
+    border: none;
+    padding: 0;
+}
+
+.shareDropdownMenu:hover {
+    background-color: #E2E2E2;
+}
+
+.renderEditButton {
+    width: 114px;
+}
+
+.renderEditButton:hover {
+    background-color: #E2E2E2;
+}
+
+/* .renderEditButton shrink on click */
