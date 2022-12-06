@@ -12,8 +12,9 @@ function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
-
     if (sessionUser) {
+        const userId = sessionUser.id
+
         sessionLinks = (
         <div className="navBar">
             <NavLink exact to="/">H-logo</NavLink>
@@ -23,7 +24,9 @@ function Navigation(){
             <SearchBar />
             <div className='navIcon'><i className="fa-solid fa-bell"></i></div>
             <div className='navIcon'><i className="fa-solid fa-comment-dots"></i></div>
-            <div className='navIcon'><i className="fa-sharp fa-solid fa-face-smile"></i></div>
+            <NavLink exact to={`/users/${userId}`} className='navIcon'>
+                <i className="fa-sharp fa-solid fa-face-smile"></i>
+            </NavLink>
             <ProfileButton user={sessionUser} />
         </div>
         );

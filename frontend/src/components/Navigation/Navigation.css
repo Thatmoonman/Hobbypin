@@ -35,7 +35,6 @@
     text-decoration: none;
     display: block;
     cursor: pointer;
-
 }
 
 .externalLink:hover {
@@ -126,6 +125,7 @@
     border-radius: 100%;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
 .navIcon > i {

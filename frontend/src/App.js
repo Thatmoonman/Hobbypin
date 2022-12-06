@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import UserProfilePage from "./components/UserProfilePage";
 
 function App() {
   return (
@@ -7,6 +8,9 @@ function App() {
       <Navigation />
       <h1>Hobbypin WIP</h1>
       < Switch>
+        <Route path='/users/:userId'>
+          <UserProfilePage />
+        </Route>
       </Switch>
     </>
 
