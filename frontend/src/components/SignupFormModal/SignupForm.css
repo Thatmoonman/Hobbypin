@@ -24,68 +24,67 @@
 .signupModal {
     display: flex;
     flex-direction: column;
+    position: relative;
     align-items: center;
-    width: 50%;
-    margin: 10% 25%;
-    border: 3px solid black;
-    border-radius: 16px;
-    padding: 5%;
-    font-family:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
+    height: 596px;
+    width: 464px;
+    margin: 0 auto;
+    border-radius: 32px;
+    padding: 20px 10px 24px;
     background-color: white;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    opacity: 1;
 }
 
-.welcome {
-    font-weight: 800;
-    font-size: 150%;
+.tagline {
+    margin-top: 16px;
+    color: #111111;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .signupForm {
     display: flex;
     flex-direction: column;
-    padding: 2%;
-}
-
-label:first-child {
-    margin-top: 10%;
+    align-items: left;
 }
 
 .signupForm > label {
-    font-size: small;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 400;
     padding-left: 8px;
     padding-bottom: 3px;
+    cursor: pointer;
 }
 
 .signupForm > input {
     background-color: #E8F0FE;
-    height: 32px;
-    width: 268px;
+    height: 28px;
+    width: 232px;
     font-size: medium;
     border: 2px solid lightgray;
     border-radius: 16px;
     padding:8px 16px;
 }
 
-.button {
+.signupForm > input:hover {
+    border-color: #A5A5A5;
+}
+
+.signupForm > input:focus {
+    box-shadow: 0 0 0 4px rgb(0 132 255 / 50%);
+    outline: none;
+}
+
+.signupButton {
+    height: 32px;
+    width: 252px;
     border: none;
     border-radius: 16px;
     margin: 2%;
     height: 30px;
     cursor: pointer;
-}
-
-.signup {
     color: white;
     background-color: #E60023;
-}
-
-.renderErrors {
-    color: #CC0000;
-    display: flex;
-    font-size: small;
-    margin: 4px;
-    text-align: center;
-}
-
-.renderErrors > i {
-    margin: 4px;
 }

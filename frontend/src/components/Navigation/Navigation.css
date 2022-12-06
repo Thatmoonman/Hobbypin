@@ -98,8 +98,13 @@
     align-items: center;
 }
 
+.searchBar:hover {
+    background-color: #E9E9E9;
+}
+
 .searchBar:focus-within {
-    box-shadow: 0 0 0 4px rgb(0 132 255 / 50%)
+    box-shadow: 0 0 0 4px rgb(0 132 255 / 50%);
+    background-color: #E9E9E9;
 }
 
 .searchBar > input {
@@ -107,6 +112,7 @@
     border: none;
     height: 100%;
     width: 100%;
+    padding-left: 4px;
 }
 
 .searchBar > input:focus {
@@ -144,6 +150,7 @@
     height: 24px;
     width: 24px;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .profileDropDown:hover {

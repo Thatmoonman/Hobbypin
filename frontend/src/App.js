@@ -7,7 +7,6 @@ function App() {
   return (
     <>
       <Navigation />
-      <h1>Hobbypin WIP</h1>
       < Switch>
         <Route exact path='/users/:username'>
           <UserProfilePage />

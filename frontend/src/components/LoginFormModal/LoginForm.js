@@ -52,6 +52,8 @@ const LoginFormPage = (props) => {
 
             const errorInput = document.getElementById(`${errorCode}`.toLowerCase())
             if (errorInput) errorInput.style.borderColor = 'red'
+
+            return null
         })
 
         return (
@@ -76,9 +78,9 @@ const LoginFormPage = (props) => {
     return (
         <div className="loginModal">
             <div className="buttonBox">
-                <button onClick={closeModal} className="xButton">X</button>
+                <button onClick={closeModal} className="xButton"><i class="fa-solid fa-x"></i></button>
             </div>
-            <div>LOGO GOES HERE</div>
+            <div className="logo">H</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <form onSubmit={handleSubmit} className="loginForm">
                 {errors.length ? renderErrors() : <></>}
@@ -101,11 +103,13 @@ const LoginFormPage = (props) => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                 <div>{renderErrors('Password')}</div>
-                <button className="login button">Log In</button>
-                <button className="demo button" onClick={setDemoUser}>Log in as Demo User</button>
+                <div>{renderErrors('Password')}</div>
+                <div className="forgotPassword" onClick={setDemoUser}>Forgot your password?</div>
+                <button className="login loginButton">Log In</button>
+                <p className="or">OR</p>
+                <button className="demo loginButton" onClick={setDemoUser}>Log in as Demo User</button>
+                {finePrint()}
             </form>
-            {finePrint()}
         </div>
     )
 

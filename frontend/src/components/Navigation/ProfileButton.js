@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [accountIsHovering, setAccountIsHovering] = useState(false)
+
+  const handleMouseOver = () => {
+    setAccountIsHovering(true)
+  }
+
+  const handleMouseOut = () => {
+    setAccountIsHovering(false)
+  }
   
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
 
-  const Carrot = () => (
-    <div style={{ color: "orange", fontSize: "100px" }}>
-      <i className="fa-solid fa-carrot"></i>
+  const ProfileImage = () => (
+    <div className="profileTagImage">
+      <i className="fa-solid fa-person"></i>
     </div>
   );
   
@@ -29,6 +39,25 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const menu = () => {
+    return (
+      <ul className="accountMenu">
+        <p>Currently in</p>
+        <div className="profileTag">
+          {ProfileImage()}
+          <div>
+            <li className="profileTagUsername">{user.username}</li>
+            <li className="profileTagEmail">{user.email}</li>  
+          </div>
+          <div className="checkMark"><i class="fa-solid fa-check"></i></div>
+        </div>
+        <li>
+          <button onClick={logout} className="logoutButton">Log Out</button>
+        </li>
+      </ul>
+    )
+  }
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
@@ -36,19 +65,17 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className="profileDropDown">
-          <i className="fa-solid fa-chevron-down"></i>
+      <button className="profileDropDown"
+          onClick={openMenu} 
+          onMouseEnter={() => handleMouseOver('account')} 
+          onMouseOut={() => handleMouseOut('account')}>
+          <i className="fa-solid fa-chevron-down" 
+              onMouseEnter={() => handleMouseOver('account')} 
+              onMouseOut={() => handleMouseOut('account')}>
+          </i>
       </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          {Carrot()}
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      {accountIsHovering && <div className='navNotifications' >Account and more options</div>}
+      {showMenu && menu()}
     </>
   );
 }

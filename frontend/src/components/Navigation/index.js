@@ -14,17 +14,14 @@ function Navigation(){
     const [notificationIsHovering, setNotificationIsHovering] = useState(false)
     const [messageIsHovering, setMessageIsHovering] = useState(false)
     const [profileIsHovering, setProfileIsHovering] = useState(false)
-    const [accountIsHovering, setAccountIsHovering] = useState(false)
 
     const handleMouseOver = (element) => {
-        if (element === 'notification') {
+        if (element === 'notifications') {
             setNotificationIsHovering(true)
         } else if (element === 'messages') {
             setMessageIsHovering(true)
         } else if (element === 'profile') {
             setProfileIsHovering(true)
-        } else if (element === 'account') {
-            setAccountIsHovering(true)
         }
     }
 
@@ -35,9 +32,7 @@ function Navigation(){
             setMessageIsHovering(false)
         } else if (element === 'profile') {
             setProfileIsHovering(false)
-        } else if (element === 'account') {
-            setAccountIsHovering(false)
-        }
+        } 
     }
 
 
@@ -52,16 +47,34 @@ function Navigation(){
             <NavLink exact to="/" className="todayNavLink">Today</NavLink>
             <CreateDropdown />
             <SearchBar />
-            <div className='navIcon' onMouseEnter={() => handleMouseOver('notifications')} onMouseOut={() => handleMouseOut('notifications')}><i className="fa-solid fa-bell"></i></div>
+            <div className='navIcon' 
+                onMouseEnter={() => handleMouseOver('notifications')} 
+                onMouseOut={() => handleMouseOut('notifications')}>
+                <i className="fa-solid fa-bell"
+                    onMouseEnter={() => handleMouseOver('notifications')} 
+                    onMouseOut={() => handleMouseOut('notifications')}>
+                </i>
+            </div>
                 {notificationIsHovering && <div className='navNotifications'>Notifications</div>}
-            <div className='navIcon' onMouseEnter={() => handleMouseOver('messages')} onMouseOut={() => handleMouseOut('messages')}><i className="fa-solid fa-comment-dots"></i></div>
+            <div className='navIcon' 
+                onMouseEnter={() => handleMouseOver('messages')} 
+                onMouseOut={() => handleMouseOut('messages')}>
+                <i className="fa-solid fa-comment-dots"
+                    onMouseEnter={() => handleMouseOver('messages')} 
+                    onMouseOut={() => handleMouseOut('messages')}>
+                </i>
+            </div>
                 {messageIsHovering && <div className='navNotifications'>Messages</div>}
-            <NavLink exact to={`/users/${username}`} className='navIcon' onMouseEnter={() => handleMouseOver('profile')} onMouseOut={() => handleMouseOut('profile')}>
-                <i className="fa-sharp fa-solid fa-face-smile"></i>
+            <NavLink exact to={`/users/${username}`} className='navIcon' 
+                onMouseEnter={() => handleMouseOver('profile')} 
+                onMouseOut={() => handleMouseOut('profile')}>
+                <i className="fa-sharp fa-solid fa-face-smile"
+                    onMouseEnter={() => handleMouseOver('profile')} 
+                    onMouseOut={() => handleMouseOut('profile')}>
+                </i>
             </NavLink>
                 {profileIsHovering && <div className='navNotifications' >Your profile</div>}
-            <ProfileButton user={sessionUser} onMouseEnter={() => handleMouseOver('account')} onMouseOut={() => handleMouseOut('account')} />
-                {accountIsHovering && <div className='navNotifications' >Account and more options</div>}
+            <ProfileButton user={sessionUser} />
         </div>
         );
     } else {

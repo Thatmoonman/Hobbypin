@@ -50,6 +50,8 @@ const SignupFormPage = (props) => {
 
             const errorInput = document.getElementById(`${errorCode}`.toLowerCase())
             if (errorInput) errorInput.style.borderColor = 'red'
+
+            return null
         })
 
         return (
@@ -73,12 +75,12 @@ const SignupFormPage = (props) => {
 
     return (
         <div className="signupModal">
-            <div className="buttonBox">
-                <button className="xButton" onClick={closeModal}>X</button>
+             <div className="buttonBox">
+                <button onClick={closeModal} className="xButton"><i class="fa-solid fa-x"></i></button>
             </div>
-            <div>LOGO GOES HERE</div>
+            <div className="logo">H</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
-            <div>tagline goes here</div>
+            <div className="tagline">tagline goes here</div>
             <form onSubmit={handleSubmit} className="signupForm">
                 <label htmlFor='email'>Email</label>
                 <input 
@@ -107,7 +109,7 @@ const SignupFormPage = (props) => {
                     onChange={(e) => setAge(e.target.value)}
                 />
                 <div>{renderErrors('Age')}</div>
-                <button className="signup button">Sign Up</button>
+                <button className="signupButton">Sign Up</button>
             </form>
             {finePrint()}
             <div>member login link</div>

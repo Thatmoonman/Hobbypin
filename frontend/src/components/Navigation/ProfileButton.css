@@ -1,0 +1,79 @@
+
+.accountMenu {
+    display: block;
+    position: absolute;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    top: 70px;
+    right: 0;
+    border-radius: 16px;
+    padding: 6px;
+    min-width: 180px;
+    max-width: 360vw;
+    min-height: 40px;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.accountMenu > p {
+    padding: 8px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.profileTag {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+}
+
+.profileTag:hover {
+    background-color: #E9E9E9;
+}
+
+.profileTagImage {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    color: black;
+    font-size: 50px;
+    text-align: center;
+}
+
+.profileTagUsername {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 2px;
+}
+
+.profileTagEmail {
+    font-weight: 400;
+    font-size: 14px;
+    color: #767676;
+    padding: 2px;
+}
+
+.checkMark {
+    font-size: 16px;
+    font-weight: 800;
+    padding-top: 16px;
+    padding-left: 8px;
+}
+
+
+.logoutButton {
+    display: block;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    text-align: start;
+}
+
+.logoutButton:hover {
+    background-color: #E9E9E9;
+}
