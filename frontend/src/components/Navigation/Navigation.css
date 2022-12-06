@@ -70,10 +70,6 @@
     padding: 0 16px;
 }
 
-.todayNavLink:hover {
-    text-decoration: underline;
-}
-
 .createDropdown {
     display: flex;
     align-items: center;
@@ -126,6 +122,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .navIcon > i {
@@ -151,4 +148,16 @@
 
 .profileDropDown:hover {
     background-color: #EFEFEF;
+}
+
+.navNotifications {
+    position: absolute;
+    background-color: black;
+    color: white;
+    z-index: 1;
+    left: 80%;
+    top: 8%;
+    font-size: 12px;
+    border-radius: 8px;
+    padding: 8px;
 }

@@ -11,6 +11,13 @@
     width: 120px;
     border-radius: 50%;
     overflow: hidden;
+    background-color: transparent;
+    cursor: pointer;
+}
+.profileImage > i {
+    color: black;
+    font-size: 100px;
+    padding: 25%;
 }
 
 .profileName {
@@ -28,12 +35,15 @@
 }
 
 .profileFollows {
+    display: flex;
     margin: 3px;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .profileButtons {
     display: flex;
-    margin: 5px;
+    margin: 8px;
 }
 
 .profileButtons > * {
@@ -41,6 +51,7 @@
     color: black;
     background-color: #EFEFEF;
     height: 48px;
+    margin: 3px;
     border-radius: 32px;
     justify-content: center;
     align-items: center;

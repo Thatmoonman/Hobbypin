@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -11,6 +11,36 @@ import CreateDropdown from './CreateDropdown';
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
 
+    const [notificationIsHovering, setNotificationIsHovering] = useState(false)
+    const [messageIsHovering, setMessageIsHovering] = useState(false)
+    const [profileIsHovering, setProfileIsHovering] = useState(false)
+    const [accountIsHovering, setAccountIsHovering] = useState(false)
+
+    const handleMouseOver = (element) => {
+        if (element === 'notification') {
+            setNotificationIsHovering(true)
+        } else if (element === 'messages') {
+            setMessageIsHovering(true)
+        } else if (element === 'profile') {
+            setProfileIsHovering(true)
+        } else if (element === 'account') {
+            setAccountIsHovering(true)
+        }
+    }
+
+    const handleMouseOut = (element) => {
+        if (element === 'notifications') {
+            setNotificationIsHovering(false)
+        } else if (element === 'messages') {
+            setMessageIsHovering(false)
+        } else if (element === 'profile') {
+            setProfileIsHovering(false)
+        } else if (element === 'account') {
+            setAccountIsHovering(false)
+        }
+    }
+
+
     let sessionLinks;
     if (sessionUser) {
         const username = sessionUser.username
@@ -22,12 +52,16 @@ function Navigation(){
             <NavLink exact to="/" className="todayNavLink">Today</NavLink>
             <CreateDropdown />
             <SearchBar />
-            <div className='navIcon'><i className="fa-solid fa-bell"></i></div>
-            <div className='navIcon'><i className="fa-solid fa-comment-dots"></i></div>
-            <NavLink exact to={`/users/${username}`} className='navIcon'>
+            <div className='navIcon' onMouseEnter={() => handleMouseOver('notifications')} onMouseOut={() => handleMouseOut('notifications')}><i className="fa-solid fa-bell"></i></div>
+                {notificationIsHovering && <div className='navNotifications'>Notifications</div>}
+            <div className='navIcon' onMouseEnter={() => handleMouseOver('messages')} onMouseOut={() => handleMouseOut('messages')}><i className="fa-solid fa-comment-dots"></i></div>
+                {messageIsHovering && <div className='navNotifications'>Messages</div>}
+            <NavLink exact to={`/users/${username}`} className='navIcon' onMouseEnter={() => handleMouseOver('profile')} onMouseOut={() => handleMouseOut('profile')}>
                 <i className="fa-sharp fa-solid fa-face-smile"></i>
             </NavLink>
-            <ProfileButton user={sessionUser} />
+                {profileIsHovering && <div className='navNotifications' >Your profile</div>}
+            <ProfileButton user={sessionUser} onMouseEnter={() => handleMouseOver('account')} onMouseOut={() => handleMouseOut('account')} />
+                {accountIsHovering && <div className='navNotifications' >Account and more options</div>}
         </div>
         );
     } else {
