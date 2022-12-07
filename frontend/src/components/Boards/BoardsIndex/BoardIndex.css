@@ -1,10 +1,13 @@
 
 
 .boardIdxItem {
+    background-color: yellow;
     display: block;
-    width: 157px;
-    height: 157px;
+    width: 236px;
+    height: 236px;
+    margin: 8px;
     border-radius: 16px;
+    padding: 8px;
 }
 
 .profileBoardIndex {

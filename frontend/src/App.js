@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import BoardShow from "./components/Boards/BoardShowPage";
 import Navigation from "./components/Navigation";
 import UserEditPage from "./components/UserEditPage";
 import UserProfilePage from "./components/UserProfilePage";
@@ -8,11 +9,14 @@ function App() {
     <>
       <Navigation />
       < Switch>
-        <Route exact path='/users/:username'>
+        <Route exact path='/users/:userId'>
           <UserProfilePage />
         </Route>
-        <Route exact path='/users/:username/edit'>
+        <Route exact path='/users/:userId/edit'>
           <UserEditPage />
+        </Route>
+        <Route exact path='/users/:userId/boards/:boardId'>
+          <BoardShow />
         </Route>
       </Switch>
     </>

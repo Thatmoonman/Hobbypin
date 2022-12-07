@@ -1,3 +1,3 @@
 json.board do
-    @board.extract! board, :title, :user_id
+    @board.extract! board, :id, :title, :user_id
 end

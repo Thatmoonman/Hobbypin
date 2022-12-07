@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom';
 import { fetchBoards, getBoards } from '../../../store/board';
 import './BoardIndex.css'
 import BoardIndexItem from './BoardIndexItem';
 
 const BoardIndex = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
-    const userId = user.id
+    const { userId } = useParams();
     const boards = useSelector(getBoards)
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const BoardIndex = () => {
 
     const showBoards = () => (
         <ul className='boardIdx'>
-            {boards.map(board => <BoardIndexItem key={board.id} board={board}/>)}       
+            {boards.map((board) => <BoardIndexItem key={board.id} board={board}/>)}       
         </ul>
     )
 

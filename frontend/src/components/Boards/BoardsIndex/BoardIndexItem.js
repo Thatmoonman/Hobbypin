@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom"
 
 const BoardIndexItem = (props) => {
     const board = props.board
 
     return (
-        <li className="boardIdxItem">
+        
+        <Link to={`/users/${board.userId}/boards/${board.id}`} className="boardIdxItem" >
             <p>title: {board.title}</p>
-            <p>user: {board.user_id}</p>
-        </li>
+            <p>user: {board.userId}</p>
+        </Link>
     )
 }
 

@@ -1,13 +1,13 @@
-import { Redirect } from "react-router-dom"
+import { Redirect, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from "react"
-import { fetchUser, updateUser } from "../../store/user"
+import { fetchUser, updateUser, getUser } from "../../store/user"
 
 
 const PublicProfileEdit = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
-    const userId = user.id
+    const { userId } = useParams();
+    const user = useSelector(getUser(userId))
 
     const [username, setUsername] = useState(user.username)
     const [firstName, setFirstName] = useState(user.firstName ? user.firstName : '')

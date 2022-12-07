@@ -38,7 +38,7 @@ function Navigation(){
 
     let sessionLinks;
     if (sessionUser) {
-        const username = sessionUser.username
+        const userId = sessionUser.id
 
         sessionLinks = (
         <div className="navBar">
@@ -65,7 +65,7 @@ function Navigation(){
                 </i>
             </div>
                 {messageIsHovering && <div className='navTooltip navMessages'>Messages</div>}
-            <NavLink exact to={`/users/${username}`} className='navIcon' 
+            <NavLink exact to={`/users/${userId}`} className='navIcon' 
                 onMouseEnter={() => handleMouseOver('profile')} 
                 onMouseOut={() => handleMouseOut('profile')}>
                 <i className="fa-sharp fa-solid fa-face-smile"

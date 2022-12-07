@@ -1,13 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux"
-import { NavLink, Redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink, Redirect, useParams } from "react-router-dom";
+import { fetchUser, getUser } from "../../store/user";
 import BoardIndex from "../Boards/BoardsIndex";
 import './UserProfile.css'
 
 
 const UserProfilePage = () => {
+    const dispatch = useDispatch();
+    const { userId } = useParams();
     const user = useSelector(state => state.session.user);
-
+    // const user = useSelector(getUser(userId))
+    
+    useEffect(() => {
+        dispatch(fetchUser(userId))
+    }, [userId])
+    
     if (!user) return <Redirect to="/" />;
 
     const showProfileModal = () => {
@@ -25,7 +33,7 @@ const UserProfilePage = () => {
             </div>
             <div className="profileButtons">
                 <button className='shareDropdownMenu'>Share</button>
-                <NavLink to={`/users/${user.username}/edit`} className='renderEditButton'>Edit Profile</NavLink>
+                <NavLink to={`/users/${user.id}/edit`} className='renderEditButton'>Edit Profile</NavLink>
             </div>
             <BoardIndex />
             <div className="helpContainer">
