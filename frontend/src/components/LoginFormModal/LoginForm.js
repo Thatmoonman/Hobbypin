@@ -78,7 +78,7 @@ const LoginFormPage = (props) => {
     return (
         <div className="loginModal">
             <div className="buttonBox">
-                <button onClick={closeModal} className="xButton"><i class="fa-solid fa-x"></i></button>
+                <button onClick={closeModal} className="xButton"><i className="fa-solid fa-x"></i></button>
             </div>
             <div className="logo">H</div>
             <h1 className="welcome">Welcome to Hobbypin</h1>

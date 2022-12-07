@@ -49,7 +49,7 @@ function ProfileButton({ user }) {
             <li className="profileTagUsername">{user.username}</li>
             <li className="profileTagEmail">{user.email}</li>  
           </div>
-          <div className="checkMark"><i class="fa-solid fa-check"></i></div>
+          <div className="checkMark"><i className="fa-solid fa-check"></i></div>
         </div>
         <li>
           <button onClick={logout} className="logoutButton">Log Out</button>
