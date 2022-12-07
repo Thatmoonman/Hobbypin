@@ -34,6 +34,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  has_many :boards
+
   def self.find_by_credentials(email:, password:)
     user = User.find_by(email: email)
     if user && user.authenticate(password)

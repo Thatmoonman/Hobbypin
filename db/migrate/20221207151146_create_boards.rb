@@ -4,6 +4,7 @@ class CreateBoards < ActiveRecord::Migration[7.0]
       t.string :title, null: false
       t.references :user, foreign_key: true
 
+      t.index [:title, :user_id], unique: true
       t.timestamps
     end
   end
