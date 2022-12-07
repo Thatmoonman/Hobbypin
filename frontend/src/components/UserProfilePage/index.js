@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux"
 import { NavLink, Redirect } from "react-router-dom";
+import BoardIndex from "../Boards/BoardsIndex";
 import './UserProfile.css'
 
 
@@ -26,7 +27,8 @@ const UserProfilePage = () => {
                 <button className='shareDropdownMenu'>Share</button>
                 <NavLink to={`/users/${user.username}/edit`} className='renderEditButton'>Edit Profile</NavLink>
             </div>
-            <div className="profile profileBoardIndex">Board Index Container</div>
+            <BoardIndex />
+            <div>help</div>
         </div>
     )
 }
