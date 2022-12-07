@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password']
+  wrap_parameters include: User.attribute_names + ['password'] 
 
   def create
     @user = User.new(user_params)
@@ -23,7 +23,8 @@ class Api::UsersController < ApplicationController
     if @user && @user.update(user_params)
       render :show
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      user = User.new(user_params)
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
