@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password'] 
+  wrap_parameters include: User.attribute_names + ['password']
 
   def create
     @user = User.new(user_params)
@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(id: params[:id])
     if @user
       render :show
     end

@@ -7,6 +7,7 @@ import { fetchUser, updateUser } from "../../store/user"
 const PublicProfileEdit = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
+    const userId = user.id
 
     const [username, setUsername] = useState(user.username)
     const [firstName, setFirstName] = useState(user.firstName ? user.firstName : '')
@@ -16,9 +17,9 @@ const PublicProfileEdit = () => {
     const [imgUrl, setImgUrl] = useState(user.imgUrl ? user.imgUrl : '')
     const [website, setWebsite] = useState(user.website ? user.website : '')
 
-    // useEffect(() => {
-    //     if (user) dispatch(fetchUser(user))
-    // }, [user])
+    useEffect(() => {
+        if (userId) dispatch(fetchUser(userId))
+    }, [dispatch, userId])
 
     if (!user) return <Redirect to='/' />
 
@@ -31,13 +32,12 @@ const PublicProfileEdit = () => {
 
     const handleUpdateUser = (e) => {
         e.preventDefault();
-        return //500 error :user params in user controller
         
         const data = {
             ...user,
             username: username,
-            first_name: firstName,
-            last_name: lastName,
+            firstName: firstName,
+            lastName: lastName,
             about: about,
             imgUrl: imgUrl,
             website: website

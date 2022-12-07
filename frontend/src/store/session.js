@@ -26,6 +26,10 @@ const storeCurrentUser = user => {
     else sessionStorage.removeItem("currentUser");
 }
 
+export function updateCurrentUser(user) {
+    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user))
+}
+
 export const login = (user) => async (dispatch) => {
     const { email, password } = user;
     

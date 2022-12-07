@@ -1,4 +1,6 @@
+
 import csrfFetch from './csrf';
+import { updateCurrentUser } from './session';
 
 export const RECEIVE_USER = 'users/RECEIVE_USER'
 
@@ -10,33 +12,33 @@ const receiveUser = (user) => ({
 export const fetchUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`)
     const data = await res.json()
-    console.log(data)
     dispatch(receiveUser(data))
     return data
 
 }
 
 export const updateUser = (user) => async (dispatch) => {
-    const { username, email, age, first_name, last_name, about, imgUrl, website } = user
-    console.log(user)
+    const { username, email, age, firstName, lastName, about, imgUrl, website } = user
     const res = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(
-            username, 
-            email, 
-            age, 
-            first_name, 
-            last_name, 
-            about, 
-            imgUrl, 
-            website
-        )
+        body: JSON.stringify({
+            user: {
+                username, 
+                email, 
+                age, 
+                firstName, 
+                lastName, 
+                about, 
+                imgUrl, 
+                website
+            }
+    })
     })
     
     if (res.ok){
         const data = await res.json()
         dispatch(receiveUser(data))
+        updateCurrentUser(data)
         return res
     }
 }
