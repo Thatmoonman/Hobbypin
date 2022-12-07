@@ -31,7 +31,7 @@
     color: #767676;
     font-weight: 400;
     font-size: 14px;
-    margin: 3px;
+    margin: 8px 3px;
 }
 
 .profileFollows {
@@ -41,6 +41,10 @@
     font-size: 16px;
 }
 
+.profileFollows > p {
+    margin: 0 2px;
+}
+
 .profileButtons {
     display: flex;
     margin: 8px;
@@ -48,7 +52,7 @@
 
 .profileButtons > * {
     display: flex;
-    color: black;
+    color: #111111;
     background-color: #EFEFEF;
     height: 48px;
     margin: 3px;
@@ -78,5 +82,26 @@
 .renderEditButton:hover {
     background-color: #E2E2E2;
 }
+
+.helpContainer {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+
+.helpIcon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    margin: 16px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
 
 /* .renderEditButton shrink on click */

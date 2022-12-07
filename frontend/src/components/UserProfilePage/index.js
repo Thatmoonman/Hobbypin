@@ -20,15 +20,17 @@ const UserProfilePage = () => {
             <h1 className="profileName">{user.username}</h1>
             <p className="profileEmail">{user.email}</p>
             <div className="profileFollows">
-                <p className="profileFollowing">following</p>
-                <p className="profileFollowers">followers</p>
+                <p className="profileFollowing">0 following</p>
+                <p className="profileFollowers"> 0 followers</p>
             </div>
-            <div className="profile profileButtons">
+            <div className="profileButtons">
                 <button className='shareDropdownMenu'>Share</button>
                 <NavLink to={`/users/${user.username}/edit`} className='renderEditButton'>Edit Profile</NavLink>
             </div>
             <BoardIndex />
-            <div>help</div>
+            <div className="helpContainer">
+                <div className="helpIcon"><i className="fa-solid fa-question"></i></div>
+            </div>
         </div>
     )
 }

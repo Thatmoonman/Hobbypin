@@ -3,8 +3,9 @@ const BoardIndexItem = (props) => {
     const board = props.board
 
     return (
-        <li key={board.id} className="boardIdxItem">
-            {board.title}
+        <li className="boardIdxItem">
+            <p>title: {board.title}</p>
+            <p>user: {board.user_id}</p>
         </li>
     )
 }

@@ -6,29 +6,31 @@ import BoardIndexItem from './BoardIndexItem';
 
 const BoardIndex = () => {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
+    const userId = user.id
     const boards = useSelector(getBoards)
 
     useEffect(() => {
-        dispatch(fetchBoards(boards))
-    }, [])
+        dispatch(fetchBoards(userId))
+    },[userId])
 
     const showBoards = () => (
-        <ul>
-            {boards.map(board => <BoardIndexItem board={board}/>)}       
+        <ul className='boardIdx'>
+            {boards.map(board => <BoardIndexItem key={board.id} board={board}/>)}       
         </ul>
     )
 
     return (
         <div className="profile profileBoardIndex">
             <div className="boardIdxNav1">
-                <button>Created</button>
-                <button>Saved</button>
+                <div className="boardIdxNavItem1">Created</div>
+                <div className="boardIdxNavItem1">Saved</div>
             </div>
             <div className="boardIdxNav2">
-                <button>Sort</button>
-                <button>Add</button>
+                <div className="boardIdxNavItem2"><i className="fa-solid fa-sliders"></i></div>
+                <div className="boardIdxNavItem2"><i className="fa-solid fa-plus"></i></div>
             </div>
-            <div className="boardIdx">{showBoards()}</div>
+            <div>{showBoards()}</div>
         </div>
     )
 

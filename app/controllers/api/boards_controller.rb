@@ -10,7 +10,7 @@ class Api::BoardsController < ApplicationController
     end
 
     def index
-        @boards = Board.where(user_id: params[:user_id])
+        @boards = Board.where(user_id: params[:id])
         render :index
     end
 

@@ -21,15 +21,15 @@ export const getBoards = (state) => (
     state.boards ? Object.values(state.boards) : []
 )
 
-export const fetchBoard = (boardId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/users/:user_id/boards/${boardId}`)
+export const fetchBoard = (userId, boardId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${userId}/boards/${boardId}`)
     const data = await res.json()
     dispatch(receiveBoard(data))
     return res
 }
 
-export const fetchBoards = () => async (dispatch) => {
-    const res = await csrfFetch(`/api/users/:user_id/boards`)
+export const fetchBoards = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${userId}/boards`)
     const data = await res.json()
     dispatch(receiveBoards(data))
     return res
