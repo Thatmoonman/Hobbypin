@@ -24,13 +24,13 @@ ApplicationRecord.transaction do
       age: 1
     )
 
-    puts "Creating demo user boards..."
-    6.times do
-      Board.create!({
-        title: Faker::Adjective.unique.positive,
-        user_id: user.id
-      })
-    end
+    # puts "Creating demo user boards..."
+    # 6.times do
+    #   Board.create!({
+    #     title: Faker::Adjective.unique.positive,
+    #     user_id: user.id
+    #   })
+    # end
   
     # More users
     10.times do 
