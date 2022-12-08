@@ -27,7 +27,7 @@ ApplicationRecord.transaction do
     puts "Creating demo user boards..."
     6.times do
       Board.create!({
-        title: Faker::Adjective.positive,
+        title: Faker::Adjective.unique.positive(specifier: 3)
         user_id: 1
       })
     end
