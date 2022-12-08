@@ -39,11 +39,11 @@ export const createBoard = (board) => async (dispatch) => {
     const {title, userId} = board
     const res = await csrfFetch(`/api/boards`, {
         method: 'POST',
-        body: JSON.stringify({title: title, userId: userId})
+        body: JSON.stringify({board: {title: title, userId: userId}})
     })
     const data = await res.json()
-    dispatch(fetchBoard(data.userId, data.id))
-    return data
+    dispatch(fetchBoard(data.board.userId, data.board.id))
+    return data.board
 }
 
 

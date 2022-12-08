@@ -1,4 +1,5 @@
 class Api::BoardsController < ApplicationController
+    wrap_parameters include: Board.attribute_names
 
     def create
         @board = Board.new(board_params)

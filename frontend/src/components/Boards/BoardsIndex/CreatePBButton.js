@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-
-
 const CreateButtonDropdown = (props) => {
     const setShowCreateDropdown = props.setShowCreateDropdown
     const setShowBoardModal = props.setShowBoardModal
@@ -16,7 +13,7 @@ const CreateButtonDropdown = (props) => {
     return (
         <>
             <div className="createButtonDropdown" >
-                <p className='cpbdTitle'>Create</p>
+                <h4>Create</h4>
                 <p className='cpbdLink'>Pin</p>
                 <p className='cpbdLink'>Idea Pin</p>
                 <p className='cpbdLink' onClick={renderBoardModal}>Board</p>
