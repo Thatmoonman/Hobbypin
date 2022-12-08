@@ -9,13 +9,13 @@ const PublicProfileEdit = () => {
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
 
-    const [username, setUsername] = useState(user ? user.username : '')
-    const [firstName, setFirstName] = useState(user ? user.firstName : '')
-    const [lastName, setLastName] = useState(user? user.lastName : '')
-    const [about, setAbout] = useState(user ? user.about : '')
-    const [preferredPronouns, setPreferredPronouns] = useState(user ? user.preferredPronouns : '')
-    const [imgUrl, setImgUrl] = useState(user ? user.imgUrl : '')
-    const [website, setWebsite] = useState(user ? user.website : '')
+    const [username, setUsername] = useState(user && user.username ? user.username : '')
+    const [firstName, setFirstName] = useState(user && user.firstName ? user.firstName : '')
+    const [lastName, setLastName] = useState(user && user.lastName ? user.lastName : '')
+    const [about, setAbout] = useState(user && user.about ? user.about : '')
+    const [preferredPronouns, setPreferredPronouns] = useState(user && user.preferredPronouns ? user.preferredPronouns : '')
+    const [imgUrl, setImgUrl] = useState(user && user.imgUrl ? user.imgUrl : '')
+    const [website, setWebsite] = useState(user && user.website ? user.website : '')
 
     useEffect(() => {
         if (userId) dispatch(fetchUser(userId))
