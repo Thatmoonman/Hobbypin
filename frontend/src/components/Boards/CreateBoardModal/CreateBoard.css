@@ -1,0 +1,11 @@
+
+.CreateBoardModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    max-height: 293px;
+    max-width: 540px;
+    margin: auto;
+}

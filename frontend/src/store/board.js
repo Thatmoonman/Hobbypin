@@ -25,7 +25,6 @@ export const fetchBoard = (userId, boardId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/boards/${boardId}`)
     const data = await res.json()
     dispatch(receiveBoard(data.board))
-    console.log(data.board)
     return data
 }
 
@@ -33,6 +32,17 @@ export const fetchBoards = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/boards`)
     const data = await res.json()
     dispatch(receiveBoards(data))
+    return data
+}
+
+export const createBoard = (board) => async (dispatch) => {
+    const {title, userId} = board
+    const res = await csrfFetch(`/api/boards`, {
+        method: 'POST',
+        body: JSON.stringify({title: title, userId: userId})
+    })
+    const data = await res.json()
+    dispatch(fetchBoard(data.userId, data.id))
     return data
 }
 
