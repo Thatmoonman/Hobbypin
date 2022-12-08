@@ -24,15 +24,16 @@ export const getBoards = (state) => (
 export const fetchBoard = (userId, boardId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/boards/${boardId}`)
     const data = await res.json()
-    dispatch(receiveBoard(data))
-    return res
+    dispatch(receiveBoard(data.board))
+    console.log(data.board)
+    return data
 }
 
 export const fetchBoards = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/boards`)
     const data = await res.json()
     dispatch(receiveBoards(data))
-    return res
+    return data
 }
 
 

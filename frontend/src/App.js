@@ -15,7 +15,7 @@ function App() {
         <Route exact path='/users/:userId/edit'>
           <UserEditPage />
         </Route>
-        <Route exact path='/users/:userId/boards/:boardId'>
+        <Route path='/users/:userId/boards/:boardId'>
           <BoardShow />
         </Route>
       </Switch>

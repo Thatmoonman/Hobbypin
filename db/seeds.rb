@@ -23,6 +23,14 @@ ApplicationRecord.transaction do
       password: 'password',
       age: 1
     )
+
+    puts "Creating demo user boards..."
+    3.times do
+      Board.create!({
+        title: Faker::Adjective.positive,
+        user_id: 1
+      })
+    end
   
     # More users
     10.times do 
