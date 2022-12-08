@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { fetchBoards, getBoards } from '../../../store/board';
 import './BoardIndex.css'
 import BoardIndexItem from './BoardIndexItem';
@@ -23,8 +23,8 @@ const BoardIndex = () => {
     return (
         <div className="profile profileBoardIndex">
             <div className="boardIdxNav1">
-                <div className="boardIdxNavItem1">Created</div>
-                <div className="boardIdxNavItem1">Saved</div>
+                <div className="boardIdxNavItem1" to='/'>Created</div>
+                <div className="boardIdxNavItem1" to='/'>Saved</div>
             </div>
             <div className="boardIdxNav2">
                 <div className="boardIdxNavItem2"><i className="fa-solid fa-sliders"></i></div>

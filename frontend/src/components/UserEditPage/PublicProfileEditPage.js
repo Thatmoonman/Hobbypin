@@ -9,19 +9,19 @@ const PublicProfileEdit = () => {
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
 
-    const [username, setUsername] = useState(user.username)
-    const [firstName, setFirstName] = useState(user.firstName ? user.firstName : '')
-    const [lastName, setLastName] = useState(user.lastName ? user.lastName : '')
-    const [about, setAbout] = useState(user.about ? user.about : '')
-    const [preferredPronouns, setPreferredPronouns] = useState(user.preferredPronouns ? user.preferredPronouns : '')
-    const [imgUrl, setImgUrl] = useState(user.imgUrl ? user.imgUrl : '')
-    const [website, setWebsite] = useState(user.website ? user.website : '')
+    const [username, setUsername] = useState(user ? user.username : '')
+    const [firstName, setFirstName] = useState(user ? user.firstName : '')
+    const [lastName, setLastName] = useState(user? user.lastName : '')
+    const [about, setAbout] = useState(user ? user.about : '')
+    const [preferredPronouns, setPreferredPronouns] = useState(user ? user.preferredPronouns : '')
+    const [imgUrl, setImgUrl] = useState(user ? user.imgUrl : '')
+    const [website, setWebsite] = useState(user ? user.website : '')
 
     useEffect(() => {
         if (userId) dispatch(fetchUser(userId))
     }, [dispatch, userId])
 
-    if (!user) return <Redirect to='/' />
+    if (!user) return <Redirect to={`/users/${userId}`} />
 
 
     const handleResetForm = (e) => {

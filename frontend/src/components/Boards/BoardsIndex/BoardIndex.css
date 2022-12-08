@@ -27,10 +27,21 @@
 }
 
 .boardIdxNavItem1 {
+    display: flex;
+    height: 27px;
+    width: 67px;
     font-weight: 600;
     font-size: 16px;
-    padding: 24px 16px;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 0 8px;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.boardIdxNavItem1:hover {
+    background-color: #E9E9E9;
 }
 
 .boardIdxNav2 {
