@@ -6,7 +6,90 @@
     background-color: white;
     box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
     border-radius: 16px;
-    height: 293px;
-    width: 540px;
+    padding: 0 32px;
+    height: auto;
+    width: auto;
     overflow: hidden;
+}
+
+.editBoardForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.editHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 32px;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.editHeaderContainer > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.editHeaderContainer > div:hover {
+    background-color: #EFEFEF;
+}
+
+.editBoardForm > label {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.editBoardForm > input {
+    width: 444px;
+    height: 32px;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    border: 2px solid #CDCDCD;
+    border-radius: 16px;
+    padding: 8px 16px;
+}
+
+.editBoardForm > textarea {
+    height: 78px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    border: 2px solid #CDCDCD;
+    padding: 8px 16px;
+    resize: none;
+}
+
+.editFormButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    margin: 0 -32px;
+    height: 96px;
+
+}
+
+.editFormButtonContainer > button {
+    background-color: #E60023;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    margin: 24px;
+    width: 72px;
+    height: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.editFormButtonContainer > button:hover {
+    background-color: #AD081B;
 }

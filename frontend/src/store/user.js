@@ -16,7 +16,7 @@ const receiveUsers = (users) => ({
 })
 
 export const getUser = (userId) => (state) => (
-    state.users ? state.users[userId] : null
+    state.users[userId] ? state.users[userId] : {}
 )
 
 export const getUsers = (state) => (

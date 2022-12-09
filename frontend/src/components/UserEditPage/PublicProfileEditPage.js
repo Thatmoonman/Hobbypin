@@ -1,4 +1,4 @@
-import { Redirect, useParams } from "react-router-dom"
+import { Redirect, useHistory, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from "react"
 import { fetchUser, updateUser, getUser } from "../../store/user"
@@ -6,6 +6,7 @@ import { fetchUser, updateUser, getUser } from "../../store/user"
 
 const PublicProfileEdit = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
 
@@ -21,12 +22,9 @@ const PublicProfileEdit = () => {
         if (userId) dispatch(fetchUser(userId))
     }, [dispatch, userId])
 
-    if (!user) return <Redirect to={`/users/${userId}`} />
-
-
     const handleResetForm = (e) => {
         e.preventDefault()
-
+        
         return
     }
 
@@ -44,6 +42,7 @@ const PublicProfileEdit = () => {
         }
 
         dispatch(updateUser(data))
+        history.push(`/users/${userId}`)
     }
 
     return (

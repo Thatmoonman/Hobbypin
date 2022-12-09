@@ -2,6 +2,7 @@ import csrfFetch from './csrf'
 
 export const RECEIVE_BOARD = 'boards/RECEIVE_BOARD'
 export const RECEIVE_BOARDS = 'boards/RECEIVE_BOARDS'
+export const REMOVE_BOARD = 'board/REMOVE_BOARD'
 
 const receiveBoard = (board) => ({
     type: RECEIVE_BOARD,
@@ -13,8 +14,13 @@ const receiveBoards = (boards) => ({
     boards
 })
 
+const removeBoard = (boardId) => ({
+    type: REMOVE_BOARD,
+    boardId
+})
+
 export const getBoard = (boardId) => (state) => (
-    state.boards ? state.boards[boardId] : null
+    state.boards[boardId] ? state.boards[boardId] : {}
 )
 
 export const getBoards = (state) => (
@@ -46,7 +52,21 @@ export const createBoard = (board) => async (dispatch) => {
     return data.board
 }
 
+export const updateBoard = (board) => async (dispatch) => {
+    const {title, description} = board
+    const res = await csrfFetch(`/api/boards/${board.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({board: { ...board, title: title, description: description}})
+    })
+    const data = await res.json()
+    dispatch(fetchBoard(data.board.userId, data.board.id))
+    return data.board
+}
 
+export const deleteBoard = (boardId) => async (dispatch) => {
+    await csrfFetch(`/api/boards/${boardId}`, { method: 'DELETE' })
+    await dispatch(removeBoard(boardId))
+}
 
 const boardsReducer = (state={}, action) => {
     Object.freeze(state)
@@ -58,6 +78,9 @@ const boardsReducer = (state={}, action) => {
             return nextState
         case RECEIVE_BOARDS:
             return { ...nextState, ...action.boards }
+        case REMOVE_BOARD:
+            delete nextState[action.boardId]
+            return nextState
         default:
             return state
     }

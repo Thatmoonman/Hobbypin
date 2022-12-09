@@ -21,16 +21,23 @@ class Api::BoardsController < ApplicationController
     end
 
     def update
-
+        @board = Board.find_by(id: params[:id])
+        if @board.update(board_params)
+            render :show
+        else
+            board = board.new(board_params)
+            render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     def destroy
-
+        board = Board.find_by(id: params[:id])
+        board.destroy
     end
 
     private
 
     def board_params
-        params.require(:board).permit(:title, :user_id)
+        params.require(:board).permit(:title, :user_id, :description)
     end
 end
