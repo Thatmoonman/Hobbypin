@@ -30,6 +30,12 @@ class ApplicationController < ActionController::API
       end
   end
 
+  def require_logged_out
+      if current_user
+          render json: { message: 'Unauthorized' }, status: :unauthorized 
+      end
+  end
+
 #   def test
 #       if params.has_key?(:login)
 #           login!(User.first)

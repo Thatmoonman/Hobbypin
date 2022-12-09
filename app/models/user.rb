@@ -35,6 +35,10 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
 
   has_many :boards, dependent: :destroy
+  has_many :pins,
+    foreign_key: :uploader_id,
+    class_name: :Pin,
+    dependent: :destroy
 
   def self.find_by_credentials(email:, password:)
     user = User.find_by(email: email)
