@@ -1,10 +1,23 @@
-import { useDispatch } from "react-redux"
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const EditBoardDropdown = (props) => {
+    const showEditBoardDropdown = props.showEditBoardDropdown
     const setShowEditBoardDropdown = props.setShowEditBoardDropdown
     const setShowEditBoardModal = props.setShowEditBoardModal
     const setShowDeleteBoardModal = props.setShowDeleteBoardModal
+
+    useEffect(() => {
+        if (!showEditBoardDropdown) return;
+    
+        const closeMenu = () => {
+          setShowEditBoardDropdown(false);
+        };
+    
+        document.addEventListener('click', closeMenu);
+      
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showEditBoardDropdown]);
+
 
     const handleShowEditModal = (e) => {
         e.preventDefault()
@@ -19,6 +32,8 @@ const EditBoardDropdown = (props) => {
         setShowDeleteBoardModal(true)
         setShowEditBoardDropdown(false)
     } 
+
+    
 
     return (
         <div className="editBoardDropdown">

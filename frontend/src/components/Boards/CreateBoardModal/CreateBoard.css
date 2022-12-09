@@ -35,13 +35,22 @@
 .createBoardForm > input {
     height: 32px;
     border: 2px solid #CDCDCD;
-    color: #767676;
     border-radius: 16px;
     font-weight: 400;
     font-size: 16px;
     padding: 8px 16px;
     width: 90%;
     margin-bottom: 50px;
+}
+
+.createBoardForm > input:hover {
+    border-color: #A5A5A5;
+}
+
+.createBoardForm > input:focus {
+    border-color: #CDCDCD;
+    box-shadow: 0 0 0 4px rgb(0 132 255 / 50%);
+    outline: 0;
 }
 
 .createBoardButtonContainer {
@@ -55,7 +64,7 @@
     height: 96px;
 }
 
-.createBoardButtonContainer > button {
+.createBoardButton {
     height: 48px;
     width: 82px;
     border: none;

@@ -53,7 +53,7 @@
 }
 
 .input {
-    border: 2px solid #cdcdcd;
+    border: 2px solid #CDCDCD;
     border-radius: 16px;
     padding: 8px 16px;
     margin-right: 8px;
@@ -61,6 +61,30 @@
     resize: none;
 }
 
+.input:hover {
+    border-color: #A5A5A5;
+}
+
+.input:focus {
+    border-color: #CDCDCD;
+    box-shadow: 0 0 0 4px rgb(0 132 255 / 50%);
+    outline: 0;
+}
+
 .editButtonContainer {
     display: flex;
+    justify-content: end;
+}
+
+.editButtonContainer > button {
+    height: 48px;
+    width: 82px;
+    border: none;
+    border-radius: 32px;
+    margin-top: 16px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #767676;
+    font-weight: 600;
+    font-size: 16px;
 }

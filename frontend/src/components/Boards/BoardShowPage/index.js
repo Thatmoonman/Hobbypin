@@ -35,6 +35,7 @@ const BoardShow = () => {
                     <button onClick={toggleBoardShowDropdown}>
                         <i className="fa-solid fa-ellipsis"></i>
                         {showEditBoardDropdown && <EditBoardDropdown 
+                            showEditBoardDropdown={showEditBoardDropdown}
                             setShowEditBoardDropdown={setShowEditBoardDropdown}
                             setShowEditBoardModal={setShowEditBoardModal}
                             setShowDeleteBoardModal={setShowDeleteBoardModal}

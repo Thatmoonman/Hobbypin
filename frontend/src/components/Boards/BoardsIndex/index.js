@@ -6,7 +6,7 @@ import CreateDropdown from '../../Navigation/CreateDropdown';
 import CreateBoard from '../CreateBoardModal';
 import './BoardIndex.css'
 import BoardIndexItem from './BoardIndexItem';
-import CreateButtonDropdown from './CreatePBButton';
+import CreateButtonDropdown from './CreatePBButtonDropdown';
 
 const BoardIndex = () => {
     const dispatch = useDispatch();
@@ -42,6 +42,7 @@ const BoardIndex = () => {
                 <div className="boardIdxNavItem2" onClick={toggleCreateDropdown}><i className="fa-solid fa-plus"></i></div>
             </div>
             {showCreateDropdown && <CreateButtonDropdown  
+                showCreateDropdown={showCreateDropdown}
                 setShowCreateDropdown={setShowCreateDropdown} 
                 setShowBoardModal={setShowBoardModal}/>
             }

@@ -57,6 +57,16 @@
     padding: 8px 16px;
 }
 
+.editBoardForm > input:hover {
+    border-color: #A5A5A5;
+}
+
+.editBoardForm > input:focus {
+    border: 2px solid #CDCDCD;
+    box-shadow: 0 0 0 4px rgb(0 132 255 / 50%);
+    outline: 0;
+}
+
 .editBoardForm > textarea {
     height: 78px;
     margin-bottom: 24px;
