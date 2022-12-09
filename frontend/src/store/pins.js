@@ -1,7 +1,7 @@
 import csrfFetch from './csrf.js'
 
 export const RECEIVE_PINS = '/pins/RECEIVE_PINS'
-export const RECEIVE_PIN = '/pin/RECEIVE_PIN'
+export const RECEIVE_PIN = '/pins/RECEIVE_PIN'
 
 const receivePin = (pin) => ({
     type: RECEIVE_PIN,
@@ -13,7 +13,7 @@ const receivePins = (pins) => ({
     pins
 })
 
-export const getPins = () => (state) => (
+export const getPins = (state) => (
     state.pins ? Object.values(state.pins) : []
 )
 
@@ -22,8 +22,7 @@ export const getPin = (pinId) => (state) => (
 )
 
 export const fetchAllPins = () => async (dispatch) => {
-    const res = await csrfFetch(`/api/all/pins/`)
-
+    const res = await csrfFetch(`/api/users/all/pins/`)
     if (res.ok) {
         const data = await res.json()
         dispatch(receivePins(data))
@@ -31,10 +30,11 @@ export const fetchAllPins = () => async (dispatch) => {
 }
 
 export const fetchUsersPins = (uploaderId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/${uploaderId}/pins`)
+    const res = await csrfFetch(`/api/users/${uploaderId}/pins`)
 
     if (res.ok) {
         const data = await res.json()
+        console.log(data)
         dispatch(receivePins(data))
     }
 }
@@ -42,7 +42,7 @@ export const fetchUsersPins = (uploaderId) => async (dispatch) => {
 const pinsReducer = (state={}, action) => {
     Object.freeze(state)
     const nextState = { ...state }
-
+    
     switch (action.type) {
         case RECEIVE_PIN:
             nextState[action.pin.id] = action.pin

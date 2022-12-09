@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import BoardShow from "./components/Boards/BoardShowPage";
 import Navigation from "./components/Navigation";
+import AllPinsIndex from "./components/Pins/AllPinsIndex";
 import UserEditPage from "./components/UserEditPage";
 import UserProfilePage from "./components/UserProfilePage";
 
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path='/users/:userId/boards/:boardId'>
           <BoardShow />
+        </Route>
+        <Route path='/'>
+          <AllPinsIndex />
         </Route>
       </Switch>
     </>
