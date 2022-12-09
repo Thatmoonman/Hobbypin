@@ -48,7 +48,7 @@ export const createBoard = (board) => async (dispatch) => {
         body: JSON.stringify({board: {title: title, userId: userId}})
     })
     const data = await res.json()
-    dispatch(fetchBoard(data.board.userId, data.board.id))
+    dispatch(fetchBoard(data.board.userId, data.board.id))   
     return data.board
 }
 

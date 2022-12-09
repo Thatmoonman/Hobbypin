@@ -45,9 +45,8 @@ const CreateBoard = (props) => {
             title: title,
             userId: userId
         }
-        const newBoard = dispatch(createBoard(data))
+        dispatch(createBoard(data))
         setShowBoardModal(false)
-        history.push(`/users/${userId}/board/${newBoard.id}`)
     }
 
     return (
@@ -62,6 +61,7 @@ const CreateBoard = (props) => {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder='Like "Places to go" or "Recipes to make"'
+                        autoFocus
                     />
                     <div className='createBoardButtonContainer'>
                         <button className='createBoardButton'>Create</button>

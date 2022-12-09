@@ -63,7 +63,7 @@
     text-align: center;
 }
 
-.todayNavLink {
+.linkedinNav {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -173,8 +173,12 @@
     
 }
 
-.navMessages {
+.navGithub {
     left: 85.25%;
+}
+
+.navGithub:hover {
+    background-color: #E9E9E9;
 }
 
 .navProfile{

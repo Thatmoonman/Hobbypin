@@ -24,7 +24,11 @@ const DeleteBoardModal = (props) => {
         <Modal onClose={() => setShowDeleteBoardModal(false)}>
             <div className="deleteBoardModal">
                 <h1>Are you sure?</h1>
-                <button onClick={handleDeleteBoard}>Delete</button>
+                <p>Once you delete a board, you can't undo it!</p>
+                <div className="deleteBoardButtons">
+                    <button className="cancelButton" onClick={() => setShowDeleteBoardModal(false)}>Cancel</button>
+                    <button className="deleteButton" onClick={handleDeleteBoard}>Delete forever</button>
+                </div>
             </div>
         </Modal>
     )

@@ -18,7 +18,7 @@ function Navigation(){
     const handleMouseOver = (element) => {
         if (element === 'notifications') {
             setNotificationIsHovering(true)
-        } else if (element === 'messages') {
+        } else if (element === 'github') {
             setMessageIsHovering(true)
         } else if (element === 'profile') {
             setProfileIsHovering(true)
@@ -28,7 +28,7 @@ function Navigation(){
     const handleMouseOut = (element) => {
         if (element === 'notifications') {
             setNotificationIsHovering(false)
-        } else if (element === 'messages') {
+        } else if (element === 'github') {
             setMessageIsHovering(false)
         } else if (element === 'profile') {
             setProfileIsHovering(false)
@@ -44,7 +44,7 @@ function Navigation(){
         <div className="navBar">
             <NavLink exact to="/">H-logo</NavLink>
             <NavLink exact to="/" className="homeNavLink"><p>Home</p></NavLink>
-            <NavLink exact to="/" className="todayNavLink">Today</NavLink>
+            <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='linkedinNav'>LinkedIn</Link>
             <CreateDropdown />
             <SearchBar />
             <div className='navIcon' 
@@ -56,15 +56,17 @@ function Navigation(){
                 </i>
             </div>
                 {notificationIsHovering && <div className='navTooltip navNotifications'>Notifications</div>}
-            <div className='navIcon' 
-                onMouseEnter={() => handleMouseOver('messages')} 
-                onMouseOut={() => handleMouseOut('messages')}>
-                <i className="fa-solid fa-comment-dots"
-                    onMouseEnter={() => handleMouseOver('messages')} 
-                    onMouseOut={() => handleMouseOut('messages')}>
+            <Link to={{pathname: "https://github.com/Thatmoonman"}}
+                target="_blank"
+                className='navIcon'
+                onMouseEnter={() => handleMouseOver('github')}
+                onMouseOut={() => handleMouseOut('github')}>
+                <i class="fa-brands fa-github"
+                    onMouseEnter={() => handleMouseOver('github')}
+                    onMouseOut={() => handleMouseOut('github')}>
                 </i>
-            </div>
-                {messageIsHovering && <div className='navTooltip navMessages'>Messages</div>}
+            </Link>
+                {messageIsHovering && <div className='navTooltip navGithub'>Github</div>}
             <NavLink exact to={`/users/${userId}`} className='navIcon' 
                 onMouseEnter={() => handleMouseOver('profile')} 
                 onMouseOut={() => handleMouseOut('profile')}>

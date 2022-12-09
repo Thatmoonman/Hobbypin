@@ -37,7 +37,7 @@ const EditBoardModal = (props) => {
                 <div className="editHeaderContainer">
                     <div></div>
                     <h1>Edit your board</h1>
-                    <div><i className="fa-solid fa-x"></i></div>
+                    <div onClick={() => setShowEditBoardModal(false)}><i className="fa-solid fa-x"></i></div>
                 </div>
                 <form className='editBoardForm' onSubmit={handleUpdateBoard}>
                     <label htmlFor="title">Title</label>
