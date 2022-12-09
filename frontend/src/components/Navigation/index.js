@@ -61,7 +61,7 @@ function Navigation(){
                 className='navIcon'
                 onMouseEnter={() => handleMouseOver('github')}
                 onMouseOut={() => handleMouseOut('github')}>
-                <i class="fa-brands fa-github"
+                <i className="fa-brands fa-github"
                     onMouseEnter={() => handleMouseOver('github')}
                     onMouseOut={() => handleMouseOut('github')}>
                 </i>
