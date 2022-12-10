@@ -1,0 +1,18 @@
+
+.pinShowContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 24px 132px;
+}
+
+.pinShowContainer > img{
+    width: 100%;
+}
+
+.pinShowDetails {
+
+}

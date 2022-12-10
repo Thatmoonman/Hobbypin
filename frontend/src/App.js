@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import BoardShow from "./components/Boards/BoardShowPage";
 import Navigation from "./components/Navigation";
 import AllPinsIndex from "./components/Pins/AllPinsIndex";
+import PinShowPage from "./components/Pins/PinShowPage";
 import UserEditPage from "./components/UserEditPage";
 import UserProfilePage from "./components/UserProfilePage";
 
@@ -19,7 +20,10 @@ function App() {
         <Route path='/users/:userId/boards/:boardId'>
           <BoardShow />
         </Route>
-        <Route path='/'>
+        <Route path='/users/:userId/pins/:pinId'>
+          <PinShowPage />
+        </Route>
+        <Route exact path='/'>
           <AllPinsIndex />
         </Route>
       </Switch>

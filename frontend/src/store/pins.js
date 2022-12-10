@@ -34,8 +34,15 @@ export const fetchUsersPins = (uploaderId) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
-        console.log(data)
         dispatch(receivePins(data))
+    }
+}
+
+export const fetchPin = (userId, pinId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${userId}/pins/${pinId}`)
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(receivePin(data.pin))
     }
 }
 

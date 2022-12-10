@@ -9,6 +9,10 @@ class Api::PinsController < ApplicationController
         render :index
     end
 
+    def show
+        @pin = Pin.find_by(id: params[:id])
+        render :show
+    end
 
     
 end
