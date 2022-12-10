@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import { fetchBoards, getBoards } from '../../../store/board';
 import CreateDropdown from '../../Navigation/CreateDropdown';
 import CreateBoard from '../CreateBoardModal';
@@ -22,7 +22,7 @@ const BoardIndex = () => {
 
     const showBoards = () => (
         <ul className='boardIdxContainer'>
-            <div className='boardIdxItem'><p>All Pins</p></div>
+            <Link className='boardIdxItem' to={`/users/${userId}/pins`}><p>All Pins</p></Link>
             {boards.map((board) => <BoardIndexItem key={board.id} board={board}/>)}       
         </ul>
     )

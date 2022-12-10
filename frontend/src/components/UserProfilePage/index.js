@@ -9,8 +9,7 @@ import './UserProfile.css'
 const UserProfilePage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const user = useSelector(state => state.session.user);
-    // const user = useSelector(getUser(userId))
+    const user = useSelector(getUser(userId))
     
     useEffect(() => {
         dispatch(fetchUser(userId))
