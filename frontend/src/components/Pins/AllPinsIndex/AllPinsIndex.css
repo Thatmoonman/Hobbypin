@@ -42,3 +42,8 @@
     cursor: pointer;
     margin-right: 16px;
 }
+
+.pinIndexColumns {
+    display: flex;
+    justify-content: space-evenly;
+}

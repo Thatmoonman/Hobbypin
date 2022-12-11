@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { fetchAllPins, getPins } from "../../../store/pins";
@@ -10,6 +10,19 @@ const AllPinsIndex = () => {
     const pins = useSelector(getPins)
     const user = useSelector(state => state.session.user)
 
+    const columnNumber = () => {
+        const windowWidth = document.body.clientWidth
+        
+        if (windowWidth > 1300) {
+            return 5
+        } else if (windowWidth < 1300 && windowWidth > 1000) {
+            return 4
+        } else {
+            return 3
+        }
+    }
+    const columnLength = Math.ceil(pins.length / columnNumber())
+    
     useEffect(() => {
         dispatch(fetchAllPins())
     }, [])
@@ -19,11 +32,34 @@ const AllPinsIndex = () => {
             {user ? (
                 <>
                 <div>ALL PINS INDEX</div>
-                <ul>
-                    {pins.map(pin => (
-                        <PinCard key={pin.id} pin={pin} />
-                    ))}
-                </ul>
+                <div className="pinIndexColumns">
+                    <ul>
+                        {pins.slice(0, columnLength).map(pin => (
+                            <PinCard key={pin.id} pin={pin} />
+                        ))}
+                    </ul>
+                    <ul>
+                        {pins.slice(columnLength, columnLength * 2).map(pin => (
+                            <PinCard key={pin.id} pin={pin} />
+                        ))}
+                    </ul>
+                    <ul>
+                        {pins.slice(2 * columnLength, 3 * columnLength).map(pin => (
+                            <PinCard key={pin.id} pin={pin} />
+                        ))}
+                    </ul>
+                    <ul>
+                        {pins.slice(3 * columnLength, 4 * columnLength).map(pin => (
+                            <PinCard key={pin.id} pin={pin} />
+                        ))}
+                    </ul>
+                    <ul>
+                        {pins.slice(4 * columnLength).map(pin => (
+                            <PinCard key={pin.id} pin={pin} />
+                        ))}
+                    </ul>
+                    
+                </div>
                 </>
             ) : (
                 <></>
