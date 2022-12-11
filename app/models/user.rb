@@ -34,6 +34,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  has_one_attached :photo
+
   has_many :boards, dependent: :destroy
   has_many :pins,
     foreign_key: :uploader_id,

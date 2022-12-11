@@ -9,7 +9,6 @@ const AllPinsIndex = () => {
     const dispatch = useDispatch();
     const pins = useSelector(getPins)
     const user = useSelector(state => state.session.user)
-    console.log(user)
 
     useEffect(() => {
         dispatch(fetchAllPins())
