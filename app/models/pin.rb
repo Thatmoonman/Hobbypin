@@ -16,5 +16,10 @@ class Pin < ApplicationRecord
     belongs_to :user,
         foreign_key: :uploader_id,
         class_name: :User
+    
+    has_many :pinned_boards
+    has_many :boards through :pinned_boards
+
     has_one_attached :photo
+
 end
