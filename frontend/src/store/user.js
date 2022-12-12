@@ -25,9 +25,14 @@ export const getUsers = (state) => (
 
 export const fetchUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`)
-    const data = await res.json()
-    dispatch(receiveUser(data.user))
-    return data
+    if (res.ok) {
+        const data = await res.json()
+        if (data.user) {
+            dispatch(receiveUser(data.user))
+            return data
+        }
+        return null
+    }
 }
 
 export const fetchUsers = () => async (dispatch) => {

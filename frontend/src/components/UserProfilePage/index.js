@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Redirect, useParams } from "react-router-dom";
 import { fetchUser, getUser } from "../../store/user";
@@ -15,7 +15,7 @@ const UserProfilePage = () => {
         dispatch(fetchUser(userId))
     }, [userId])
     
-    if (!user) return <Redirect to="/" />;
+    // if (!user.keys) return <Redirect to="/" />;
 
     const showProfileModal = () => {
         return 
@@ -23,7 +23,7 @@ const UserProfilePage = () => {
 
     return (
         <div className="userProfileContainer">
-            <div className="profileImage" onClick={showProfileModal}><i className="fa-solid fa-person"></i></div>
+            <div className="profileImage" onClick={showProfileModal}><img src={user.profilePic} /></div>
             <h1 className="profileName">{user.username}</h1>
             <p className="profileEmail">{user.email}</p>
             <div className="profileFollows">

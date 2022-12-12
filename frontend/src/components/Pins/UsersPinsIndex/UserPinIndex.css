@@ -1,0 +1,17 @@
+
+.pinContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 32px;
+    overflow: hidden;
+    margin: 24px auto;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    width: 236px;
+    height: auto;
+}
+
+.pinContainer > img{
+    width: 100%;
+}

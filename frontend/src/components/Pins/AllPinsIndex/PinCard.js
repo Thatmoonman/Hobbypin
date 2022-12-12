@@ -19,7 +19,7 @@ const PinCard = ({pin}) => {
 
     return (
         <li key={pin.id} className="pinCard" 
-            onMouseEnter={() => setHoverCard(true)} 
+            onMouseOver={() => setHoverCard(true)} 
             style={{backgroundImage: `url(${pin.photoUrl})`}}>
             {hoverCard &&
                     <Link to={`/users/${pin.uploaderId}/pins/${pin.id}`} 

@@ -9,9 +9,17 @@ const AllPinsIndex = () => {
     const dispatch = useDispatch();
     const pins = useSelector(getPins)
     const user = useSelector(state => state.session.user)
+    
+    const window = document.body
+    const [windowWidth, setWindowWidth] = useState(window.clientWidth)
+    
+    useEffect(() => {
+        setWindowWidth(window.clientWidth)
+    }, [window.clientWidth])
+
+    window.addEventListener( 'resize', (e) => setWindowWidth(e.clientWidth))
 
     const columnNumber = () => {
-        const windowWidth = document.body.clientWidth
         
         if (windowWidth > 1300) {
             return 5

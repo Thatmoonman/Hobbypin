@@ -7,6 +7,9 @@
 }
 
 .profileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 120px;
     width: 120px;
     border-radius: 50%;
@@ -14,10 +17,8 @@
     background-color: transparent;
     cursor: pointer;
 }
-.profileImage > i {
-    color: black;
-    font-size: 100px;
-    padding: 25%;
+.profileImage > img {
+    height: 100%;
 }
 
 .profileName {
