@@ -57,14 +57,6 @@ ApplicationRecord.transaction do
     img_demo_3 = URI.open("https://hobbypin-dev.s3.amazonaws.com/flowers/pexels-javon-swaby-1697912.jpg")
     pin_demo_3.photo.attach(io: img_demo_3, filename: "pexels-javon-swaby-1697912.jpg")
     pin_demo_3.save!
-
-    puts "Creating demo user boards..."
-    3.times do
-      Board.create!({
-        title: Faker::Adjective.unique.positive,
-        user_id: 1
-      })
-    end
   
     user_1 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
@@ -219,6 +211,35 @@ ApplicationRecord.transaction do
     pin_5_2.photo.attach(io: img_5_2, filename: "pexels-hoy-1390784.jpg")
     pin_5_2.save!
 
+    Board.create!({
+      user_id: 1,
+      title: "CATS!!!"
+    })
+    
+    PinnedBoard.create!({
+      pin_id: 1,
+      board_id: 1
+    })
+
+    PinnedBoard.create!({
+      pin_id: 2,
+      board_id: 1
+    })
+
+    Board.create!({
+      user_id: 1,
+      title: "pretty things"
+    })
+
+    PinnedBoard.create!({
+      pin_id: 5,
+      board_id: 2
+    })
+
+    PinnedBoard.create!({
+      pin_id: 9,
+      board_id: 2
+    })
 
 
     puts "Done!"
