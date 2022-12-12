@@ -16,7 +16,7 @@ class Board < ApplicationRecord
     validates :user_id, presence: true
 
     has_many :pinned_boards
-    has_many :pins through :pinned_boards
+    has_many :pins through: :pinned_boards
 
     belongs_to :user
 end
