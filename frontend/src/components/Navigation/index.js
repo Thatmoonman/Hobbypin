@@ -70,10 +70,14 @@ function Navigation(){
             <NavLink exact to={`/users/${userId}`} className='navIcon' 
                 onMouseEnter={() => handleMouseOver('profile')} 
                 onMouseOut={() => handleMouseOut('profile')}>
-                <i className="fa-sharp fa-solid fa-face-smile"
-                    onMouseEnter={() => handleMouseOver('profile')} 
-                    onMouseOut={() => handleMouseOut('profile')}>
-                </i>
+                <div className='profileNavPicContainerOuter'>
+                    <div className='profileNavPicContainerInner'>
+                        <img src={sessionUser.profilePic}
+                            onMouseEnter={() => handleMouseOver('profile')} 
+                            onMouseOut={() => handleMouseOut('profile')}
+                        />
+                    </div>
+                </div>
             </NavLink>
                 {profileIsHovering && <div className='navTooltip navProfile' >Your profile</div>}
             <ProfileButton user={sessionUser} />

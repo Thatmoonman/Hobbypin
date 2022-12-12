@@ -38,6 +38,16 @@ export const fetchUsersPins = (uploaderId) => async (dispatch) => {
     }
 }
 
+export const fetchBoardPins = (boardId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/boards/${boardId}/pinned_boards`)
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(receivePins(data))
+        return data
+    }
+}
+
 export const fetchPin = (userId, pinId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/pins/${pinId}`)
     if (res.ok) {

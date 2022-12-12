@@ -1,13 +1,17 @@
 
 
 .boardIdxItem {
-    background-color: yellow;
+    background-color: transparent;
     display: block;
     width: 236px;
     height: 236px;
     margin: 8px;
     border-radius: 16px;
     padding: 8px;
+}
+
+.boardIdxItem > img {
+    width: 100%;
 }
 
 .profileBoardIndex {

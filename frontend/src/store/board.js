@@ -29,16 +29,29 @@ export const getBoards = (state) => (
 
 export const fetchBoard = (userId, boardId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/boards/${boardId}`)
-    const data = await res.json()
-    dispatch(receiveBoard(data.board))
-    return data
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(receiveBoard(data.board))
+        return data
+    }
 }
 
 export const fetchBoards = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}/boards`)
-    const data = await res.json()
-    dispatch(receiveBoards(data))
-    return data
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(receiveBoards(data))
+        return data
+    }
+}
+
+export const fetchPinBoards = (pinId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/pins/${pinId}/pinnedboards`)
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(receiveBoards(data))
+        return data
+    }
 }
 
 export const createBoard = (board) => async (dispatch) => {

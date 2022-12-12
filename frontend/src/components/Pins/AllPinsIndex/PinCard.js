@@ -7,15 +7,8 @@ import { fetchBoards, getBoards } from "../../../store/board"
 const PinCard = ({pin}) => {
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user.id)
-    const boards = useSelector(getBoards)
 
     const [hoverCard, setHoverCard] = useState(false)
-    const [board, setBoard] = useState('')
-
-
-    useEffect(() => {
-        dispatch(fetchBoards(userId))
-    }, [userId])
 
     return (
         <li key={pin.id} className="pinCard" 

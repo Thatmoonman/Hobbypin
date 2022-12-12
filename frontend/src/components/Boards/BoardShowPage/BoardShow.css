@@ -37,8 +37,11 @@
     height: 48px;
     width: 48px;
     border-radius: 50%;
-    font-weight: 600;
-    font-size: 36px;
+    overflow: hidden;
+}
+
+.profilePic > img {
+    height: 100%;
 }
 
 .editBoardDropdown {

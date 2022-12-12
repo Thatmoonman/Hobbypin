@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
+import { fetchBoards } from "../../../store/board";
 import { fetchAllPins, getPins } from "../../../store/pins";
 import './AllPinsIndex.css'
 import PinCard from "./PinCard";
@@ -9,13 +10,21 @@ const AllPinsIndex = () => {
     const dispatch = useDispatch();
     const pins = useSelector(getPins)
     const user = useSelector(state => state.session.user)
+    const userId = user.id
+    
+    // const boards = useSelector(getBoards)
+    // const [board, setBoard] = useState('')
+    
+    // useEffect(() => {
+    //     dispatch(fetchBoards(userId))
+    // }, [userId])
     
     const window = document.body
     const [windowWidth, setWindowWidth] = useState(window.clientWidth)
     
-    useEffect(() => {
-        setWindowWidth(window.clientWidth)
-    }, [window.clientWidth])
+    // useEffect(() => {
+    //     setWindowWidth(window.clientWidth)
+    // }, [window.clientWidth])
 
     window.addEventListener( 'resize', (e) => setWindowWidth(e.clientWidth))
 
@@ -39,7 +48,6 @@ const AllPinsIndex = () => {
         <>
             {user ? (
                 <>
-                <div>ALL PINS INDEX</div>
                 <div className="pinIndexColumns">
                     <ul>
                         {pins.slice(0, columnLength).map(pin => (

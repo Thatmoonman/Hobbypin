@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { fetchBoard, getBoard } from "../../../store/board";
+import { fetchBoardPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
+import PinCard from "../../Pins/AllPinsIndex/PinCard";
 import DeleteBoardModal from "../DeleteBoardModal";
 import EditBoardModal from "../EditBoardModal";
 import './BoardShow.css'
@@ -13,6 +15,7 @@ const BoardShow = () => {
     const { userId, boardId } = useParams();
     const board = useSelector(getBoard(boardId))
     const user = useSelector(getUser(userId))
+    const pins = useSelector(getPins)
 
     const [showEditBoardDropdown, setShowEditBoardDropdown] = useState(false)
     const [showEditBoardModal, setShowEditBoardModal] = useState(false)
@@ -21,6 +24,7 @@ const BoardShow = () => {
     useEffect(() => {
         dispatch(fetchBoard(userId, boardId))
         dispatch(fetchUser(userId))
+        dispatch(fetchBoardPins(boardId))
     }, [dispatch, userId, boardId])
 
     const toggleBoardShowDropdown = () => {
@@ -42,11 +46,16 @@ const BoardShow = () => {
                         />}
                     </button>
                 </div>
-                <div className="profilePic"><i className="fa-solid fa-person"></i></div>
+                <div className="profilePic"><img src={user.profilePic}/></div>
                 <p>{board.description}</p>
                 {showEditBoardModal && <EditBoardModal setShowEditBoardModal={setShowEditBoardModal}/>}
                 {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
             </div>
+            <ul>
+                {pins.map(pin => (
+                    <PinCard key={pin.id} pin={pin}/>
+                ))}
+            </ul>
         </div>
     )
 }

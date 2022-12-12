@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useParams } from 'react-router-dom';
 import { fetchBoards, getBoards } from '../../../store/board';
+import { getUser } from '../../../store/user';
 import CreateDropdown from '../../Navigation/CreateDropdown';
 import CreateBoard from '../CreateBoardModal';
 import './BoardIndex.css'
 import BoardIndexItem from './BoardIndexItem';
 import CreateButtonDropdown from './CreatePBButtonDropdown';
 
-const BoardIndex = () => {
+const BoardIndex = (props) => {
     const dispatch = useDispatch();
     const { userId } = useParams();
+    const user = useSelector(getUser(userId))
     const boards = useSelector(getBoards)
 
     const [showCreateDropdown, setShowCreateDropdown] = useState(false)
@@ -22,7 +24,10 @@ const BoardIndex = () => {
 
     const showBoards = () => (
         <ul className='boardIdxContainer'>
-            <Link className='boardIdxItem' to={`/users/${userId}/pins`}><p>All Pins</p></Link>
+            <Link className='boardIdxItem' to={`/users/${userId}/pins`}>
+                <img src={user.profilePic}/>    
+                <p>All Pins</p>
+            </Link>
             {boards.map((board) => <BoardIndexItem key={board.id} board={board}/>)}       
         </ul>
     )
