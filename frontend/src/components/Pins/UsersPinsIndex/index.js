@@ -32,7 +32,7 @@ const UserAllPinsBoard = () => {
     
     useEffect(() => {
         dispatch(fetchUsersPins(userId))
-    },[userId])
+    },[dispatch, userId])
 
     return (
         <div className="pinIndexColumns">

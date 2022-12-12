@@ -55,7 +55,7 @@ const pinsReducer = (state={}, action) => {
             nextState[action.pin.id] = action.pin
             return nextState
         case RECEIVE_PINS:
-            return { ...nextState, ...action.pins }
+            return { ...action.pins }
         default:
             return state
     }
