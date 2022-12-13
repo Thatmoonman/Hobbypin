@@ -7,3 +7,34 @@
     background-color: white;
     border-radius: 32px;
 }
+
+.removePinItem {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px;
+    border-radius: 16px;
+    padding: 8px;
+}
+
+.removePinItem:hover {
+    background-color: #EFEFEF;
+}
+
+.removePinItem > p {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 16px;
+    cursor: default;
+}
+
+.removePinItem > button {
+    border: none;
+    border-radius: 32px;
+    background-color: #E60023;
+    color: white;
+    cursor: pointer;
+}
+
+.removePinItem > button:hover {
+    background-color: #AD081B;
+}

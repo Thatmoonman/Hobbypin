@@ -21,8 +21,8 @@ const RemovePinFromBoardModal = (props) => {
         <Modal onClose={() => setShowRemovePinModal(false)}>
             <ul className="removePinModal">
                 {pins.map(pin => (
-                    <li key={pin.id}>
-                        {pin.title}
+                    <li key={pin.id} className="removePinItem">
+                        <p>{pin.title}</p>
                         <button onClick={(e) => handleRemovePin(e, pin)}>Remove Pin</button>
                     </li>
                 ))}
