@@ -32,8 +32,13 @@
 
 .boardSave {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
+}
+
+.boardSave > div {
+    cursor: pointer;
 }
 
 .boardSave > button {

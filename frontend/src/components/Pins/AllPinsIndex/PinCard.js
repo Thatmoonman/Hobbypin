@@ -1,14 +1,41 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-import { fetchBoards, getBoards } from "../../../store/board"
+import { Link, useHistory } from "react-router-dom"
+import { Modal } from "../../../context/Modal"
+import { createPinnedBoard } from "../../../store/pinned_boards"
 
-
-const PinCard = ({pin}) => {
+const PinCard = (props) => {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.user.id)
+    const history = useHistory();
 
+    const { pin, boards} = props
+ 
     const [hoverCard, setHoverCard] = useState(false)
+    const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : '')
+    const [selectPin, setSelectPin] = useState('')
+    const [showSelectBoard, setShowSelectBoard] = useState(false)
+    
+    const handleAddBoardClick = (e, board) => {
+        e.preventDefault()
+        setSelectBoard(board)
+        setShowSelectBoard(false)
+    }
+
+    const handleSavePin = (e, pin) => {
+        setSelectPin(pin)
+        dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
+    }
+
+    const handleAddBoardButton = (e) => {
+        e.preventDefault();
+        dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
+    }
+
+    const toggleSelectBoardModal = (e, pin) => {
+        e.preventDefault();
+        setSelectPin(pin)
+        showSelectBoard ? setShowSelectBoard(false) : setShowSelectBoard(true)
+    }
 
     return (
         <li key={pin.id} className="pinCard" 
@@ -19,13 +46,30 @@ const PinCard = ({pin}) => {
                         className="pinDetails" 
                         onMouseEnter={() => setHoverCard(true)}
                         onMouseOut={() => setHoverCard(false)}>
+                        <div onClick={(e) => toggleSelectBoardModal(e, pin)} className="showSelectBoard">
+                            {selectBoard.title}
+                            <i className="fa-solid fa-chevron-down" />
+                        </div>
                         <button
+                            className="saveButton"
+                            onClick={(e) => handleSavePin(e, pin)}
                             onMouseEnter={() => setHoverCard(true)}>
                             Save
                         </button>
                     </Link>
             }
             <img src={pin.photoUrl} className="pinPhoto" />
+            {showSelectBoard && 
+                <Modal onClose={() => setShowSelectBoard(false)} >
+                    <div className="selectBoardForm">
+                        {boards.map(board => (
+                            <div key={board.id} onClick={(e) => handleAddBoardClick(e, board)}>
+                                {board.title}
+                                <button className="saveButton" onClick={handleAddBoardButton}>Save</button>
+                            </div>
+                        ))}
+                    </div>
+                </Modal>}
         </li>
     )
 }

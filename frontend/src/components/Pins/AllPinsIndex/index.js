@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
-import { fetchBoards } from "../../../store/board";
+import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchAllPins, getPins } from "../../../store/pins";
 import './AllPinsIndex.css'
 import PinCard from "./PinCard";
@@ -12,12 +12,11 @@ const AllPinsIndex = () => {
     const user = useSelector(state => state.session.user)
     const userId = user.id
     
-    // const boards = useSelector(getBoards)
-    // const [board, setBoard] = useState('')
+    const boards = useSelector(getBoards)
     
-    // useEffect(() => {
-    //     dispatch(fetchBoards(userId))
-    // }, [userId])
+    useEffect(() => {
+        dispatch(fetchBoards(userId))
+    }, [userId])
     
     const window = document.body
     const [windowWidth, setWindowWidth] = useState(window.clientWidth)
@@ -51,27 +50,27 @@ const AllPinsIndex = () => {
                 <div className="pinIndexColumns">
                     <ul>
                         {pins.slice(0, columnLength).map(pin => (
-                            <PinCard key={pin.id} pin={pin} />
+                            <PinCard key={pin.id} pin={pin} boards={boards} />
                         ))}
                     </ul>
                     <ul>
                         {pins.slice(columnLength, columnLength * 2).map(pin => (
-                            <PinCard key={pin.id} pin={pin} />
+                            <PinCard key={pin.id} pin={pin} boards={boards}/>
                         ))}
                     </ul>
                     <ul>
                         {pins.slice(2 * columnLength, 3 * columnLength).map(pin => (
-                            <PinCard key={pin.id} pin={pin} />
+                            <PinCard key={pin.id} pin={pin} boards={boards}/>
                         ))}
                     </ul>
                     <ul>
                         {pins.slice(3 * columnLength, 4 * columnLength).map(pin => (
-                            <PinCard key={pin.id} pin={pin} />
+                            <PinCard key={pin.id} pin={pin} boards={boards}/>
                         ))}
                     </ul>
                     <ul>
                         {pins.slice(4 * columnLength).map(pin => (
-                            <PinCard key={pin.id} pin={pin} />
+                            <PinCard key={pin.id} pin={pin} boards={boards}/>
                         ))}
                     </ul>
                     

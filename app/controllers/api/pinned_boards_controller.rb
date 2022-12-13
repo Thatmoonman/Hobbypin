@@ -17,9 +17,10 @@ class Api::PinnedBoardsController < ApplicationController
 
     def create
         @pinned_board = PinnedBoard.new(pinned_boards_params)
-        if (@pinned_board.save)
-            render :show
-        end
+        @pinned_board.save
+        # if (@pinned_board.save)
+        #     render '/api/boards/index'
+        # end
     end
 
     def destroy

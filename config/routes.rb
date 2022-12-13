@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     end
 
     resources :boards, only: [:create, :update, :destroy] do
-      resources :pinned_boards, only: [:index]
+      resources :pinned_boards, only: [:index, :show]
     end
     resources :pins, only: [:create, :update, :destroy] do
-      resources :pinned_boards, only: [:index]
+      resources :pinned_boards, only: [:index, :show]
     end
     
     resources :pinned_boards, only: [:create, :destroy]
