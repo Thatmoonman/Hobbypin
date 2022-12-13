@@ -21,7 +21,7 @@ const PinCard = (props) => {
         setShowSelectBoard(false)
     }
 
-    const handleSavePin = (e, pin) => {
+    const handleSavePin = (pin) => {
         setSelectPin(pin)
         dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
     }
@@ -58,7 +58,7 @@ const PinCard = (props) => {
                         </button>
                     </Link>
             }
-            <img src={pin.photoUrl} className="pinPhoto" />
+            <img src={pin.photoUrl} className="pinPhoto" alt=""/>
             {showSelectBoard && 
                 <Modal onClose={() => setShowSelectBoard(false)} >
                     <div className="selectBoardForm">

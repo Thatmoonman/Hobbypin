@@ -17,7 +17,7 @@ class Pin < ApplicationRecord
         foreign_key: :uploader_id,
         class_name: :User
     
-    has_many :pinned_boards
+    has_many :pinned_boards, dependent: :destroy
     has_many :boards, through: :pinned_boards
 
     has_one_attached :photo

@@ -15,6 +15,10 @@ class Api::PinnedBoardsController < ApplicationController
         end
     end
 
+    def show
+        pinned_board = PinnedBoard.find_by(pin_id: 1, board_id: 1)
+    end
+
     def create
         @pinned_board = PinnedBoard.new(pinned_boards_params)
         if @pinned_board.save
@@ -23,7 +27,7 @@ class Api::PinnedBoardsController < ApplicationController
     end
 
     def destroy
-        pinned_board = PinnedBoard.find_by(id: params[:id])
+        pinned_board = PinnedBoard.find_by(pin_id: params[:pin_id], board_id: params[:board_id])
         pinned_board.destroy
     end
 

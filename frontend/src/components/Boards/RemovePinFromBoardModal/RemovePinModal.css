@@ -1,0 +1,9 @@
+
+.removePinModal {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 16px;
+    background-color: white;
+    border-radius: 32px;
+}

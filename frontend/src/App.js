@@ -18,13 +18,13 @@ function App() {
         <Route exact path='/users/:userId/edit'>
           <UserEditPage />
         </Route>
-        <Route path='/users/:userId/boards/:boardId'>
+        <Route exact path='/users/:userId/boards/:boardId'>
           <BoardShow />
         </Route>
         <Route exact path='/users/:userId/pins'>
           <UserAllPinsBoard />
         </Route>
-        <Route path='/users/:userId/pins/:pinId'>
+        <Route exact path='/users/:userId/pins/:pinId'>
           <PinShowPage />
         </Route>
         <Route exact path='/'>

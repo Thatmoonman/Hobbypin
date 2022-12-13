@@ -79,3 +79,13 @@
 .editBoardDropdown > p:hover {
     background-color: #E9E9E9;
 }
+
+.boardShowContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 80%;
+    justify-content: flex-start;
+    align-items: center;
+}

@@ -14,13 +14,15 @@ Rails.application.routes.draw do
     end
 
     resources :boards, only: [:create, :update, :destroy] do
-      resources :pinned_boards, only: [:index, :show]
-    end
-    resources :pins, only: [:create, :update, :destroy] do
-      resources :pinned_boards, only: [:index, :show]
+      resources :pinned_boards, only: [:index]
     end
     
-    resources :pinned_boards, only: [:create, :destroy]
+    resources :pins, only: [:create, :update, :destroy] do
+      resources :pinned_boards, only: [:index]
+    end
+    
+    resources :pinned_boards, only: [:create]
+    resource :pinned_boards, only: [:destroy]
     
     resource :session, only: [:show, :create, :destroy]
   end

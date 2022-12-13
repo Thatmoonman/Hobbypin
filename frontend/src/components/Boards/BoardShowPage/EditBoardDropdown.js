@@ -5,6 +5,7 @@ const EditBoardDropdown = (props) => {
     const setShowEditBoardDropdown = props.setShowEditBoardDropdown
     const setShowEditBoardModal = props.setShowEditBoardModal
     const setShowDeleteBoardModal = props.setShowDeleteBoardModal
+    const setShowRemovePinModal = props.setShowRemovePinModal
 
     useEffect(() => {
         if (!showEditBoardDropdown) return;
@@ -26,6 +27,13 @@ const EditBoardDropdown = (props) => {
         setShowEditBoardDropdown(false)
     } 
 
+    const handleShowRemovePinModal = (e) => {
+        e.preventDefault()
+
+        setShowRemovePinModal(true)
+        setShowEditBoardDropdown(false)
+    }
+
     const handleShowDeleteModal = (e) => {
         e.preventDefault()
 
@@ -39,6 +47,7 @@ const EditBoardDropdown = (props) => {
         <div className="editBoardDropdown">
             <h4>Board options</h4>
             <p onClick={handleShowEditModal}>Edit Board</p>
+            <p onClick={handleShowRemovePinModal}>Remove Pin</p>
             <p onClick={handleShowDeleteModal}>Delete Board</p>
         </div>
     )

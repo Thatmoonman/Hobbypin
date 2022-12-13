@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
-import { fetchPinBoards, getBoards } from "../../../store/board";
+import { useHistory, useParams } from "react-router-dom";
+import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchPin, getPin } from "../../../store/pins";
 import { Modal } from "../../../context/Modal";
 import './PinShow.css'
@@ -10,7 +10,10 @@ import { createPinnedBoard } from "../../../store/pinned_boards";
 
 const PinShowPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const { userId, pinId } = useParams();
+    const currentUser = useSelector(state => state.session.user)
 
     const pin = useSelector(getPin(pinId))
     const boards = useSelector(getBoards)
@@ -18,15 +21,13 @@ const PinShowPage = () => {
     const windowWidth = document.body.clientWidth
     let pinOrientation = windowWidth > 1100 ? "horizontal" : "vertical"
 
-    const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : '')
-    const [selectPin, setSelectPin] = useState('')
+    const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : "")
     const [showSelectBoard, setShowSelectBoard] = useState(false)
-    
 
     useEffect(() => {
         dispatch(fetchPin(userId, pinId))
-        dispatch(fetchPinBoards(pinId))
-    }, [pinId])
+        dispatch(fetchBoards(currentUser.id))
+    }, [dispatch, userId, pinId, currentUser.id])
 
     const handleAddBoardClick = (e, board) => {
         e.preventDefault()
@@ -34,28 +35,27 @@ const PinShowPage = () => {
         setShowSelectBoard(false)
     }
 
-    const handleSavePin = (e, pin) => {
-        setSelectPin(pin)
-        dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
+    const handleSavePin = () => {
+        dispatch(createPinnedBoard(pin.id, selectBoard.id))
+        history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
     }
 
     const handleAddBoardButton = (e) => {
         e.preventDefault();
-        dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
+        dispatch(createPinnedBoard(pin.id, selectBoard.id))
+        history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
     }
-
 
 
     const toggleSelectBoardModal = (e, pin) => {
         e.preventDefault();
-        setSelectPin(pin)
         showSelectBoard ? setShowSelectBoard(false) : setShowSelectBoard(true)
     }
 
     return (
         <div className={`pinShowContainer ${pinOrientation}`}>
             <div className="imageContainer">
-                <img src={pin.photoUrl} />
+                <img src={pin.photoUrl} alt=""/>
             </div>
             <div className="pinShowDetails">
                 <div className="boardSave">
@@ -63,7 +63,7 @@ const PinShowPage = () => {
                         {selectBoard.title}
                         <i className="fa-solid fa-chevron-down" />
                     </div>
-                    <button className="saveButton" onClick={(e) => handleSavePin(e, pin)}>
+                    <button className="saveButton" onClick={handleSavePin}>
                         Save
                     </button>
                 </div>

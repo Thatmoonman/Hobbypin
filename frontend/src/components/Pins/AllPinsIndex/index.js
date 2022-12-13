@@ -16,7 +16,7 @@ const AllPinsIndex = () => {
     
     useEffect(() => {
         dispatch(fetchBoards(userId))
-    }, [userId])
+    }, [dispatch, userId])
     
     const window = document.body
     const [windowWidth, setWindowWidth] = useState(window.clientWidth)
@@ -41,7 +41,7 @@ const AllPinsIndex = () => {
     
     useEffect(() => {
         dispatch(fetchAllPins())
-    }, [])
+    }, [dispatch])
 
     return (
         <>

@@ -46,7 +46,7 @@ export const fetchBoards = (userId) => async (dispatch) => {
 }
 
 export const fetchPinBoards = (pinId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/pins/${pinId}/pinnedboards`)
+    const res = await csrfFetch(`/api/pins/${pinId}/pinned_boards`)
     if (res.ok) {
         const data = await res.json()
         dispatch(receiveBoards(data))

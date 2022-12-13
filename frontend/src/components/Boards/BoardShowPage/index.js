@@ -7,6 +7,7 @@ import { fetchUser, getUser } from "../../../store/user";
 import PinCard from "../../Pins/AllPinsIndex/PinCard";
 import DeleteBoardModal from "../DeleteBoardModal";
 import EditBoardModal from "../EditBoardModal";
+import RemovePinFromBoardModal from "../RemovePinFromBoardModal";
 import './BoardShow.css'
 import EditBoardDropdown from "./EditBoardDropdown";
 
@@ -20,6 +21,7 @@ const BoardShow = () => {
     const [showEditBoardDropdown, setShowEditBoardDropdown] = useState(false)
     const [showEditBoardModal, setShowEditBoardModal] = useState(false)
     const [showDeleteBoardModal, setShowDeleteBoardModal] = useState(false)
+    const [showRemovePinModal, setShowRemovePinModal] = useState(false)
 
     useEffect(() => {
         dispatch(fetchBoard(userId, boardId))
@@ -43,6 +45,7 @@ const BoardShow = () => {
                             setShowEditBoardDropdown={setShowEditBoardDropdown}
                             setShowEditBoardModal={setShowEditBoardModal}
                             setShowDeleteBoardModal={setShowDeleteBoardModal}
+                            setShowRemovePinModal={setShowRemovePinModal}
                         />}
                     </button>
                 </div>
@@ -50,8 +53,9 @@ const BoardShow = () => {
                 <p>{board.description}</p>
                 {showEditBoardModal && <EditBoardModal setShowEditBoardModal={setShowEditBoardModal}/>}
                 {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
+                {showRemovePinModal && <RemovePinFromBoardModal pins={pins} setShowRemovePinModal={setShowRemovePinModal} />}
             </div>
-            <ul>
+            <ul className="boardShowContainer">
                 {pins.map(pin => (
                     <PinCard key={pin.id} pin={pin}/>
                 ))}
