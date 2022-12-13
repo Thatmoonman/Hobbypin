@@ -42,6 +42,27 @@
     text-decoration: underline;
 }
 
+.logoNavLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    margin-left: 24px;
+    text-decoration: none;
+}
+
+.logoNavLink > img {
+    height: 100%;
+    width: auto;
+}
+
+.logoNavLink > h1 {
+    color: #E60023;
+    font-weight: 600;
+    font-size: 16px;
+}
+
 .homeNavLink {
     color: white;
     background-color: black;

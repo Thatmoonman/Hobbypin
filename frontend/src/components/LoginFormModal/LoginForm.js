@@ -80,7 +80,7 @@ const LoginFormPage = (props) => {
             <div className="buttonBox">
                 <button onClick={closeModal} className="xButton"><i className="fa-solid fa-x"></i></button>
             </div>
-            <div className="logo">H</div>
+            <div className="logo"><img src="./Hobbypinlogo.png" alt=""/></div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <form onSubmit={handleSubmit} className="loginForm">
                 {errors.length ? renderErrors() : <></>}

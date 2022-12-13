@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { fetchUsersPins, getPins } from "../../../store/pins";
 import './UserPinIndex.css'
 
@@ -34,12 +34,15 @@ const UserAllPinsBoard = () => {
         dispatch(fetchUsersPins(userId))
     },[dispatch, userId])
 
+    const sessionUser = useSelector(state => state.session.user)
+    if (!sessionUser) return <Redirect to="/" />
+
     return (
         <div className="pinIndexColumns">
             <ul >
                 {pins.slice(0, columnLength).map(pin => (
                 <li key={pin.id} className="pinContainer">
-                    <img src={pin.photoUrl} />
+                    <img src={pin.photoUrl} alt=""/>
                     {pin.title}
                 </li>
                 ))}
@@ -47,7 +50,7 @@ const UserAllPinsBoard = () => {
             <ul >
                 {pins.slice(columnLength, columnLength * 2).map(pin => (
                 <li key={pin.id} className="pinContainer">
-                    <img src={pin.photoUrl} />
+                    <img src={pin.photoUrl} alt=""/>
                     {pin.title}
                 </li>
                 ))}
@@ -55,7 +58,7 @@ const UserAllPinsBoard = () => {
             <ul >
                 {pins.slice(2 * columnLength, 3 * columnLength).map(pin => (
                 <li key={pin.id} className="pinContainer">
-                    <img src={pin.photoUrl} />
+                    <img src={pin.photoUrl} alt=""/>
                     {pin.title}
                 </li>
                 ))}
@@ -63,7 +66,7 @@ const UserAllPinsBoard = () => {
             <ul >
                 {pins.slice(3 * columnLength, 4 * columnLength).map(pin => (
                 <li key={pin.id} className="pinContainer">
-                    <img src={pin.photoUrl} />
+                    <img src={pin.photoUrl} alt=""/>
                     {pin.title}
                 </li>
                 ))}
@@ -71,7 +74,7 @@ const UserAllPinsBoard = () => {
             <ul >
                 {pins.slice(4 * columnLength).map(pin => (
                 <li key={pin.id} >
-                    <img src={pin.photoUrl} />
+                    <img src={pin.photoUrl} alt=""/>
                     {pin.title}
                 </li>
                 ))}

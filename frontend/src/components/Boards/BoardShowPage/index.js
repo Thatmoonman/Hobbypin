@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom"
+import { Redirect, useParams } from "react-router-dom"
 import { fetchBoard, getBoard } from "../../../store/board";
 import { fetchBoardPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
@@ -32,6 +32,9 @@ const BoardShow = () => {
     const toggleBoardShowDropdown = () => {
         showEditBoardDropdown ? setShowEditBoardDropdown(false) : setShowEditBoardDropdown(true)
     }
+
+    const sessionUser = useSelector(state => state.session.user)
+    if (!sessionUser) return <Redirect to="/" />
 
     return (
         <div className="boardShowPage">

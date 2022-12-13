@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import { fetchBoards, getBoards } from '../../../store/board';
 import { getUser } from '../../../store/user';
 import CreateDropdown from '../../Navigation/CreateDropdown';
@@ -25,7 +25,7 @@ const BoardIndex = (props) => {
     const showBoards = () => (
         <ul className='boardIdxContainer'>
             <Link className='boardIdxItem' to={`/users/${userId}/pins`}>
-                <img src={user.profilePic}/>    
+                <img src={user.profilePic} alt=""/>    
                 <p>All Pins</p>
             </Link>
             {boards.map((board) => <BoardIndexItem key={board.id} board={board}/>)}       
@@ -35,6 +35,9 @@ const BoardIndex = (props) => {
     const toggleCreateDropdown = () => {
         showCreateDropdown ? setShowCreateDropdown(false) : setShowCreateDropdown(true)
     }
+    
+    const sessionUser = useSelector(state => state.session.user)
+    if (!sessionUser) return <Redirect to="/" />
 
     return (
         <div className="profile profileBoardIndex" >

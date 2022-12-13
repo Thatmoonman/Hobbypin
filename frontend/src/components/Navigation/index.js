@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -10,6 +10,7 @@ import CreateDropdown from './CreateDropdown';
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
+  
 
     const [notificationIsHovering, setNotificationIsHovering] = useState(false)
     const [messageIsHovering, setMessageIsHovering] = useState(false)
@@ -42,7 +43,7 @@ function Navigation(){
 
         sessionLinks = (
         <div className="navBar">
-            <NavLink exact to="/">H-logo</NavLink>
+            <NavLink exact to="/" className="logoNavLink"><img src="./Hobbypinlogo.png" alt=""/></NavLink>
             <NavLink exact to="/" className="homeNavLink"><p>Home</p></NavLink>
             <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='linkedinNav'>LinkedIn</Link>
             <CreateDropdown />
@@ -72,7 +73,7 @@ function Navigation(){
                 onMouseOut={() => handleMouseOut('profile')}>
                 <div className='profileNavPicContainerOuter'>
                     <div className='profileNavPicContainerInner'>
-                        <img src={sessionUser.profilePic}
+                        <img src={sessionUser.profilePic} alt=""
                             onMouseEnter={() => handleMouseOver('profile')} 
                             onMouseOut={() => handleMouseOut('profile')}
                         />
@@ -86,7 +87,7 @@ function Navigation(){
     } else {
         sessionLinks = (
             <div className='navBar'>
-                <NavLink exact to="/">H-logo: Hobbypin</NavLink>
+                <NavLink exact to="/" className="logoNavLink"><img src="./Hobbypinlogo.png" alt=""/><h1>Hobbypin</h1></NavLink>
                 <div className='rightNav'>
                     <div className='externalLinks'>
                         <NavLink to="/" className='externalLink'>About</NavLink>

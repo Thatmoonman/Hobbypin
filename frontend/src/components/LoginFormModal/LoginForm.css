@@ -67,11 +67,16 @@
 }
 
 .logo {
-    height: 45px;
-    width: 45px;
-    margin: 8px auto 6px;
-    text-align: center;
-    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+}
+
+.logo > img {
+    width: auto;
+    height: 100%;
 }
 
 .welcome {

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchAllPins, getPins } from "../../../store/pins";
+import SplashPage from "../../SplashPage";
 import './AllPinsIndex.css'
 import PinCard from "./PinCard";
 
@@ -74,7 +75,9 @@ const AllPinsIndex = () => {
                     </ul>
                 </div>
             ) : (
-                <></>
+                <>
+                    <SplashPage />
+                </>
             )}
         </>
     )

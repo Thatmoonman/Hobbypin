@@ -57,6 +57,24 @@ ApplicationRecord.transaction do
     img_demo_3 = URI.open("https://hobbypin-dev.s3.amazonaws.com/flowers/pexels-javon-swaby-1697912.jpg")
     pin_demo_3.photo.attach(io: img_demo_3, filename: "pexels-javon-swaby-1697912.jpg")
     pin_demo_3.save!
+
+    foodSplashPin_1 = Pin.create(
+      title: "red fruit",
+      uploader_id: 1,
+      description: "froooooot"
+    )
+    img_demo_4 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_food/pexels-felipe-daza-3020318.jpg")
+    foodSplashPin_1.photo.attach(io: img_demo_4, filename: "pexels-felipe-daza-3020318.jpg")
+    foodSplashPin_1.save!
+
+    travelSplashPin_1 = Pin.create(
+      title: "summer coast",
+      uploader_id: 1,
+      description: "pretty coastline"
+    )
+    img_demo_5 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_travel/pexels-ad-thiry-14268524.jpg")
+    travelSplashPin_1.photo.attach(io: img_demo_5, filename: "pexels-ad-thiry-14268524.jpg")
+    travelSplashPin_1.save!
   
     user_1 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
@@ -93,6 +111,24 @@ ApplicationRecord.transaction do
     img_1_3 = URI.open("https://hobbypin-dev.s3.amazonaws.com/space/pexels-alex-andrews-816608.jpg")
     pin_1_3.photo.attach(io: img_1_3, filename: "pexels-alex-andrews-816608.jpg")
     pin_1_3.save!
+
+    foodSplashPin_2 = Pin.create(
+      title: "blue cookies",
+      uploader_id: 2,
+      description: "Cookies :)"
+    )
+    img_1_4 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_food/pexels-luis-quintero-12811285.jpg")
+    foodSplashPin_2.photo.attach(io: img_1_4, filename: "pexels-luis-quintero-12811285.jpg")
+    foodSplashPin_2.save!
+
+    travelSplashPin_2 = Pin.create(
+      title: "autumnal drive",
+      uploader_id: 2,
+      description: "a welcome weave through autumn leaves"
+    )
+    img_1_5 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_travel/pexels-francesco-ungaro-1526717.jpg")
+    travelSplashPin_2.photo.attach(io: img_1_5, filename: "pexels-francesco-ungaro-1526717.jpg")
+    travelSplashPin_2.save!
   
     user_2 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
@@ -130,6 +166,24 @@ ApplicationRecord.transaction do
     pin_2_3.photo.attach(io: img_2_3, filename: "pexels-marco-milanesi-2670898.jpg")
     pin_2_3.save!
 
+    foodSplashPin_3 = Pin.create(
+      title: "Pink Drinks",
+      uploader_id: 3,
+      description: "mmmmmmmmm"
+    )
+    img_2_4 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_food/pexels-nataliya-vaitkevich-10477138.jpg")
+    foodSplashPin_3.photo.attach(io: img_2_4, filename: "pexels-nataliya-vaitkevich-10477138.jpg")
+    foodSplashPin_3.save!
+
+    travelSplashPin_3 = Pin.create(
+      title: "Winter Lake",
+      uploader_id: 3,
+      description: "snowy lake front"
+    )
+    img_2_4 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_travel/pexels-luca-chiandoni-3375674.jpg")
+    travelSplashPin_3.photo.attach(io: img_2_4, filename: "pexels-luca-chiandoni-3375674.jpg")
+    travelSplashPin_3.save!
+
     user_3 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -156,6 +210,24 @@ ApplicationRecord.transaction do
     img_3_2 = URI.open("https://hobbypin-dev.s3.amazonaws.com/dogs/pexels-charles-1851164.jpg")
     pin_3_2.photo.attach(io: img_3_2, filename: "pexels-charles-1851164.jpg")
     pin_3_2.save!
+
+    foodSplashPin_4 = Pin.create(
+      title: "greenfork",
+      uploader_id: 4,
+      description: "THE GREENEST FORK"
+    )
+    img_3_3 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_food/pexels-pixabay-262896.jpg")
+    foodSplashPin_4.photo.attach(io: img_3_3, filename: "pexels-pixabay-262896.jpg")
+    foodSplashPin_4.save!
+
+    travelSplashPin_4 = Pin.create(
+      title: "cherry blossoms",
+      uploader_id: 4,
+      description: "pretty cherry blossoms"
+    )
+    img_3_4 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_travel/pexels-taryn-elliott-4198572.jpg")
+    travelSplashPin_4.photo.attach(io: img_3_4, filename: "pexels-taryn-elliott-4198572.jpg")
+    travelSplashPin_4.save!
           
     user_4 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
@@ -210,6 +282,24 @@ ApplicationRecord.transaction do
     img_5_2 = URI.open("https://hobbypin-dev.s3.amazonaws.com/dogs/pexels-hoy-1390784.jpg")
     pin_5_2.photo.attach(io: img_5_2, filename: "pexels-hoy-1390784.jpg")
     pin_5_2.save!
+
+    foodSplashPin_5 = Pin.create(
+      title: "yellow coffee",
+      uploader_id: 6,
+      description: "coffeecoffeecoffee yumyumyum"
+    )
+    img_5_3 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_food/pexels-shvets-production-9743269.jpg")
+    foodSplashPin_5.photo.attach(io: img_5_3, filename: "pexels-shvets-production-9743269.jpg")
+    foodSplashPin_5.save!
+
+    travelSplashPin_5 = Pin.create(
+      title: "dunes",
+      uploader_id: 6,
+      description: "lookin for worms!"
+    )
+    img_5_4 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_travel/pexels-vlada-karpovich-4449320.jpg")
+    travelSplashPin_5.photo.attach(io: img_5_4, filename: "pexels-vlada-karpovich-4449320.jpg")
+    travelSplashPin_5.save!
 
     Board.create!({
       user_id: 1,

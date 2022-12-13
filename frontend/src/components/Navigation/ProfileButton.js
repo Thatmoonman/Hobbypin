@@ -23,7 +23,7 @@ function ProfileButton({ user }) {
 
   const ProfileImage = () => (
     <div className="profileTagImage">
-      <i className="fa-solid fa-person"></i>
+      <img src={user.profilePic} alt="" />
     </div>
   );
   

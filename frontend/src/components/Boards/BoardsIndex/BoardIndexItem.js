@@ -19,7 +19,7 @@ const BoardIndexItem = (props) => {
     return (
         
         <Link to={`/users/${board.userId}/boards/${board.id}`} className="boardIdxItem">
-            <img src={user.profilePic} />
+            <img src={user.profilePic} alt=""/>
             <p>title: {board.title}</p>
             <p>user: {board.userId}</p>
         </Link>

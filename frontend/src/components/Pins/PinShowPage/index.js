@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchPin, getPin } from "../../../store/pins";
 import { Modal } from "../../../context/Modal";
@@ -26,8 +26,8 @@ const PinShowPage = () => {
 
     useEffect(() => {
         dispatch(fetchPin(userId, pinId))
-        dispatch(fetchBoards(currentUser.id))
-    }, [dispatch, userId, pinId, currentUser.id])
+        if (currentUser) dispatch(fetchBoards(currentUser.id))
+    }, [dispatch, userId, pinId, currentUser])
 
     const handleAddBoardClick = (e, board) => {
         e.preventDefault()
@@ -51,6 +51,8 @@ const PinShowPage = () => {
         e.preventDefault();
         showSelectBoard ? setShowSelectBoard(false) : setShowSelectBoard(true)
     }
+
+    if (!currentUser) return <Redirect to="/" />
 
     return (
         <div className={`pinShowContainer ${pinOrientation}`}>

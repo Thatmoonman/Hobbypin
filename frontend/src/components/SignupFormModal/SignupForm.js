@@ -78,7 +78,7 @@ const SignupFormPage = (props) => {
              <div className="buttonBox">
                 <button onClick={closeModal} className="xButton"><i className="fa-solid fa-x"></i></button>
             </div>
-            <div className="logo">H</div>
+            <div className="logo"><img src="./Hobbypinlogo.png" alt=""/></div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <div className="tagline">tagline goes here</div>
             <form onSubmit={handleSubmit} className="signupForm">

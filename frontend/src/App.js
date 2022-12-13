@@ -27,7 +27,7 @@ function App() {
         <Route exact path='/users/:userId/pins/:pinId'>
           <PinShowPage />
         </Route>
-        <Route exact path='/'>
+        <Route path='/'>
           <AllPinsIndex />
         </Route>
       </Switch>
