@@ -54,7 +54,9 @@ const PinShowPage = () => {
 
     return (
         <div className={`pinShowContainer ${pinOrientation}`}>
-            <img src={pin.photoUrl} />
+            <div className="imageContainer">
+                <img src={pin.photoUrl} />
+            </div>
             <div className="pinShowDetails">
                 <div className="boardSave">
                     <div onClick={(e) => toggleSelectBoardModal(e, pin)}>

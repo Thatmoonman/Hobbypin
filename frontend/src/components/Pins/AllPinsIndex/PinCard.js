@@ -62,6 +62,7 @@ const PinCard = (props) => {
             {showSelectBoard && 
                 <Modal onClose={() => setShowSelectBoard(false)} >
                     <div className="selectBoardForm">
+                        <p>All boards</p>
                         {boards.map(board => (
                             <div key={board.id} onClick={(e) => handleAddBoardClick(e, board)}>
                                 {board.title}

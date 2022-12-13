@@ -3,6 +3,8 @@
     font-weight: 400;
     padding: 16px;
     height: 80px;
+    width: 100vw;
+    margin-right: 0;
     align-content: center;
     justify-content: center;
     box-sizing: border-box;

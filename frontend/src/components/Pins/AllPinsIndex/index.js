@@ -10,7 +10,7 @@ const AllPinsIndex = () => {
     const dispatch = useDispatch();
     const pins = useSelector(getPins)
     const user = useSelector(state => state.session.user)
-    const userId = user.id
+    const userId = user ? user.id : null
     
     const boards = useSelector(getBoards)
     
@@ -21,17 +21,17 @@ const AllPinsIndex = () => {
     const window = document.body
     const [windowWidth, setWindowWidth] = useState(window.clientWidth)
     
-    // useEffect(() => {
-    //     setWindowWidth(window.clientWidth)
-    // }, [window.clientWidth])
+    useEffect(() => {
+        setWindowWidth(window.clientWidth)
+    }, [window.clientWidth])
 
-    window.addEventListener( 'resize', (e) => setWindowWidth(e.clientWidth))
+    // window.addEventListener( 'resize', (e) => setWindowWidth(e.clientWidth))
 
     const columnNumber = () => {
         
-        if (windowWidth > 1300) {
+        if (windowWidth > 1250) {
             return 5
-        } else if (windowWidth < 1300 && windowWidth > 1000) {
+        } else if (windowWidth < 1250 && windowWidth > 1000) {
             return 4
         } else {
             return 3
@@ -46,7 +46,6 @@ const AllPinsIndex = () => {
     return (
         <>
             {user ? (
-                <>
                 <div className="pinIndexColumns">
                     <ul>
                         {pins.slice(0, columnLength).map(pin => (
@@ -73,13 +72,10 @@ const AllPinsIndex = () => {
                             <PinCard key={pin.id} pin={pin} boards={boards}/>
                         ))}
                     </ul>
-                    
                 </div>
-                </>
             ) : (
                 <></>
             )}
-            
         </>
     )
 }
