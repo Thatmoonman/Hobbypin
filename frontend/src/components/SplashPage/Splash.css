@@ -4,10 +4,57 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 30%;
+    margin-top: 17%;
 }
 
 .splashContainer > h1 {
     font-weight: 600;
     font-size: 60px;
+}
+
+.foodHeader {
+    color: orchid;
+}
+
+.travelHeader {
+    color: orangered;
+}
+
+.photoContainer {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.photoContainer > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.photoContainer > div > img {
+    width: 236px;
+    height: auto;
+    border-radius: 32px;
+}
+
+.photoOne {
+
+}
+
+.photoTwo {
+    margin-top: 5%;
+}
+
+.photoThree {
+    margin-top: 15%;
+}
+
+.photoFour {
+    margin-top: 5%;
+}
+
+.photoFive {
+
 }
