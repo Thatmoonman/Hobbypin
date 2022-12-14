@@ -112,7 +112,7 @@ const SignupFormPage = (props) => {
                 <button className="signupButton">Sign Up</button>
             </form>
             {finePrint()}
-            <div>member login link</div>
+            {/* <div>member login link</div> */}
         </div>
     )
 }

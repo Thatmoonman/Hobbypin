@@ -11,10 +11,42 @@ html {
     margin-top: 17%;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 
 .snap {
     scroll-snap-align: start;
+}
+
+@keyframes glide {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(-40%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.circleDown {
+    animation: 2s ease-out 0s infinite glide;
+    background-color: orchid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 90vh;
+    z-index: 1;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: white;
+    font-size: 24px;
+    margin: auto;
+    cursor: pointer;
 }
 
 .splashContainer > h1 {
@@ -165,4 +197,43 @@ html {
     display: flex;
     justify-content: right;
     margin-top: -16px;
+}
+
+.splashSignup {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/background.png');
+    background-size: cover;
+}
+
+.splashSignup > h1 {
+    color: white;
+    font-size: 70px;
+    padding: 16px;
+    text-align: left;
+    width: 30%;
+}
+
+.splashSignupModal {
+    margin-right: 16px;
+}
+
+.circleUp {
+    background-color: #9C3043;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    z-index: 3;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: white;
+    font-size: 24px;
+    margin: auto;
+    cursor: pointer;
 }
