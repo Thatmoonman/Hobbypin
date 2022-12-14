@@ -66,6 +66,7 @@ const pinsReducer = (state={}, action) => {
             return nextState
         case RECEIVE_PINS:
             return { ...action.pins }
+            // return { ...state, ...action.pins }
         default:
             return state
     }

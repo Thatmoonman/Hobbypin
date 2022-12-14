@@ -26,6 +26,7 @@ const SplashPage = () => {
     }, 6000)
 
     const pins = useSelector(getPins)
+    console.log(pins.length)
 
     useEffect(() => {
         dispatch(fetchAllPins())
@@ -43,17 +44,21 @@ const SplashPage = () => {
 
     return (
         <div className="scrollContainer">
+            {pins.length >= 5 &&
             <>
-                <div className="circleDown" onClick={handleClickDown}><i className="fa-solid fa-chevron-down"></i></div>
-                {currentPage === "food" && <FoodPage pins={pins}/>}
-                {currentPage === "travel" && <TravelPage pins={pins}/>}
+                <>
+                    <div className="circleDown" onClick={handleClickDown}><i className="fa-solid fa-chevron-down"></i></div>
+                    {currentPage === "food" && <FoodPage pins={pins}/>}
+                    {currentPage === "travel" && <TravelPage pins={pins}/>}
+                </>
+                <>
+                    <SaveIdeas pins={pins}/>
+                </>
+                <>
+                    <SplashSignUp handleClickUp={handleClickUp}/>
+                </>
             </>
-            <>
-                <SaveIdeas pins={pins}/>
-            </>
-            <>
-                <SplashSignUp handleClickUp={handleClickUp}/>
-            </>
+            }
         </div>
     )
 }
