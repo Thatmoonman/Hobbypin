@@ -4,6 +4,7 @@ import FoodPage from "./Food"
 import TravelPage from "./Travel"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAllPins, getPins } from "../../store/pins"
+import SaveIdeas from "./SaveIdeas"
 
 
 const SplashPage = () => {
@@ -19,7 +20,7 @@ const SplashPage = () => {
         } else if (currentPage === 'travel') {
             setCurrentPage("food")
         }
-    }, 10000)
+    }, 6000)
 
     const pins = useSelector(getPins)
 
@@ -29,10 +30,15 @@ const SplashPage = () => {
 
 
     return (
-        <>
-            {currentPage === "food" && <FoodPage pins={pins}/>}
-            {currentPage === "travel" && <TravelPage pins={pins}/>}
-        </>
+        <div className="scrollContainer">
+            <>
+                {currentPage === "food" && <FoodPage pins={pins}/>}
+                {currentPage === "travel" && <TravelPage pins={pins}/>}
+            </>
+            <>
+                <SaveIdeas pins={pins}/>
+            </>
+        </div>
     )
 }
 

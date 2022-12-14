@@ -86,7 +86,7 @@ function Navigation(){
         );
     } else {
         sessionLinks = (
-            <div className='navBar'>
+            <div className='navBar snap'>
                 <NavLink exact to="/" className="logoNavLink"><img src="./Hobbypinlogo.png" alt=""/><h1>Hobbypin</h1></NavLink>
                 <div className='rightNav'>
                     <div className='externalLinks'>
