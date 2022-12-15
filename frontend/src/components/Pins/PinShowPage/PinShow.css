@@ -40,6 +40,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0 32px;
+    width: 300px;
 }
 
 .boardSave {

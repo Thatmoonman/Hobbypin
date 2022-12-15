@@ -6,6 +6,8 @@ import { fetchPin, getPin } from "../../../store/pins";
 import { Modal } from "../../../context/Modal";
 import './PinShow.css'
 import { createPinnedBoard } from "../../../store/pinned_boards";
+import CommentsIndex from "../../Comments/CommentsIndex";
+import CreateCommentForm from "../../Comments/CommentCreate";
 
 
 const PinShowPage = () => {
@@ -71,6 +73,8 @@ const PinShowPage = () => {
                 </div>
                 <h1>{pin.title}</h1>
                 <p>{pin.description}</p>
+                <CommentsIndex />
+                <CreateCommentForm currentUser={currentUser}/>
             </div>
             {showSelectBoard && 
                 <Modal onClose={() => setShowSelectBoard(false)} >
