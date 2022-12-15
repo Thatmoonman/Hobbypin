@@ -33,6 +33,8 @@
 ## CODE SNIPPET MARKDOWN
 
 ### Splash page keyframe animations
+I utilized a custom keyframe animation to simulate the fade-in/fade-out effect for photos and part of the header on the splash page.
+
 ```css
 @keyframes slide-in-header {
     0% {
