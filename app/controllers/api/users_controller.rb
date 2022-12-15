@@ -39,6 +39,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :age, :first_name, :last_name, :about, :preferred_pronouns, :img_url, :website)
+    params.require(:user).permit(:email, :username, :password, :age, :first_name, :last_name, :about, :preferred_pronouns, :img_url, :website, :photo)
   end
 end
