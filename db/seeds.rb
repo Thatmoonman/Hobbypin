@@ -14,6 +14,7 @@ ApplicationRecord.transaction do
     User.destroy_all
     Pin.destroy_all
     Board.destroy_all
+    PinnedBoard.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
