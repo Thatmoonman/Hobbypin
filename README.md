@@ -31,3 +31,38 @@
 ![board](./app/assets/updateboards.gif)
 
 ## CODE SNIPPET MARKDOWN
+
+### Splash page keyframe animations
+```css
+@keyframes slide-in-header {
+    0% {
+        transform: translateY(20%);
+    }
+    100% {
+        transform: translateY(-0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-header {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-20%);
+        opacity: 0;
+    }
+}
+
+.foodHeader {
+    color: orchid;
+    animation: 1s ease-out .3s 1 forwards slide-in-header, 1s ease-out 5s 1 forwards slide-out-header;
+    opacity: 0;
+}
+
+.travelHeader {
+    color: orangered;
+    animation: 1s ease-out .3s 1 forwards slide-in-header, 1s ease-out 5s 1 forwards slide-out-header;
+    opacity: 0;
+}
+```
