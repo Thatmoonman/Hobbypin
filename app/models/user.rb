@@ -41,6 +41,12 @@ class User < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :Pin,
     dependent: :destroy
+  has_many :comments,
+    foreign_key: :commenter_id,
+    class_name: :Comment,
+    dependent: :destroy
+  has_many :commenters, through: :comments
+  # has_many :commented_pins, through: :pins
 
   def self.find_by_credentials(email:, password:)
     user = User.find_by(email: email)

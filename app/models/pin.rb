@@ -19,6 +19,8 @@ class Pin < ApplicationRecord
     
     has_many :pinned_boards, dependent: :destroy
     has_many :boards, through: :pinned_boards
+    has_many :comments, dependent: :destroy
+    has_many :commenters, through: :comments
 
     has_one_attached :photo
 

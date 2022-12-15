@@ -4,12 +4,14 @@ import boardsReducer from './board'
 import sessionReducer from './session'
 import usersReducer from './user'
 import pinsReducer from './pins'
+import commentsReducer from './comment'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   boards: boardsReducer,
-  pins: pinsReducer
+  pins: pinsReducer,
+  comments: commentsReducer
 })
 
 let enhancer

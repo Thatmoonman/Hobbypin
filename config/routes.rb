@@ -19,10 +19,12 @@ Rails.application.routes.draw do
     
     resources :pins, only: [:create, :update, :destroy] do
       resources :pinned_boards, only: [:index]
+      resources :comments, only: [:index]
     end
     
     resources :pinned_boards, only: [:create]
     resource :pinned_boards, only: [:destroy]
+    resources :comments, only: [:create, :update, :destroy]
     
     resource :session, only: [:show, :create, :destroy]
   end

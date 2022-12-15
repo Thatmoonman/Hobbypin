@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_165933) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_15_155644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_165933) do
     t.text "description"
     t.index ["title", "user_id"], name: "index_boards_on_title_and_user_id", unique: true
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "commenter_id", null: false
+    t.bigint "pin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+    t.index ["pin_id"], name: "index_comments_on_pin_id"
   end
 
   create_table "pinned_boards", force: :cascade do |t|
@@ -92,6 +102,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_165933) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "users"
+  add_foreign_key "comments", "pins"
+  add_foreign_key "comments", "users", column: "commenter_id"
   add_foreign_key "pinned_boards", "boards"
   add_foreign_key "pinned_boards", "pins"
   add_foreign_key "pins", "users", column: "uploader_id"
