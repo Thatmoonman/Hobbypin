@@ -26,7 +26,6 @@ const SplashPage = () => {
     }, 6000)
 
     const pins = useSelector(getPins)
-    console.log(pins.length)
 
     useEffect(() => {
         dispatch(fetchAllPins())

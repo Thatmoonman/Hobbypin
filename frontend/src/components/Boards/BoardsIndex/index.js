@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Redirect, useParams } from 'react-router-dom';
-import { fetchBoards, getBoards } from '../../../store/board';
-import { fetchBoardPins, fetchUsersPins, getPins } from '../../../store/pins';
-import { fetchUser, getUser } from '../../../store/user';
+import { fetchUsersPins, getPins } from '../../../store/pins';
+import { getUser } from '../../../store/user';
 import CreateDropdown from '../../Navigation/CreateDropdown';
 import CreateBoard from '../CreateBoardModal';
 import './BoardIndex.css'
-import BoardIndexItem from './BoardIndexItem';
 import BoardIndexItems from './BoardIndexItems';
 import CreateButtonDropdown from './CreatePBButtonDropdown';
 
@@ -15,22 +13,14 @@ const BoardIndex = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
-    // const boards = useSelector(getBoards)
     const pins = useSelector(getPins)
 
     const [showCreateDropdown, setShowCreateDropdown] = useState(false)
     const [showBoardModal, setShowBoardModal] = useState(false)
 
     useEffect(() => {
-        // dispatch(fetchBoards(userId))
         dispatch(fetchUsersPins(userId))
     },[userId])
-
-    // const showBoards = () => (
-    //     boards.map(board => (
-    //         <BoardIndexItem key={board.id} board={board}/> 
-    //     ))
-    // )
 
     const toggleCreateDropdown = () => {
         showCreateDropdown ? setShowCreateDropdown(false) : setShowCreateDropdown(true)
@@ -62,7 +52,6 @@ const BoardIndex = () => {
                     <h2>All Pins</h2>
                     <p>{pins.length} pins</p>
                 </Link>
-                {/* {showBoards()}        */}
                 <BoardIndexItems />
             </ul>
         </div>
