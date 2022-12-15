@@ -314,6 +314,7 @@ ApplicationRecord.transaction do
       title: "CATS!!!"
     })
     
+    puts 'pinnedboard one...'
     PinnedBoard.create!({
       pin_id: pin_demo_1.id,
       board_id: board_1.id
