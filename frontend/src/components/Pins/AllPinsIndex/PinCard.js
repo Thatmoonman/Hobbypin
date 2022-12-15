@@ -26,9 +26,9 @@ const PinCard = (props) => {
         dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
     }
 
-    const handleAddBoardButton = (e) => {
+    const handleAddBoardButton = (e, board) => {
         e.preventDefault();
-        dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
+        dispatch(createPinnedBoard(selectPin.id, board.id))
     }
 
     const toggleSelectBoardModal = (e, pin) => {
@@ -66,7 +66,7 @@ const PinCard = (props) => {
                         {boards.map(board => (
                             <div key={board.id} onClick={(e) => handleAddBoardClick(e, board)}>
                                 {board.title}
-                                <button className="saveButton" onClick={handleAddBoardButton}>Save</button>
+                                <button className="saveButton" onClick={(e) => handleAddBoardButton(e, board)}>Save</button>
                             </div>
                         ))}
                     </div>
