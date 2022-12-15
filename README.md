@@ -1,3 +1,5 @@
+# Hobbypin
+
 ![logo](./frontend/public/Hobbypinlogo.png)
 
 ## Background
@@ -18,7 +20,10 @@
 
 ## 2 FEATURES
 
+### Splash page animations and snapping
 ![splash1](./app/assets/Splash.gif)
 ![splash2](./app/assets/Splash2.gif)
+
+### 
 
 ## CODE SNIPPET MARKDOWN
