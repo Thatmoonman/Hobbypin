@@ -18,7 +18,9 @@ ApplicationRecord.transaction do
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
-    ApplicationRecord.connection.reset_pk_sequence!('users', 'pins', 'boards', 'pinned_boards')
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -32,7 +34,6 @@ ApplicationRecord.transaction do
     profile_demo = URI.open("https://hobbypin-dev.s3.amazonaws.com/profilepics/pexels-alex-knight-2599244.jpg")
     demo.photo.attach(io: profile_demo, filename: "pexels-alex-knight-2599244.jpg")
     demo.save!
-    puts `#{demo.id}`
 
     pin_demo_1 = Pin.create(
       title: "Potted Cat",
