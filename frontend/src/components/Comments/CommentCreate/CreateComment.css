@@ -6,8 +6,8 @@
 }
 
 .createCommentForm > img {
-    height: 40px;
-    width: auto;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
     overflow: hidden;
 }
