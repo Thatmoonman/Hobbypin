@@ -22,6 +22,7 @@ ApplicationRecord.transaction do
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
+    puts "demo user..."
     demo = User.create( 
       username: 'demoUser',
       email: 'demo.user@demo.io', 
@@ -76,7 +77,8 @@ ApplicationRecord.transaction do
     img_demo_5 = URI.open("https://hobbypin-dev.s3.amazonaws.com/splash_travel/pexels-ad-thiry-14268524.jpg")
     travelSplashPin_1.photo.attach(io: img_demo_5, filename: "pexels-ad-thiry-14268524.jpg")
     travelSplashPin_1.save!
-  
+
+    puts "user 1..."
     user_1 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -131,6 +133,7 @@ ApplicationRecord.transaction do
     travelSplashPin_2.photo.attach(io: img_1_5, filename: "pexels-francesco-ungaro-1526717.jpg")
     travelSplashPin_2.save!
   
+    puts "user two..."
     user_2 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -185,6 +188,7 @@ ApplicationRecord.transaction do
     travelSplashPin_3.photo.attach(io: img_2_4, filename: "pexels-luca-chiandoni-3375674.jpg")
     travelSplashPin_3.save!
 
+    puts "user 3..."
     user_3 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -230,6 +234,7 @@ ApplicationRecord.transaction do
     travelSplashPin_4.photo.attach(io: img_3_4, filename: "pexels-taryn-elliott-4198572.jpg")
     travelSplashPin_4.save!
           
+    puts 'user 4...'
     user_4 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -257,6 +262,7 @@ ApplicationRecord.transaction do
     pin_4_2.photo.attach(io: img_4_2, filename: "pexels-pixabay-45201.jpg")
     pin_4_2.save!
     
+    puts 'user 5...'
     user_5 = User.create(
       username: Faker::Internet.unique.username(specifier: 3),
       email: Faker::Internet.unique.email,
@@ -302,6 +308,7 @@ ApplicationRecord.transaction do
     travelSplashPin_5.photo.attach(io: img_5_4, filename: "pexels-vlada-karpovich-4449320.jpg")
     travelSplashPin_5.save!
 
+    puts 'board 1...'
     Board.create!({
       user_id: 1,
       title: "CATS!!!"
@@ -317,6 +324,7 @@ ApplicationRecord.transaction do
       board_id: 1
     })
 
+    puts 'board 2...'
     Board.create!({
       user_id: 1,
       title: "pretty things"
@@ -331,7 +339,6 @@ ApplicationRecord.transaction do
       pin_id: 9,
       board_id: 2
     })
-
 
     puts "Done!"
   end
