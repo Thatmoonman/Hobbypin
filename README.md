@@ -68,3 +68,50 @@ I utilized a custom keyframe animation to simulate the fade-in/fade-out effect f
     opacity: 0;
 }
 ```
+
+### Board cover photos and pin count
+On the user's profile page, you can see each board you have created with the number of pins that have been attached to it. Each board will use its first pin as a cover photo or the user's profile picture if there are no pins yet. I utilized the `has_many :pins, through: pinned_boards` relationship to grab that information in my boards index jbuilder views.
+
+```ruby
+@boards.each do |board|
+    json.set! board.id do
+        json.extract! board, :id, :title, :user_id, :description
+        json.length board.pins.length
+        json.coverPhoto url_for(board.pins.first.photo) if board.pins.length > 0 
+    end
+end
+```
+```js
+const BoardIndexItems = () => {
+    const dispatch = useDispatch();
+    const { userId } = useParams()
+    const boards = useSelector(getBoards)
+
+    useEffect(() => {
+        dispatch(fetchBoards(userId))
+    }, [userId])
+
+    return (
+        <>
+            {boards.map(board => <BoardIndexItem key={board.id} board={board}/> )}
+        </>
+    )
+}
+
+const BoardIndexItem = (props) => { 
+    
+    const { userId } = useParams();
+    const user = useSelector(getUser(userId))
+    
+    const board = props.board
+
+    return (
+        
+        <Link to={`/users/${board.userId}/boards/${board.id}`} className="boardIdxItem">
+            <img src={board.coverPhoto ? board.coverPhoto : user.profilePic} alt=""/>
+            <h2>{board.title}</h2>
+            <p>{board.length} pins</p>
+        </Link>
+    )
+}
+```
