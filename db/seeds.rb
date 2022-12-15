@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do 
     require 'open-uri'
 
     puts "Destroying tables..."
@@ -344,4 +343,3 @@ ApplicationRecord.transaction do
     })
 
     puts "Done!"
-  end
