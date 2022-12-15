@@ -1,12 +1,13 @@
 
 .createCommentForm {
     display: flex;
+    align-items: center;
     width: 100%;
 }
 
 .createCommentForm > img {
-    height: 48px;
-    width: 48px;
+    height: 40px;
+    width: auto;
     border-radius: 50%;
     overflow: hidden;
 }

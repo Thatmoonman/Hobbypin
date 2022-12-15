@@ -14,7 +14,7 @@ const PinCard = (props) => {
     const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : '')
     const [selectPin, setSelectPin] = useState('')
     const [showSelectBoard, setShowSelectBoard] = useState(false)
-    
+
     const handleAddBoardClick = (e, board) => {
         e.preventDefault()
         setSelectBoard(board)
