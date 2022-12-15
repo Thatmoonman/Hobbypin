@@ -25,7 +25,7 @@
 ![splash2](./app/assets/Splash2.gif)
 
 ### Pin Comments
-![comment](./app/assets/commnets.gif)
+![comment](./app/assets/comments.gif)
 
 ### Board updating and deleting
 ![board](./app/assets/updateboards.gif)
