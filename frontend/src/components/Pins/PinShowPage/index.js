@@ -49,7 +49,7 @@ const PinShowPage = () => {
     }
 
 
-    const toggleSelectBoardModal = (e, pin) => {
+    const toggleSelectBoardModal = (e) => {
         e.preventDefault();
         showSelectBoard ? setShowSelectBoard(false) : setShowSelectBoard(true)
     }
@@ -63,7 +63,7 @@ const PinShowPage = () => {
             </div>
             <div className="pinShowDetails">
                 <div className="boardSave">
-                    <div onClick={(e) => toggleSelectBoardModal(e, pin)}>
+                    <div onClick={toggleSelectBoardModal}>
                         {selectBoard.title}
                         <i className="fa-solid fa-chevron-down" />
                     </div>
