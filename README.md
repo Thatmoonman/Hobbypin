@@ -18,4 +18,7 @@
 
 ## 2 FEATURES
 
+![splash1](./app/assets/Splash.gif)
+![splash2](./app/assets/Splash2.gif)
+
 ## CODE SNIPPET MARKDOWN
