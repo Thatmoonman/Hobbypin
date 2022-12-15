@@ -24,6 +24,10 @@
 ![splash1](./app/assets/Splash.gif)
 ![splash2](./app/assets/Splash2.gif)
 
-### 
+### Pin Comments
+![comment](./app/assets/commnets.gif)
+
+### Board updating and deleting
+![board](./app/assets/updateboards.gif)
 
 ## CODE SNIPPET MARKDOWN
