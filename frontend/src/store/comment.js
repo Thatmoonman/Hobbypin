@@ -71,14 +71,14 @@ export const updateComment = (comment) => async (dispatch) => {
 }
 
 export const deleteComment = (commentId) => async (dispatch) => {
-    await csrfFetch(`/api/comments/${commentId}`)
+    await csrfFetch(`/api/comments/${commentId}`, {method: 'DELETE'})
     await dispatch(removeComment(commentId))
 }
 
 const commentsReducer = (state={}, action) => {
     Object.freeze(state)
     const nextState = { ...state }
-    
+
     switch (action.type) {
         case RECEIVE_COMMENT:
             nextState[action.comment.id] = action.comment

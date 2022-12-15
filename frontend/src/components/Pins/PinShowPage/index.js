@@ -74,7 +74,7 @@ const PinShowPage = () => {
                 <h1>{pin.title}</h1>
                 <p>{pin.description}</p>
                 <CommentsIndex />
-                <CreateCommentForm />
+                <CreateCommentForm currentUser={currentUser}/>
             </div>
             {showSelectBoard && 
                 <Modal onClose={() => setShowSelectBoard(false)} >
