@@ -309,35 +309,35 @@ ApplicationRecord.transaction do
     travelSplashPin_5.save!
 
     puts 'board 1...'
-    Board.create!({
-      user_id: 1,
+    board_1 = Board.create!({
+      user_id: demo.id,
       title: "CATS!!!"
     })
     
     PinnedBoard.create!({
-      pin_id: 1,
-      board_id: 1
+      pin_id: pin_demo_1.id,
+      board_id: board_1.id
     })
 
     PinnedBoard.create!({
-      pin_id: 2,
-      board_id: 1
+      pin_id: pin_demo_2.id,
+      board_id: board_1.id
     })
 
     puts 'board 2...'
-    Board.create!({
-      user_id: 1,
+    board_2 = Board.create!({
+      user_id: demo.id,
       title: "pretty things"
     })
 
     PinnedBoard.create!({
-      pin_id: 5,
-      board_id: 2
+      pin_id: pin_2_3.id,
+      board_id: board_2.id
     })
 
     PinnedBoard.create!({
-      pin_id: 9,
-      board_id: 2
+      pin_id: pin_5_1.id,
+      board_id: board_2.id
     })
 
     puts "Done!"
