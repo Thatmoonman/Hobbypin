@@ -7,6 +7,7 @@ import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import SearchBar from './SearchBar';
 import CreateDropdown from './CreateDropdown';
+import AboutModal from '../AboutModal';
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
@@ -15,6 +16,7 @@ function Navigation(){
     const [notificationIsHovering, setNotificationIsHovering] = useState(false)
     const [messageIsHovering, setMessageIsHovering] = useState(false)
     const [profileIsHovering, setProfileIsHovering] = useState(false)
+    const [showAboutModal, setShowAboutModal] = useState(false)
 
     const handleMouseOver = (element) => {
         if (element === 'notifications') {
@@ -90,12 +92,13 @@ function Navigation(){
                 <NavLink exact to="/" className="logoNavLink"><img src="./Hobbypinlogo.png" alt=""/><h1>Hobbypin</h1></NavLink>
                 <div className='rightNav'>
                     <div className='externalLinks'>
-                        <NavLink to="/" className='externalLink'>About</NavLink>
+                        <div className='externalLink' onClick={() => setShowAboutModal(true)}>About</div>
                         <Link to={{pathname: "https://github.com/Thatmoonman"}} target="_blank" className='externalLink'>Github</Link>
                         <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='externalLink'>LinkedIn</Link>
                     </div>
                     <LoginFormModal />
                     <SignupFormModal />
+                    {showAboutModal && <AboutModal setShowAboutModal={setShowAboutModal} />}
                 </div>
             </div >
         );
