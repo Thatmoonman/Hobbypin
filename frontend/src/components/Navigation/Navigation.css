@@ -78,6 +78,10 @@
     align-items: center;
 }
 
+.homeNavLink:hover {
+    background-color: #E60023;
+}
+
 .homeNavLink > p {
     margin: 16px 0;
     display: block;
@@ -86,23 +90,68 @@
 }
 
 .linkedinNav {
+    display: flex;
+    align-items: center;
     color: black;
     text-decoration: none;
     cursor: pointer;
     padding: 0 16px;
+    border-radius: 32px;
+    height: 48px;
+    width: 60px;
 }
 
-.createDropdown {
+.linkedinNav:hover {
+    background-color: #E9E9E9;
+}
+
+.createDropdownContainer {
     display: flex;
     align-items: center;
     cursor: pointer;
     padding: 0 16px;
+    border-radius: 32px;
+    height: 48px;
 }
 
-.createDropdown > button {
+.createDropdownContainer:hover {
+    background-color: #E9E9E9;
+}
+
+.createDropdownContainer > button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.createDropdownContainer {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+
+.createMenu {
+    display: block;
+    position: absolute;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    top: 35px;
+    left: -20px;
+    z-index: 2;
+    padding: 8px;
+    border-radius: 16px;
+    width: 150px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.createMenu > div {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.createMenu > div:hover {
+    background-color: #E9E9E9;
 }
 
 .searchContainer {

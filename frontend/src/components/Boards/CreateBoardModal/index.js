@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { Modal } from '../../../context/Modal';
 import { createBoard } from '../../../store/board';
@@ -9,7 +9,7 @@ const CreateBoard = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const setShowBoardModal = props.setShowBoardModal
-    const { userId } = useParams()
+    const userId = useSelector(state => state.session.user.id)
 
     const [title, setTitle] = useState('')
     const [buttonState, setButtonState] = useState(false)
@@ -47,6 +47,7 @@ const CreateBoard = (props) => {
         }
         dispatch(createBoard(data))
         setShowBoardModal(false)
+        history.push(`/users/${userId}`)
     }
 
     return (
