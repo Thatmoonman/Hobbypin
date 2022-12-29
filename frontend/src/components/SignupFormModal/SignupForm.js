@@ -9,6 +9,7 @@ const SignupFormPage = (props) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const setShowModal = props.setShowModal
+    const noX = props.noX ? props.noX : false
     
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -76,7 +77,7 @@ const SignupFormPage = (props) => {
     return (
         <div className="signupModal">
              <div className="buttonBox">
-                <button onClick={closeModal} className="xButton"><i className="fa-solid fa-x"></i></button>
+                {!noX && <button onClick={closeModal} className="xButton"><i className="fa-solid fa-x"></i></button>}
             </div>
             <div className="logo"><img src="./Hobbypinlogo.png" alt=""/></div>
             <h1 className="welcome">Welcome to Hobbypin</h1>

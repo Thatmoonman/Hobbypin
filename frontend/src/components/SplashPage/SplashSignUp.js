@@ -9,7 +9,7 @@ const SplashSignUp = (props) => {
             <h1>Sign up to get your ideas</h1>
             <div></div>
             <div className="splashSignupModal">
-                <SignupFormPage />
+                <SignupFormPage noX={true}/>
             </div>
         </div>
     )
