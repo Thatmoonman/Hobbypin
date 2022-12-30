@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom"
+import { Redirect, useHistory, useParams } from "react-router-dom"
 import { fetchBoard, getBoard } from "../../../store/board";
 import { fetchBoardPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
@@ -13,6 +13,7 @@ import EditBoardDropdown from "./EditBoardDropdown";
 
 const BoardShow = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { userId, boardId } = useParams();
     const board = useSelector(getBoard(boardId))
     const user = useSelector(getUser(userId))
@@ -26,7 +27,7 @@ const BoardShow = () => {
     useEffect(() => {
         dispatch(fetchBoard(userId, boardId))
         dispatch(fetchUser(userId))
-        dispatch(fetchBoardPins(boardId))
+        if (board.id) dispatch(fetchBoardPins(boardId))
     }, [dispatch, userId, boardId])
 
     const toggleBoardShowDropdown = () => {
@@ -35,6 +36,7 @@ const BoardShow = () => {
 
     const sessionUser = useSelector(state => state.session.user)
     if (!sessionUser) return <Redirect to="/" />
+    if (!board.id) return <Redirect to="/" />
 
     return (
         <div className="boardShowPage">

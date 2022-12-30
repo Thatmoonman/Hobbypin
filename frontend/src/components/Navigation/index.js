@@ -47,18 +47,21 @@ function Navigation(){
         <div className="navBar">
             <NavLink exact to="/" className="logoNavLink"><img src="./Hobbypinlogo.png" alt=""/></NavLink>
             <NavLink exact to="/" className="homeNavLink"><p>Home</p></NavLink>
-            <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='linkedinNav'>LinkedIn</Link>
+            <div className='aboutNav' onClick={() => setShowAboutModal(true)}>About</div>
+            {showAboutModal && <AboutModal setShowAboutModal={setShowAboutModal} />}
             <CreateDropdown />
             <SearchBar />
-            <div className='navIcon' 
+            <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} 
+                target="_blank"
+                className='navIcon' 
                 onMouseEnter={() => handleMouseOver('notifications')} 
                 onMouseOut={() => handleMouseOut('notifications')}>
-                <i className="fa-solid fa-bell"
+                <i className="fa-brands fa-linkedin"
                     onMouseEnter={() => handleMouseOver('notifications')} 
                     onMouseOut={() => handleMouseOut('notifications')}>
                 </i>
-            </div>
-                {notificationIsHovering && <div className='navTooltip navNotifications'>Notifications</div>}
+            </Link>
+                {notificationIsHovering && <div className='navTooltip navNotifications'>LinkedIn</div>}
             <Link to={{pathname: "https://github.com/Thatmoonman"}}
                 target="_blank"
                 className='navIcon'

@@ -33,7 +33,7 @@ export const fetchBoard = (userId, boardId) => async (dispatch) => {
         const data = await res.json()
         dispatch(receiveBoard(data.board))
         return data
-    }
+    } 
 }
 
 export const fetchBoards = (userId) => async (dispatch) => {
