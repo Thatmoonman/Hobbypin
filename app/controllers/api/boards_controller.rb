@@ -17,7 +17,11 @@ class Api::BoardsController < ApplicationController
 
     def show
         @board = Board.find_by(id: params[:id])
-        render :show
+        if @board
+            render :show
+        else
+            render json: { errors: "Board does not exist" }, status: :unprocessable_entity
+        end
     end
 
     def update
