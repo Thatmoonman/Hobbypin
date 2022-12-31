@@ -27,8 +27,8 @@ const CreateButtonDropdown = (props) => {
         <>
             <div className="createButtonDropdown" >
                 <h4>Create</h4>
-                <p className='cpbdLink'>Pin</p>
-                <p className='cpbdLink'>Idea Pin</p>
+                {/* <p className='cpbdLink'>Pin</p> */}
+                {/* <p className='cpbdLink'>Idea Pin</p> */}
                 <p className='cpbdLink' onClick={renderBoardModal}>Board</p>
             </div>
         </>

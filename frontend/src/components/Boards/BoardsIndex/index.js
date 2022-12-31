@@ -32,11 +32,12 @@ const BoardIndex = () => {
     return (
         <div className="profile profileBoardIndex" >
             <div className="boardIdxNav1">
-                <div className="boardIdxNavItem1" to='/'>Created</div>
-                <div className="boardIdxNavItem1" to='/'>Saved</div>
+                {/* <div className="boardIdxNavItem1" to='/'>Created</div> */}
+                {/* <div className="boardIdxNavItem1" to='/'>Saved</div> */}
             </div>
             <div className="boardIdxNav2">
-                <div className="boardIdxNavItem2"><i className="fa-solid fa-sliders"></i></div>
+                <div className='boardIdxNavItem2'></div>
+                {/* <div className="boardIdxNavItem2"><i className="fa-solid fa-sliders"></i></div> */}
                 <div className="boardIdxNavItem2" onClick={toggleCreateDropdown}><i className="fa-solid fa-plus"></i></div>
             </div>
             {showCreateDropdown && <CreateButtonDropdown  

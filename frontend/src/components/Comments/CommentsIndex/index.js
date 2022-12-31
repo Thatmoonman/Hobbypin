@@ -22,7 +22,7 @@ const CommentsIndex = (props) => {
     }
 
     return (
-        <div className="comment box">
+        <div className="commentBox">
             {comments.map(comment => (
                 <div className="commentItemContainer" key={comment.id}>
                     <CommentsIndexItem  comment={comment}/>

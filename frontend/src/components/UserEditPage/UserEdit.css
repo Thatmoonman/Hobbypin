@@ -34,7 +34,12 @@
 }
 
 .photoEditBox > div {
+    display: flex;
     border-radius: 50%;
+    overflow: hidden;
+    height: 64px;
+    width: 64px;
+    justify-content: center;
 }
 
 .nameEditContainer {

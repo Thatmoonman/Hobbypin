@@ -29,7 +29,7 @@ const PinShowPage = () => {
     useEffect(() => {
         dispatch(fetchPin(userId, pinId))
         if (currentUser) dispatch(fetchBoards(currentUser.id))
-    }, [dispatch, userId, pinId, currentUser])
+    }, [userId, pinId, currentUser])
 
     const handleAddBoardClick = (e, board) => {
         e.preventDefault()

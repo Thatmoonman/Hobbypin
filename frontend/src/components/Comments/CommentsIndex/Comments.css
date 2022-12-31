@@ -1,6 +1,8 @@
 
 .commentBox {
-    overflow: scroll;
+   overflow: scroll;
+   height: 240px;
+   padding-right: 16px;
 }
 
 .commentItemContainer {

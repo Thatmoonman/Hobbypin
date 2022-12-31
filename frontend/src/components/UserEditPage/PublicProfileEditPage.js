@@ -52,8 +52,8 @@ const PublicProfileEdit = () => {
             <form className="editForm" onSubmit={handleUpdateUser}>
                 <p className="label">Photo</p>
                 <div className="photoEditBox">
-                    <div><i className="fa-solid fa-person"></i></div>
-                    <div>Change</div>
+                    <div><img src={user.profilePic} alt=""/></div>
+                    {/* <div>Change</div> */}
                 </div>
                 <div className="nameEditContainer">
                     <div className="nameEditInput">
