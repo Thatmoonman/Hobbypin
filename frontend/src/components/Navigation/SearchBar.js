@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from "react"
 import { fetchAllPins, getPins } from '../../store/pins'
 import { Link, useHistory } from 'react-router-dom';
-import PinCard from '../Pins/AllPinsIndex/PinCard';
+import { fetchUsers, getUsers } from '../../store/user';
 
 
 const SearchBar = () => {
@@ -14,6 +14,8 @@ const SearchBar = () => {
     
     const pins = useSelector(getPins)
     const [searchPins, setSearchPins] = useState(pins)
+    const users = useSelector(getUsers)
+    const [searchUsers, setSearchUsers] = useState(pins)
 
     const magnifyingGlass = () => (
         <div style={{ color: '#767676', fontSize: "16px"}}>
@@ -23,12 +25,14 @@ const SearchBar = () => {
 
     useEffect(() => {
         dispatch(fetchAllPins())
+        dispatch(fetchUsers())
     },[])
 
     useEffect(() => {
         if (search.length > 0) {
             setSearchModal(true)
             setSearchPins(pins.filter(pin => pin.title.toLowerCase().includes(search.toLowerCase())))
+            setSearchUsers(users.filter(user => user.username.toLowerCase().includes(search.toLowerCase())))
         } else {
             setSearchModal(false)
         }
@@ -47,12 +51,19 @@ const SearchBar = () => {
             </div>
             {searchModal && 
                     <div className="searchModal">
+                        <div>Pins:</div>
                         {searchPins.map(pin => (
-                            // <PinCard className="searchPinCard" key={pin.id} pin={pin} />
-                            <Link to={`/users/${pin.uploaderId}/pins/${pin.id}`} className="searchPinCard" key={pin.id} >
+                            <Link to={`/users/${pin.uploaderId}/pins/${pin.id}`} className="searchCard" key={pin.id} >
                                 <img src={pin.photoUrl} alt=""/>
                                 {pin.title}
                             </Link>
+                        ))}
+                        <div>Users:</div>
+                        {searchUsers.map(user => (
+                            <div key={user.id} className="searchCard">
+                                <img src={user.profilePic} alt="" />
+                                <div>{user.username}</div>
+                            </div>
                         ))}
                     </div>
             }

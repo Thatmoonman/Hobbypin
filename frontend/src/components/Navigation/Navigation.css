@@ -207,7 +207,7 @@
 }
 
 
-.searchPinCard {
+.searchCard {
     display: flex;
     height: 36px;
     padding: 8px;
@@ -219,11 +219,11 @@
     color: black;
 }
 
-.searchPinCard:hover {
+.searchCard:hover {
     background-color: #E2E2E2;
 }
 
-.searchPinCard > img {
+.searchCard > img {
     display: flex;
     justify-content: center;
     align-items: center;
