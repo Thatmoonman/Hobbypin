@@ -53,17 +53,17 @@ const SearchBar = () => {
                     <div className="searchModal">
                         <div>Pins:</div>
                         {searchPins.map(pin => (
-                            <Link to={`/users/${pin.uploaderId}/pins/${pin.id}`} className="searchCard" key={pin.id} >
+                            <Link to={`/users/${pin.uploaderId}/pins/${pin.id}`} className="searchCard" key={pin.id} onClick={() => setSearch('')}>
                                 <img src={pin.photoUrl} alt=""/>
                                 {pin.title}
                             </Link>
                         ))}
                         <div>Users:</div>
                         {searchUsers.map(user => (
-                            <div key={user.id} className="searchCard">
+                            <Link to={`/users/${user.id}`} key={user.id} className="searchCard" onClick={() => setSearch('')}>
                                 <img src={user.profilePic} alt="" />
                                 <div>{user.username}</div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
             }
