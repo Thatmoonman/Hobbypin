@@ -168,6 +168,7 @@
     width: auto;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .searchBar:hover {
@@ -189,6 +190,46 @@
 
 .searchBar > input:focus {
     outline: 0;
+}
+
+.searchModal {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    width: 40%;
+    height: 200px;
+    overflow: scroll;
+    z-index: 3;
+    border-radius: 32px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    padding: 16px 24px;
+}
+
+
+.searchPinCard {
+    display: flex;
+    height: 36px;
+    padding: 8px;
+    background-image: none;
+    border-radius: 16px;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.searchPinCard:hover {
+    background-color: #E2E2E2;
+}
+
+.searchPinCard > img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: auto;
+    margin-right: 8px;
 }
 
 .navIcon {
