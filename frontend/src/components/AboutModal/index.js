@@ -18,6 +18,7 @@ const AboutModal = (props) => {
                 <div className="aboutButtonBox">
                     <Link to={{pathname: "https://github.com/Thatmoonman"}} target="_blank" className='externalLink'><i className="fa-brands fa-github"></i></Link>
                     <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='externalLink'><i className="fa-brands fa-linkedin"></i></Link>
+                    <Link to={{pathname: "https://angel.co/u/justin-kilburn"}} target="_blank"className='externalLink'><i class="fa-brands fa-angellist"></i></Link>
                 </div>
             </div>
         </Modal>
