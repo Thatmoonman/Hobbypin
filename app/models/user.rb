@@ -17,6 +17,7 @@
 #  img_url            :string
 #  website            :string
 #
+require 'open-uri'
 class User < ApplicationRecord
   has_secure_password
 
@@ -32,7 +33,7 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..255, message: "Your password is too Short! You need 6+ characters." }, allow_nil: true
 
-  before_validation :ensure_session_token
+  before_validation :ensure_session_token, :generate_default_pic
 
   has_one_attached :photo
 
@@ -63,6 +64,12 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def generate_default_pic
+    unless self.photo.attached?
+      file = URI.open("https://hobbypin-dev.s3.amazonaws.com/profilepics/pexels-alex-knight-2599244.jpg");
+      self.photo.attach(io: file, filename: "default.jpg")
+    end
+  end
 
   private
 

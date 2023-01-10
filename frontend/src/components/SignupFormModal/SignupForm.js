@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -16,6 +16,10 @@ const SignupFormPage = (props) => {
     const [age, setAge] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([]);
+    
+        useEffect(() => {
+            setUsername(email.split('@')[0])
+        }, [email])
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -23,7 +27,6 @@ const SignupFormPage = (props) => {
         e.preventDefault();
        
         setErrors([]);
-        setUsername(email.split('@')[0])
         return dispatch(sessionActions.signup({ username, email, age, password }))
             .catch(async (res) => {
                 let data;
