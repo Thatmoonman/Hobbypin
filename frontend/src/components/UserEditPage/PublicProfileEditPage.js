@@ -10,13 +10,18 @@ const PublicProfileEdit = () => {
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
 
-    const [username, setUsername] = useState(user && user.username ? user.username : '')
-    const [firstName, setFirstName] = useState(user && user.firstName ? user.firstName : '')
-    const [lastName, setLastName] = useState(user && user.lastName ? user.lastName : '')
-    const [about, setAbout] = useState(user && user.about ? user.about : '')
+    const originalUsername = user && user.username ? user.username : ''
+    const [username, setUsername] = useState(originalUsername)
+    const originalFirstName = user && user.firstName ? user.firstName : ''
+    const [firstName, setFirstName] = useState(originalFirstName)
+    const originalLastName = user && user.lastName ? user.lastName : ''
+    const [lastName, setLastName] = useState(originalLastName)
+    const originalAbout = user && user.about ? user.about : ''
+    const [about, setAbout] = useState(originalAbout)
     const [preferredPronouns, setPreferredPronouns] = useState(user && user.preferredPronouns ? user.preferredPronouns : '')
     const [imgUrl, setImgUrl] = useState(user && user.imgUrl ? user.imgUrl : '')
-    const [website, setWebsite] = useState(user && user.website ? user.website : '')
+    const originalWebsite = user && user.website ? user.website : ''
+    const [website, setWebsite] = useState(originalWebsite)
 
     useEffect(() => {
         if (userId) dispatch(fetchUser(userId))
@@ -24,7 +29,11 @@ const PublicProfileEdit = () => {
 
     const handleResetForm = (e) => {
         e.preventDefault()
-        
+        setUsername(originalUsername)
+        setFirstName(originalFirstName)
+        setLastName(originalLastName)
+        setAbout(originalAbout)
+        setWebsite(originalWebsite)
         return
     }
 

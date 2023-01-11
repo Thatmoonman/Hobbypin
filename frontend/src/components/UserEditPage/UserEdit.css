@@ -93,3 +93,8 @@
     font-weight: 600;
     font-size: 16px;
 }
+
+.editButtonContainer > button:hover {
+    color: #FFFFFF;
+    background-color: #e60023;
+}
