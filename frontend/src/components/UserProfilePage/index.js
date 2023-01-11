@@ -12,13 +12,20 @@ const UserProfilePage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
+    const sessionUserId = useSelector(state => state.session.user.id)
     
     const [showAboutModal, setShowAboutModal] = useState(false)
     const [showProfileModal, setShowProfileModal] = useState(false)
-    
+    const [isSessionUser, setIsSessionUser] = useState(false)
+
     useEffect(() => {
         dispatch(fetchUser(userId))
+        setIsSessionUser(false)
     }, [userId])
+
+    useEffect(() => {
+        if (user.id === sessionUserId) setIsSessionUser(true)
+    }, [user])
     
     // if (!user.id) return <Redirect to="/" />
 
@@ -42,7 +49,7 @@ const UserProfilePage = () => {
             </div>
             <div className="profileButtons">
                 {/* <button className='shareDropdownMenu'>Share</button> */}
-                <NavLink to={`/users/${user.id}/edit`} className='renderEditButton'>Edit Profile</NavLink>
+                {isSessionUser && <NavLink to={`/users/${user.id}/edit`} className='renderEditButton'>Edit Profile</NavLink>}
             </div>
             <BoardIndex />
             <div className="helpContainer" onClick={() => setShowAboutModal(true)}>
