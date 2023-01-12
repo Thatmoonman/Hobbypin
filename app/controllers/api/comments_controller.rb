@@ -4,7 +4,10 @@ class Api::CommentsController < ApplicationController
     def create
         comment = Comment.new(comment_params)
         if comment.save
-            redirect_to :index
+            @comments = Comment.where(pin_id: comment.pin_id)
+            render :index
+        else
+            render json: { error: 'something went wrong'}
         end
     end
 
@@ -16,7 +19,7 @@ class Api::CommentsController < ApplicationController
     def update
         @comment = Comment.find_by(id: params[:id])
         if @comment.update(comment_params)
-            renderect_to :index
+            redirect_to :index
         end
     end
 

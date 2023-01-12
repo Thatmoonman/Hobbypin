@@ -50,7 +50,7 @@ export const createComment = (comment) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json()
-        dispatch(receiveComment(data.comment))
+        dispatch(receiveComments(data))
     }
 }
 

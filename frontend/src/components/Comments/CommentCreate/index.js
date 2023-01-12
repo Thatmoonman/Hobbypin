@@ -11,7 +11,8 @@ const CreateCommentForm = (props) => {
 
     const [commentText, setCommentText] = useState('')
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => { 
+        e.preventDefault();
         if (commentText.length < 5) return null;
     
         const comment = {
@@ -20,13 +21,13 @@ const CreateCommentForm = (props) => {
             pinId: pinId
         }
         dispatch(createComment(comment))
-
+        setCommentText("")
     }
 
     return (
         <div className="createCommentForm">
             <img src={currentUser.profilePic} alt=""/>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <div className='commentBubble'>
                     <input 
                         type='text'

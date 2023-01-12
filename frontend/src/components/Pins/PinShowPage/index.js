@@ -31,7 +31,7 @@ const PinShowPage = () => {
         dispatch(fetchPin(userId, pinId))
         if (currentUser) dispatch(fetchBoards(currentUser.id))
         setLoaded(true)
-    }, [userId, pinId, currentUser])
+    }, [userId, pinId])
 
     const handleAddBoardClick = (e, board) => {
         e.preventDefault()
