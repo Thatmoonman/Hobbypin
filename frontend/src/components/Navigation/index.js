@@ -8,6 +8,7 @@ import './Navigation.css';
 import SearchBar from './SearchBar';
 import CreateDropdown from './CreateDropdown';
 import AboutModal from '../AboutModal';
+import logo from './Hobbypinlogo.png'
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
@@ -38,14 +39,13 @@ function Navigation(){
         } 
     }
 
-
     let sessionLinks;
     if (sessionUser) {
         const userId = sessionUser.id
 
         sessionLinks = (
         <div className="navBar">
-            <NavLink exact to="/" className="logoNavLink"><img src="./Hobbypinlogo.png" alt=""/></NavLink>
+            <NavLink exact to="/" className="logoNavLink"><img src={logo} alt=""/></NavLink>
             <NavLink exact to="/" className="homeNavLink"><p>Home</p></NavLink>
             <div className='aboutNav' onClick={() => setShowAboutModal(true)}>About</div>
             {showAboutModal && <AboutModal setShowAboutModal={setShowAboutModal} />}

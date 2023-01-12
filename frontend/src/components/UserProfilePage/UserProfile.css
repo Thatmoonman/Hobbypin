@@ -128,3 +128,26 @@
 }
 
 /* .renderEditButton shrink on click */
+
+.notAvailable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 200px auto;
+    box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
+    border-radius: 32px;
+    height: 150px;
+    width: 400px;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.notAvailable > p {
+    padding-bottom: 16px;
+}
+
+.notAvailableLink {
+    color: #e60023;
+}
+
