@@ -12,7 +12,7 @@ const UserProfilePage = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
-    const sessionUserId = useSelector(state => state.session.user.id)
+    const currentUser = useSelector(state => state.session.user)
     
     const [showAboutModal, setShowAboutModal] = useState(false)
     const [showProfileModal, setShowProfileModal] = useState(false)
@@ -27,8 +27,10 @@ const UserProfilePage = () => {
     }, [userId])
 
     useEffect(() => {
-        if (user.id === sessionUserId) setIsSessionUser(true)
+        if (user.id === currentUser.id) setIsSessionUser(true)
     }, [user])
+
+    if (!currentUser) return <Redirect to="/" />
 
     const displayName = () => {
         if (user.firstName && user.lastName) {
