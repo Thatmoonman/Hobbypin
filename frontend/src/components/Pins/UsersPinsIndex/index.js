@@ -6,8 +6,9 @@ import './UserPinIndex.css'
 
 const UserAllPinsBoard = () => {
     const dispatch = useDispatch();
-    const pins = useSelector(getPins)
     const { userId } = useParams()
+    let pins = useSelector(getPins).filter(pin => pin.uploaderId === parseInt(userId))
+    
 
     const window = document.body
     const [windowWidth, setWindowWidth] = useState(window.clientWidth)
@@ -32,7 +33,7 @@ const UserAllPinsBoard = () => {
     
     useEffect(() => {
         dispatch(fetchUsersPins(userId))
-    },[dispatch, userId])
+    },[userId])
 
     const sessionUser = useSelector(state => state.session.user)
     if (!sessionUser) return <Redirect to="/" />
@@ -41,41 +42,41 @@ const UserAllPinsBoard = () => {
         <div className="pinIndexColumns">
             <ul >
                 {pins.slice(0, columnLength).map(pin => (
-                <li key={pin.id} className="pinContainer">
+                <li key={pin.id} className="userPinContainer">
                     <img src={pin.photoUrl} alt=""/>
-                    {pin.title}
+                    {/* {pin.title} */}
                 </li>
                 ))}
             </ul>
             <ul >
                 {pins.slice(columnLength, columnLength * 2).map(pin => (
-                <li key={pin.id} className="pinContainer">
+                <li key={pin.id} className="userPinContainer">
                     <img src={pin.photoUrl} alt=""/>
-                    {pin.title}
+                    {/* {pin.title} */}
                 </li>
                 ))}
             </ul>
             <ul >
                 {pins.slice(2 * columnLength, 3 * columnLength).map(pin => (
-                <li key={pin.id} className="pinContainer">
+                <li key={pin.id} className="userPinContainer">
                     <img src={pin.photoUrl} alt=""/>
-                    {pin.title}
+                    {/* {pin.title} */}
                 </li>
                 ))}
             </ul>
             <ul >
                 {pins.slice(3 * columnLength, 4 * columnLength).map(pin => (
-                <li key={pin.id} className="pinContainer">
+                <li key={pin.id} className="userPinContainer">
                     <img src={pin.photoUrl} alt=""/>
-                    {pin.title}
+                    {/* {pin.title} */}
                 </li>
                 ))}
             </ul>
             <ul >
                 {pins.slice(4 * columnLength).map(pin => (
-                <li key={pin.id} >
+                <li key={pin.id} classNam="userPinContainer">
                     <img src={pin.photoUrl} alt=""/>
-                    {pin.title}
+                    {/* {pin.title} */}
                 </li>
                 ))}
             </ul>
