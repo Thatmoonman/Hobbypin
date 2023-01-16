@@ -25,6 +25,8 @@ const PinShowPage = () => {
 
     const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : "")
     const [showSelectBoard, setShowSelectBoard] = useState(false)
+    const [saved, setSaved] = useState(false)
+
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
@@ -37,17 +39,19 @@ const PinShowPage = () => {
         e.preventDefault()
         setSelectBoard(board)
         setShowSelectBoard(false)
+        handleSavePin()
     }
 
     const handleSavePin = () => {
         dispatch(createPinnedBoard(pin.id, selectBoard.id))
-        history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
+        setSaved(true)
+        // history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
     }
 
     const handleAddBoardButton = (e) => {
         e.preventDefault();
         dispatch(createPinnedBoard(pin.id, selectBoard.id))
-        history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
+        // history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
     }
 
 
@@ -60,7 +64,7 @@ const PinShowPage = () => {
 
     const loadPin = () => {
             
-        if (loaded) {
+        if (loaded && !pin.id) {
             return (
                 <div className="notAvailable">
                     <p>Pin does not exist.</p>
@@ -91,9 +95,15 @@ const PinShowPage = () => {
                             {selectBoard.title}
                             <i className="fa-solid fa-chevron-down" />
                         </div>
-                        <button className="saveButton" onClick={handleSavePin}>
-                            Save
-                        </button>
+                        {saved ? (
+                            <button className="saveButton" style={{"backgroundColor": "black", "color": "white"}}>
+                                Saved
+                            </button>
+                        ) : (
+                            <button className="saveButton" onClick={handleSavePin}>
+                                Save
+                            </button>
+                        )}
                     </div>
                     <h1>{pin.title}</h1>
                     <p>{pin.description}</p>
