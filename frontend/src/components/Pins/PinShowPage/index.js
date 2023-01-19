@@ -35,25 +35,25 @@ const PinShowPage = () => {
         setLoaded(true)
     }, [userId, pinId])
 
-    const handleAddBoardClick = (e, board) => {
-        e.preventDefault()
-        setSelectBoard(board)
-        setShowSelectBoard(false)
-        handleSavePin()
-    }
+    // const handleAddBoardClick = (e, board) => {
+    //     e.preventDefault()
+    //     setSelectBoard(board)
+    //     setShowSelectBoard(false)
+    //     handleSavePin()
+    // }
 
-    const handleSavePin = () => {
-        dispatch(createPinnedBoard(pin.id, selectBoard.id))
-        setSaved(true)
+    // const handleSavePin = () => {
+    //     dispatch(createPinnedBoard(pin.id, selectBoard.id))
+    //     setSaved(true)
         // history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
-    }
+    // }
 
-    const handleAddBoardButton = (e) => {
+    const handleAddBoard = (e) => {
         e.preventDefault();
+        setShowSelectBoard(false)
         dispatch(createPinnedBoard(pin.id, selectBoard.id))
-        // history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
+        history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
     }
-
 
     const toggleSelectBoardModal = (e) => {
         e.preventDefault();
@@ -100,7 +100,7 @@ const PinShowPage = () => {
                                 Saved
                             </button>
                         ) : (
-                            <button className="saveButton" onClick={handleSavePin}>
+                            <button className="saveButton" onClick={toggleSelectBoardModal}>
                                 Save
                             </button>
                         )}
@@ -114,9 +114,9 @@ const PinShowPage = () => {
                     <Modal onClose={() => setShowSelectBoard(false)} >
                         <div className="selectBoardForm">
                             {boards.map(board => (
-                                <div key={board.id} onClick={(e) => handleAddBoardClick(e, board)}>
+                                <div key={board.id} onClick={(e) => handleAddBoard(e, board)}>
                                     {board.title}
-                                    <button className="saveButton" onClick={handleAddBoardButton}>Save</button>
+                                    <button className="saveButton" onClick={(e) => handleAddBoard(e, board)}>Save</button>
                                 </div>
                             ))}
                         </div>

@@ -27,7 +27,7 @@ const BoardShow = () => {
     useEffect(() => {
         dispatch(fetchBoard(userId, boardId))
         dispatch(fetchUser(userId))
-        if (board.id) dispatch(fetchBoardPins(boardId))
+        if (boardId) dispatch(fetchBoardPins(boardId))
     }, [dispatch, userId, boardId])
 
     const toggleBoardShowDropdown = () => {
@@ -35,8 +35,8 @@ const BoardShow = () => {
     }
 
     const sessionUser = useSelector(state => state.session.user)
-    if (!sessionUser) return <Redirect to="/" />
-    if (!board.id) return <Redirect to="/" />
+    // if (!sessionUser) return <Redirect to="/" />
+    // if (!board.id) return <Redirect to="/" />
 
     return (
         <div className="boardShowPage">
@@ -60,11 +60,13 @@ const BoardShow = () => {
                 {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
                 {showRemovePinModal && <RemovePinFromBoardModal pins={pins} setShowRemovePinModal={setShowRemovePinModal} />}
             </div>
-            <ul className="boardShowContainer">
-                {pins.map(pin => (
-                    <PinCard key={pin.id} pin={pin}/>
-                ))}
-            </ul>
+            <div className="boardShowOuterContainer">
+                <ul className="boardShowContainer">
+                    {pins.map(pin => (
+                        <PinCard key={pin.id} pin={pin}/>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }

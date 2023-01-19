@@ -34,7 +34,11 @@ const CreateCommentForm = (props) => {
                         value={commentText}
                         onChange={(e) => setCommentText(e.target.value)}
                     />
-                    {commentText.length > 4 ? (<button className='createButton'><i className="fa-solid fa-paper-plane"></i></button>) : (<>😃</>)}
+                    {commentText.length > 4 ? (
+                        <button className='createButton'><i className="fa-solid fa-paper-plane"></i></button>
+                    ) : (
+                        <button className='createButton disabledButton' disabled><i className="fa-solid fa-paper-plane"></i></button>
+                    )}
                 </div>
             </form>
         </div>

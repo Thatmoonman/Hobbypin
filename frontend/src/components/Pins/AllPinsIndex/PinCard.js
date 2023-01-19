@@ -2,33 +2,40 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import { Modal } from "../../../context/Modal"
+import { getBoards } from "../../../store/board"
 import { createPinnedBoard } from "../../../store/pinned_boards"
 
 const PinCard = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const { pin, boards} = props
- 
+    const { pin} = props
+    const boards = useSelector(getBoards)
+    
     const [hoverCard, setHoverCard] = useState(false)
-    const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : '')
+    // const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : '')
     const [selectPin, setSelectPin] = useState('')
     const [showSelectBoard, setShowSelectBoard] = useState(false)
 
-    const handleAddBoardClick = (e, board) => {
+ 
+
+    // const handleSavePin = (pin) => {
+    //     setSelectPin(pin)
+    //     dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
+    // }
+
+    // const handleAddBoardButton = (e, board) => {
+    //     e.preventDefault();
+    //     e.stopPropogation()
+    //     dispatch(createPinnedBoard(selectPin.id, board.id))
+    //     setShowSelectBoard(false)
+    // }
+
+    const handleAddBoard = (e, board) => {
         e.preventDefault()
-        setSelectBoard(board)
         setShowSelectBoard(false)
-    }
-
-    const handleSavePin = (pin) => {
-        setSelectPin(pin)
-        dispatch(createPinnedBoard(selectPin.id, selectBoard.id))
-    }
-
-    const handleAddBoardButton = (e, board) => {
-        e.preventDefault();
         dispatch(createPinnedBoard(selectPin.id, board.id))
+        history.push(`/users/${board.uploaderId}/boards/${board.id}`)
     }
 
     const toggleSelectBoardModal = (e, pin) => {
@@ -47,12 +54,12 @@ const PinCard = (props) => {
                         onMouseEnter={() => setHoverCard(true)}
                         onMouseOut={() => setHoverCard(false)}>
                         <div onClick={(e) => toggleSelectBoardModal(e, pin)} className="showSelectBoard">
-                            {selectBoard.title}
+                            <p>My boards</p>
                             <i className="fa-solid fa-chevron-down" />
                         </div>
                         <button
                             className="saveButton"
-                            onClick={(e) => handleSavePin(e, pin)}
+                            onClick={(e) => toggleSelectBoardModal(e, pin)}
                             onMouseEnter={() => setHoverCard(true)}>
                             Save
                         </button>
@@ -62,11 +69,11 @@ const PinCard = (props) => {
             {showSelectBoard && 
                 <Modal onClose={() => setShowSelectBoard(false)} >
                     <div className="selectBoardForm">
-                        <p>All boards</p>
+                        {/* <p>All boards</p> */}
                         {boards.map(board => (
-                            <div key={board.id} onClick={(e) => handleAddBoardClick(e, board)}>
+                            <div key={board.id} onClick={(e) => handleAddBoard(e, board)}>
                                 {board.title}
-                                <button className="saveButton" onClick={(e) => handleAddBoardButton(e, board)}>Save</button>
+                                <button className="saveButton" onClick={(e) => handleAddBoard(e, board)}>Save</button>
                             </div>
                         ))}
                     </div>
