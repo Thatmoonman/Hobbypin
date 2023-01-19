@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import CreateBoard from "../Boards/CreateBoardModal"
+import CreatePinModal from "../Pins/CreatePin"
 
 
 const CreateDropdown = () => {
 
     const [showCreateMenu, setShowCreateMenu] = useState(false)
     const [showBoardModal, setShowBoardModal] = useState(false)
+    const [showPinModal, setShowPinModal] = useState(false)
+
     const [accountIsHovering, setAccountIsHovering] = useState(false)
 
     const handleMouseOver = () => {
@@ -24,6 +27,12 @@ const CreateDropdown = () => {
         e.preventDefault()
         setShowCreateMenu(false)
         setShowBoardModal(true)
+    }
+
+    const handleCreatePin = (e) => {
+        e.preventDefault()
+        setShowCreateMenu(false)
+        setShowPinModal(true)
     }
 
     useEffect(() => {
@@ -47,9 +56,11 @@ const CreateDropdown = () => {
             {showCreateMenu && 
                 <div className="createMenu">
                     <div onClick={handleCreateBoard}>Create board</div>
+                    <div onClick={handleCreatePin}>Create pin</div>
                 </div>
             }
             {showBoardModal && <CreateBoard setShowBoardModal={setShowBoardModal}/>}
+            {showPinModal && <CreatePinModal setShowPinModal={setShowPinModal}/>}
         </div>
     )
 }

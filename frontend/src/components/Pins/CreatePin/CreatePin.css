@@ -1,0 +1,42 @@
+
+.createPinContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFF;
+    padding: 40px;
+    border-radius: 24px;
+    height: 640px;
+    width: 830px;
+}
+
+.createPinTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.createPinForm {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.createPinPicture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.pushUpcreatePinInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    /* height: 100%; */
+}
+
+.createPinInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
