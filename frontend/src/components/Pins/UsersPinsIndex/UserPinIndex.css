@@ -1,4 +1,19 @@
 
+.userPinIndexColumns {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 80vw;
+}
+
+.pinIndexHeader {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 24px;
+}
+
 .userPinContainer{
     display: flex;
     flex-direction: column;

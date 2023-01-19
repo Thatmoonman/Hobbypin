@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import BoardShow from "./components/Boards/BoardShowPage";
 import Navigation from "./components/Navigation";
 import AllPinsIndex from "./components/Pins/AllPinsIndex";
@@ -27,8 +27,11 @@ function App() {
         <Route exact path='/users/:userId/pins/:pinId'>
           <PinShowPage />
         </Route>
-        <Route path='/'>
+        <Route exact path='/'>
           <AllPinsIndex />
+        </Route>
+        <Route path='/'>
+          <Redirect to='/'/>
         </Route>
       </Switch>
     </>
