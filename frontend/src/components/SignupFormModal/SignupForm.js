@@ -17,9 +17,9 @@ const SignupFormPage = (props) => {
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([]);
     
-        useEffect(() => {
-            setUsername(email.split('@')[0])
-        }, [email])
+    useEffect(() => {
+        setUsername(email)
+    }, [email])
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -85,7 +85,7 @@ const SignupFormPage = (props) => {
             <div className="logo"><img src="./Hobbypinlogo.png" alt=""/></div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
             <div className="tagline">tagline goes here</div>
-            <form onSubmit={handleSubmit} className="signupForm">
+            <form onSubmit={handleSubmit} className="signupForm" noValidate>
                 <label htmlFor='email'>Email</label>
                 <input 
                     id='email'
