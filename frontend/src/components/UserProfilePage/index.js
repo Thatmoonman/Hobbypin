@@ -18,7 +18,7 @@ const UserProfilePage = () => {
     const [showProfileModal, setShowProfileModal] = useState(false)
     const [isSessionUser, setIsSessionUser] = useState(false)
     const [loaded, setLoaded] = useState(false)
-    console.log(loaded)
+    // console.log(loaded)
 
     useEffect(() => {
         dispatch(fetchUser(userId))
@@ -27,9 +27,9 @@ const UserProfilePage = () => {
     }, [userId])
 
     useEffect(() => {
-        if (user.id === currentUser.id) setIsSessionUser(true)
+        if (currentUser && user.id === currentUser.id) setIsSessionUser(true)
     }, [user])
-
+    
     if (!currentUser) return <Redirect to="/" />
 
     const displayName = () => {
@@ -53,7 +53,7 @@ const UserProfilePage = () => {
         } else {
             return (
                 <div className="loadingUser">
-                    <p>Loading User</p>
+                    {/* <p>Loading User</p> */}
                 </div>
             )
         }   

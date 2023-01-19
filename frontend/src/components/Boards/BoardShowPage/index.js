@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom"
+import { Link, Redirect, useHistory, useParams } from "react-router-dom"
 import { fetchBoard, getBoard } from "../../../store/board";
-import { fetchBoardPins, getPins } from "../../../store/pins";
+import { fetchAllPins, fetchBoardPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
 import PinCard from "../../Pins/AllPinsIndex/PinCard";
 import DeleteBoardModal from "../DeleteBoardModal";
@@ -18,56 +18,92 @@ const BoardShow = () => {
     const board = useSelector(getBoard(boardId))
     const user = useSelector(getUser(userId))
     const pins = useSelector(getPins)
-
+    let displayPins = pins.filter(pin => pin.boards.includes(parseInt(boardId)))
+    
     const [showEditBoardDropdown, setShowEditBoardDropdown] = useState(false)
     const [showEditBoardModal, setShowEditBoardModal] = useState(false)
     const [showDeleteBoardModal, setShowDeleteBoardModal] = useState(false)
     const [showRemovePinModal, setShowRemovePinModal] = useState(false)
+    const [loaded, setLoaded] = useState(false)
+    const currentUser = useSelector(state => state.session.user)
 
     useEffect(() => {
-        dispatch(fetchBoard(userId, boardId))
-        dispatch(fetchUser(userId))
-        if (boardId) dispatch(fetchBoardPins(boardId))
+        if (currentUser) {
+            dispatch(fetchBoard(userId, boardId))
+            dispatch(fetchUser(userId))
+            // if (boardId) dispatch(fetchBoardPins(boardId))
+            dispatch(fetchAllPins())
+            setLoaded(true)
+            const displayPins = pins.filter(pin => pin.boards.includes(boardId))
+            console.log(displayPins)
+        }
     }, [dispatch, userId, boardId])
 
     const toggleBoardShowDropdown = () => {
         showEditBoardDropdown ? setShowEditBoardDropdown(false) : setShowEditBoardDropdown(true)
     }
 
-    const sessionUser = useSelector(state => state.session.user)
-    // if (!sessionUser) return <Redirect to="/" />
+    if (!currentUser) return <Redirect to="/" />
     // if (!board.id) return <Redirect to="/" />
 
-    return (
-        <div className="boardShowPage">
-            <div className="boardInfo">
-                <div className="boardHeader">
-                    <h1>{board.title}</h1>
-                    <button onClick={toggleBoardShowDropdown}>
-                        <i className="fa-solid fa-ellipsis"></i>
-                        {showEditBoardDropdown && <EditBoardDropdown 
-                            showEditBoardDropdown={showEditBoardDropdown}
-                            setShowEditBoardDropdown={setShowEditBoardDropdown}
-                            setShowEditBoardModal={setShowEditBoardModal}
-                            setShowDeleteBoardModal={setShowDeleteBoardModal}
-                            setShowRemovePinModal={setShowRemovePinModal}
-                        />}
-                    </button>
+    const loadBoard = () => {
+            
+        if (loaded) {
+            return (
+                <div className="notAvailable">
+                    <p>Board does not exist.</p>
+                    <Link to="/" className="notAvailableLink">Return to Home</Link>
                 </div>
-                <div className="profilePic"><img src={user.profilePic}/></div>
-                <p>{board.description}</p>
-                {showEditBoardModal && <EditBoardModal setShowEditBoardModal={setShowEditBoardModal}/>}
-                {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
-                {showRemovePinModal && <RemovePinFromBoardModal pins={pins} setShowRemovePinModal={setShowRemovePinModal} />}
+
+            )
+        } else {
+            return (
+                <div className="loadingUser">
+                    {/* <p>Loading User</p> */}
+                </div>
+            )
+        }   
+    }
+
+    return (
+        <>
+        {board.id && loaded ? (
+            <div className="boardShowPage">
+                <div className="boardInfo">
+                    <div className="boardHeader">
+                        <h1>{board.title}</h1>
+                        <button onClick={toggleBoardShowDropdown}>
+                            <i className="fa-solid fa-ellipsis"></i>
+                            {showEditBoardDropdown && <EditBoardDropdown 
+                                showEditBoardDropdown={showEditBoardDropdown}
+                                setShowEditBoardDropdown={setShowEditBoardDropdown}
+                                setShowEditBoardModal={setShowEditBoardModal}
+                                setShowDeleteBoardModal={setShowDeleteBoardModal}
+                                setShowRemovePinModal={setShowRemovePinModal}
+                            />}
+                        </button>
+                    </div>
+                    <div className="profilePic"><img src={user.profilePic}/></div>
+                    <p>{board.description}</p>
+                    {showEditBoardModal && <EditBoardModal setShowEditBoardModal={setShowEditBoardModal}/>}
+                    {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
+                    {showRemovePinModal && <RemovePinFromBoardModal pins={pins} setShowRemovePinModal={setShowRemovePinModal} />}
+                </div>
+                <div className="boardShowOuterContainer">
+                    <ul className="boardShowContainer">
+                        {displayPins.map(pin => (
+                            <PinCard key={pin.id} pin={pin}/>
+                        ))}
+                    </ul>
+                </div>
+                
             </div>
-            <div className="boardShowOuterContainer">
-                <ul className="boardShowContainer">
-                    {pins.map(pin => (
-                        <PinCard key={pin.id} pin={pin}/>
-                    ))}
-                </ul>
-            </div>
-        </div>
+        ) : (
+            <>
+            {loadBoard()}
+            </>
+        )}
+        </>
     )
 }
 
