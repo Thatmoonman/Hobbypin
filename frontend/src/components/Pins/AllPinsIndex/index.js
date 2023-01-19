@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
+import { Modal } from "../../../context/Modal";
 import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchAllPins, getPins } from "../../../store/pins";
 import SplashPage from "../../SplashPage";
@@ -64,11 +65,13 @@ const AllPinsIndex = () => {
         <>
             {user ? (
                 <>
-                {loading ? (
-                    <div className="loader">
-                        <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                    </div>
-                ) : (
+                {loading &&
+                        <div className="loader">
+                            {/* <Modal> */}
+                            <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    {/* </Modal> */}
+                        </div>
+                }
                     <div className="pinIndexColumns">
                         <ul>
                             {allPins.map(pin => 
@@ -101,7 +104,6 @@ const AllPinsIndex = () => {
                             ))}
                         </ul> */}
                     </div>
-                )}
                 </>
             ) : (
                 <>

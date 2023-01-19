@@ -24,6 +24,12 @@ const LoginFormPage = (props) => {
         e.preventDefault();
         
         setErrors([]);
+
+        if (!email.length || !password.length) {
+            setErrors("blank input")
+            return
+        }
+
         return dispatch(sessionActions.login({email, password}))
         .catch(async (res) => {
             let data;
@@ -42,19 +48,22 @@ const LoginFormPage = (props) => {
     const renderErrors = (errorType) => {
         const renderedErrors = []
 
-        errors.map(error => {
-            const errorCode = error.split(" ")[1]
-            const errorMessage = error
+        if (errors.length) {
+            renderedErrors.push("Invalid Credentials")
+        }
+        // errors.map(error => {
+        //     const errorCode = error.split(" ")[1]
+        //     const errorMessage = error
 
-            if (errorCode === errorType && !renderedErrors.includes(errorMessage)) {
-                renderedErrors.push(errorMessage)
-            }
+        //     if (errorCode === errorType && !renderedErrors.includes(errorMessage)) {
+        //         renderedErrors.push(errorMessage)
+        //     }
 
-            const errorInput = document.getElementById(`${errorCode}`.toLowerCase())
-            if (errorInput) errorInput.style.borderColor = 'red'
+        //     const errorInput = document.getElementById(`${errorCode}`.toLowerCase())
+        //     if (errorInput) errorInput.style.borderColor = 'red'
 
-            return null
-        })
+        //     return null
+        // })
 
         return (
             <ul className="renderErrors">
@@ -82,8 +91,7 @@ const LoginFormPage = (props) => {
             </div>
             <div className="logo"><img src="./Hobbypinlogo.png" alt=""/></div>
             <h1 className="welcome">Welcome to Hobbypin</h1>
-            <form onSubmit={handleSubmit} className="loginForm">
-                {errors.length ? renderErrors() : <></>}
+            <form onSubmit={handleSubmit} className="loginForm" noValidate>
                 <label htmlFor="email">Email</label>
                 <input 
                     id="email"
@@ -91,9 +99,9 @@ const LoginFormPage = (props) => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
+                    // required
                 />
-                <div>{renderErrors('Email')}</div>
+                {/* <div>{renderErrors('Email')}</div> */}
                 <label htmlFor="password">Password</label>
                 <input 
                     id="password"
@@ -101,9 +109,10 @@ const LoginFormPage = (props) => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
+                    // required
                 />
-                <div>{renderErrors('Password')}</div>
+                {/* <div>{renderErrors('Password')}</div> */}
+                <div>{renderErrors()}</div>
                 <div className="forgotPassword" onClick={setDemoUser}>Forgot your password?</div>
                 <button className="login loginButton">Log In</button>
                 <p className="or">OR</p>

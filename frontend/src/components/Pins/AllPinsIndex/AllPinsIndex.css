@@ -55,7 +55,8 @@
     flex-wrap: wrap;
     height: 100vw ;
     max-width: 100vw;
-    overflow: hidden;
+    margin: 1px;
+    overflow-x: hidden;
 }
 
 .showSelectBoard {
@@ -103,9 +104,15 @@
 .loader {
     display: flex;
     justify-content: center;
-    margin: 200px auto;
+    padding-top: 200px;
+    width: 100vw;
+    height: 200vh;
+    background-color: white;
+    z-index: 10;
+    position: absolute;
 }
 
+/* LOADER CSS */
 .lds-roller {
     display: inline-block;
     position: relative;
