@@ -14,6 +14,23 @@
     justify-content: space-between;
 }
 
+.resetPinButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    color: #767676;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+    font-size: 16px;
+}
+
+.resetPinButton:hover {
+    background-color: #E9E9E9;
+}
+
 .createPinForm {
     display: flex;
     justify-content: space-between;
@@ -29,9 +46,16 @@
 }
 
 .previewPhoto {
+    text-align: center;
     border-radius: 32px;
     height: 500px;
     width: auto;
+    margin: 10px 0;
+}
+
+#pinImageUploader {
+    height: 100%;
+    /* border: none; */
 }
 
 .pushUpcreatePinInfo{
@@ -46,4 +70,77 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding: 0 20px;
+}
+
+#pinTitle {
+    font-size: 36px;
+    height: 48px;
+    border: none;
+    box-shadow: rgb(142 142 142 / 50%) 0px 1px 0px 0px
+}
+
+#pinTitle:focus {
+    outline: none;
+    box-shadow: rgb(0 116 232) 0px 1px 0px 0px;
+}
+
+#pinDescription {
+    resize: none;
+    border: none;
+    box-shadow: rgb(142 142 142 / 50%) 0px 1px 0px 0px;
+    height: 48px;
+    padding: 20px 0 10px 0;
+}
+
+#pinDescription:focus {
+    outline: none;
+    box-shadow: rgb(0 116 232) 0px 1px 0px 0px;
+}
+
+.focusInputs {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 400;
+    color: #767676;
+}
+
+.focusInputsError {
+    color: #E20023;
+}
+
+.createPinProfileContainer {
+    display: flex;
+    align-items: center;
+}
+
+.createPinProfilePic {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.savePinButton {
+    border: none;
+    border-radius: 32px;
+    background-color: #E20023;
+    color: #FFFF;
+    height: 48px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.savePinButtonDisabled {
+    border: none;
+    border-radius: 32px;
+    background-color: #E9E9E9;
+    color: #FFFF;
+    height: 48px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
 }

@@ -16,8 +16,18 @@ const CreatePinModal = (props) => {
     const [photoFile, setPhotoFile] = useState('')
     const [preview, setPreview] = useState('')
 
+    const [titleFocused, setTitleFocused] = useState(false)
+    const [descriptionFocused, setDescriptionFocused] = useState(false)
+
     const [noPhoto, setNoPhoto] = useState(false)
     const noPhotoError = 'Pin photo required.'
+
+    const resetPin = () => {
+        setTitle('')
+        setDescription('')
+        setPhotoFile('')
+        setPreview('')
+    }
 
     const handleFile = (e) => {
         const file = e.currentTarget.files[0]
@@ -47,31 +57,88 @@ const CreatePinModal = (props) => {
         <Modal onClose={() => setShowPinModal(false)}>
             <div className="createPinContainer">
                 <div className="createPinTop">
-                    <div>Delete</div>
+                    <div className="resetPinButton" onClick={resetPin}><i className="fa-solid fa-trash"></i></div>
                     <div>Save Board</div>
                 </div>
                 <form onSubmit={handleCreatePin} className="createPinForm">
                     <div className="createPinPicture">
-                        <label htmlFor="img">Select image:</label>
-                        <img className='previewPhoto' src={preview} alt={title}/>
-                        <input type="file" id="img" name="img" onChange={handleFile}/>
+                        {preview ? (
+                            <img className='previewPhoto' src={preview} alt={title}/>
+                        ) : (
+                            <input type="file" id="pinImageUploader" onChange={handleFile}/>
+                        )}
                         {noPhoto && <div>{noPhotoError}</div>}
-                        <button>Save Pin</button>
+                        {title && description && photoFile ? (
+                            <button className="savePinButton">Save Pin</button>
+                        ) : (
+                            <button className="savePinButtonDisabled">Save Pin</button>
+                        )}
                     </div>
                     <div className="pushUpcreatePinInfo">
                         <div className="createPinInfo">
-                            <label htmlFor='title'>Title</label>
                             <input type='text' 
-                                id='title' 
+                                id='pinTitle' 
+                                placeholder="Add your title"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
+                                onFocus={() => setTitleFocused(true)}
+                                onBlur={() => setTitleFocused(false)}
                             />
-                            <label htmlFor='description'>Description</label>
-                            <input type='text' 
-                                id='description'
+                            {titleFocused ? (
+                                <div className="focusInputs">
+                                    {title.length <= 25 && title.length > 3 ? (
+                                        <>
+                                            <div>Title must be between 3 and 25 characters</div>
+                                            <div>{title.length}/{25 - title.length}</div>
+                                        </>
+                                    ) : (
+                                        <>
+                                        {title.length < 3 ? (
+                                            <>
+                                                <div className="focusInputsError">Title must be between 3 and 25 characters</div>
+                                                <div className="focusInputsError">{title.length}/{25 - title.length}</div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <div className="focusInputsError">Title too long</div>
+                                                <div className="focusInputsError">{title.length}/25</div>
+                                            </>
+                                        )}
+                                        </>
+                                    )}
+                                </div>
+                            ) : (
+                                <br></br>
+                            )}
+                            <div className="createPinProfileContainer">
+                                <img className="createPinProfilePic" src={currentUser.profilePic} alt={currentUser.username} />
+                                <div>{currentUser.username}</div>
+                            </div>
+                            <textarea type='text' 
+                                id='pinDescription'
+                                placeholder="Tell everyone what your pin is about"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
+                                onFocus={() => setDescriptionFocused(true)}
+                                onBlur={() => setDescriptionFocused(false)}
                             />
+                            {descriptionFocused ? (
+                                <div className="focusInputs">
+                                    {description.length <= 100 ? (
+                                        <>
+                                            <div>A short description is best</div>
+                                            <div>{description.length}/{100 - description.length}</div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="focusInputsError">Description too long</div>
+                                            <div className="focusInputsError">{description.length}/100</div>
+                                        </>
+                                    )}
+                                </div>
+                                ) : (
+                                <br></br>
+                            )}
                         </div>
                         <div></div>
                     </div>
