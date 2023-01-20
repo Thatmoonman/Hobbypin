@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { Modal } from "../../../context/Modal"
+import { fetchBoards, getBoards } from "../../../store/board"
+import { createPinnedBoard } from "../../../store/pinned_boards"
 import { createPin } from "../../../store/pins"
 import './CreatePin.css'
 
@@ -12,6 +14,14 @@ const CreatePinModal = (props) => {
     const setShowPinModal = props.setShowPinModal
 
     const currentUser = useSelector(state => state.session.user)
+
+    const boards = useSelector(getBoards)
+    const [showSelectBoard, setShowSelectBoard] = useState(false)
+    const [selectedBoard, setSelectedBoard] = useState(null)
+
+    useEffect(() => {
+        dispatch(fetchBoards(currentUser.id))
+    }, [currentUser.id, dispatch])
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -37,6 +47,17 @@ const CreatePinModal = (props) => {
         setPreview(URL.createObjectURL(file))
     }
 
+    const toggleSelectBoardModal = (e) => {
+        e.preventDefault();
+        showSelectBoard ? setShowSelectBoard(false) : setShowSelectBoard(true)
+    }
+
+    const handleSelectBoard = (e, board) => {
+        e.preventDefault();
+        setSelectedBoard(board)
+        setShowSelectBoard(false)
+    }
+
     const handleCreatePin = async (e) => {
         e.preventDefault()
 
@@ -50,10 +71,13 @@ const CreatePinModal = (props) => {
             setNoPhoto(true)
             return
         }
-        
-        dispatch(createPin(formData))
-        setShowPinModal(false)
-            
+ 
+        const pinId = await dispatch(createPin(formData))
+        setShowPinModal(false) 
+
+        if (selectedBoard) {
+            dispatch(createPinnedBoard(pinId, selectedBoard.id))
+        }
         
         history.push(`/users/${currentUser.id}/pins`)
     }
@@ -63,8 +87,26 @@ const CreatePinModal = (props) => {
             <div className="createPinContainer">
                 <div className="createPinTop">
                     <div className="resetPinButton" onClick={resetPin}><i className="fa-solid fa-trash"></i></div>
-                    <div>Save Board</div>
+                    <div className="saveNewPinToBoard">
+                        {selectedBoard && <h4>{selectedBoard.title}</h4>}
+                        <button
+                            className="saveButton"
+                            onClick={toggleSelectBoardModal}>
+                            Save to board
+                        </button>
+                    </div>
                 </div>
+                {showSelectBoard && 
+                <Modal onClose={() => setShowSelectBoard(false)} >
+                    <div className="selectBoardForm">
+                        {boards.map(board => (
+                            <div key={board.id} onClick={(e) => handleSelectBoard(e, board)}>
+                                {board.title}
+                                <button className="saveButton" onClick={(e) => handleSelectBoard(e, board)}>Save</button>
+                            </div>
+                        ))}
+                    </div>
+                </Modal>}
                 <form onSubmit={handleCreatePin} className="createPinForm">
                     <div className="createPinPicture">
                         {preview ? (

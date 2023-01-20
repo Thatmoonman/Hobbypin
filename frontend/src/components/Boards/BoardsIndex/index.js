@@ -4,6 +4,7 @@ import { Link, Redirect, useParams } from 'react-router-dom';
 import { fetchUsersPins, getPins } from '../../../store/pins';
 import { getUser } from '../../../store/user';
 import CreateDropdown from '../../Navigation/CreateDropdown';
+import CreatePinModal from '../../Pins/CreatePin';
 import CreateBoard from '../CreateBoardModal';
 import './BoardIndex.css'
 import BoardIndexItems from './BoardIndexItems';
@@ -18,6 +19,7 @@ const BoardIndex = () => {
 
     const [showCreateDropdown, setShowCreateDropdown] = useState(false)
     const [showBoardModal, setShowBoardModal] = useState(false)
+    const [showPinModal, setShowPinModal] = useState(false)
 
     useEffect(() => {
         dispatch(fetchUsersPins(userId))
@@ -44,9 +46,12 @@ const BoardIndex = () => {
             {showCreateDropdown && <CreateButtonDropdown  
                 showCreateDropdown={showCreateDropdown}
                 setShowCreateDropdown={setShowCreateDropdown} 
-                setShowBoardModal={setShowBoardModal}/>
+                setShowBoardModal={setShowBoardModal}
+                setShowPinModal={setShowPinModal}/>
             }
             {showBoardModal && <CreateBoard setShowBoardModal={setShowBoardModal}/>}
+            {showPinModal && <CreatePinModal setShowPinModal={setShowPinModal}/>
+            }
             
             <ul className='boardIdxContainer'>
                 <Link className='boardIdxItem' to={`/users/${userId}/pins`}>

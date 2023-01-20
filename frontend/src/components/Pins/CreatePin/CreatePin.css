@@ -32,6 +32,11 @@
     background-color: #E9E9E9;
 }
 
+.saveNewPinToBoard {
+    display: flex;
+    align-items: center;
+}
+
 .createPinForm {
     display: flex;
     justify-content: space-between;
