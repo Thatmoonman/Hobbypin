@@ -65,7 +65,7 @@ const CreatePinModal = (props) => {
                         {preview ? (
                             <img className='previewPhoto' src={preview} alt={title}/>
                         ) : (
-                            <input type="file" id="pinImageUploader" onChange={handleFile}/>
+                            <input type="file" id="pinImageUploader" onChange={handleFile} />
                         )}
                         {noPhoto && <div>{noPhotoError}</div>}
                         {title && description && photoFile ? (
