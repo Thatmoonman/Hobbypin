@@ -64,7 +64,9 @@ export const createPin = (pin) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(receivePin(data.pin))
+        return data.pin.id
     }
+    return null
 }
 
 const pinsReducer = (state={}, action) => {

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { fetchUsersPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
 import './UserPinIndex.css'
 
 const UserAllPinsBoard = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { userId } = useParams()
     const user = useSelector(getUser(userId))
     let pins = useSelector(getPins).filter(pin => pin.uploaderId === parseInt(userId))
@@ -41,16 +42,20 @@ const UserAllPinsBoard = () => {
         }
     },[userId])
 
+    
     if (!currentUser) return <Redirect to="/" />
+    
+    const handleClickPin = (pinId) => {
+        history.push(`/users/${userId}/pins/${pinId}`)
+    }
 
     return (
         <div >
             <h1 className="pinIndexHeader">All {user.username}'s pins</h1>
             <ul className="userPinIndexColumns">
                 {pins.map(pin => (
-                <li key={pin.id} className="userPinContainer">
+                <li key={pin.id} className="userPinContainer" onClick={() => handleClickPin(pin.id)}>
                     <img src={pin.photoUrl} alt=""/>
-                    {/* {pin.title} */}
                 </li>
                 ))}
             </ul>

@@ -18,7 +18,7 @@ class Api::PinsController < ApplicationController
     def create
         @pin = Pin.new(pin_params)
         if @pin.save
-            render json: { message: "You did it!" }
+            render :show
         else   
             render json: @pin.errors.full_messages, status: 422
         end

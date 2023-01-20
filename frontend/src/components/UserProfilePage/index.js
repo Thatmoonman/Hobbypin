@@ -67,10 +67,10 @@ const UserProfilePage = () => {
                 <div className="profileImage" onClick={() => setShowProfileModal(true)}><img src={user.profilePic} /></div>
                 <h1 className="profileName">{user.username}</h1>
                 <p className="profileEmail">{user.email}</p>
-                <div className="profileFollows">
+                {/* <div className="profileFollows">
                     <p className="profileFollowing">0 following</p>
                     <p className="profileFollowers"> 0 followers</p>
-                </div>
+                </div> */}
                 <div className="profileButtons">
                     {/* <button className='shareDropdownMenu'>Share</button> */}
                     {isSessionUser && <NavLink to={`/users/${user.id}/edit`} className='renderEditButton'>Edit Profile</NavLink>}

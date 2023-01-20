@@ -14,6 +14,7 @@ const BoardIndex = () => {
     const { userId } = useParams();
     const user = useSelector(getUser(userId))
     const pins = useSelector(getPins)
+    pins.filter(pin => pin.uploader_id === user.id)
 
     const [showCreateDropdown, setShowCreateDropdown] = useState(false)
     const [showBoardModal, setShowBoardModal] = useState(false)

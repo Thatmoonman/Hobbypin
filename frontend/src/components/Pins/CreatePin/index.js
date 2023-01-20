@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { Modal } from "../../../context/Modal"
 import { createPin } from "../../../store/pins"
 import './CreatePin.css'
@@ -7,6 +8,7 @@ import './CreatePin.css'
 
 const CreatePinModal = (props) => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const setShowPinModal = props.setShowPinModal
 
     const currentUser = useSelector(state => state.session.user)
@@ -35,7 +37,7 @@ const CreatePinModal = (props) => {
         setPreview(URL.createObjectURL(file))
     }
 
-    const handleCreatePin = (e) => {
+    const handleCreatePin = async (e) => {
         e.preventDefault()
 
         const formData = new FormData();
@@ -50,7 +52,10 @@ const CreatePinModal = (props) => {
         }
         
         dispatch(createPin(formData))
+        setShowPinModal(false)
+            
         
+        history.push(`/users/${currentUser.id}/pins`)
     }
 
     return (
@@ -71,7 +76,7 @@ const CreatePinModal = (props) => {
                         {title && description && photoFile ? (
                             <button className="savePinButton">Save Pin</button>
                         ) : (
-                            <button className="savePinButtonDisabled">Save Pin</button>
+                            <button className="savePinButtonDisabled" disabled>Save Pin</button>
                         )}
                     </div>
                     <div className="pushUpcreatePinInfo">
