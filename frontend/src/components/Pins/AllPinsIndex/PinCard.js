@@ -1,21 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import { Modal } from "../../../context/Modal"
-import { getBoards } from "../../../store/board"
+import { fetchBoards, getBoards } from "../../../store/board"
 import { createPinnedBoard } from "../../../store/pinned_boards"
 
 const PinCard = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const { pin} = props
+    const { pin } = props
     const boards = useSelector(getBoards)
+    const currentUser = useSelector(state => state.session.user)
     
     const [hoverCard, setHoverCard] = useState(false)
     // const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : '')
     const [selectPin, setSelectPin] = useState('')
     const [showSelectBoard, setShowSelectBoard] = useState(false)
+
+    useEffect(() => {
+        dispatch(fetchBoards(currentUser.id))
+    }, [currentUser.id, dispatch])
 
  
 

@@ -87,7 +87,7 @@ const BoardShow = () => {
                     <p>{board.description}</p>
                     {showEditBoardModal && <EditBoardModal setShowEditBoardModal={setShowEditBoardModal}/>}
                     {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
-                    {showRemovePinModal && <RemovePinFromBoardModal pins={pins} setShowRemovePinModal={setShowRemovePinModal} />}
+                    {showRemovePinModal && <RemovePinFromBoardModal pins={displayPins} setShowRemovePinModal={setShowRemovePinModal} />}
                 </div>
                 <div className="boardShowOuterContainer">
                     <ul className="boardShowContainer">

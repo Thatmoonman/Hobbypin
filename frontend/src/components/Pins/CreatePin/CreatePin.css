@@ -47,6 +47,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     width: 50%;
     padding: 0 20px;
     position: relative;
@@ -55,8 +56,9 @@
 .previewPhoto {
     text-align: center;
     border-radius: 32px;
-    height: 500px;
-    width: auto;
+    height: 480px;
+    width: 100%;
+    overflow: hidden;
     margin: 10px 0;
 }
 
@@ -64,14 +66,13 @@
     height: 75%;
     /* border: none; */
     justify-content: center;
-    padding-top: 50%;
+    padding-top: 40%;
     padding-left: 25%;
     cursor: pointer;
     /* background-color: rgb(239, 239, 239); */
     background-image: url('../../../../public/BackgroundUpload.png');
     background-repeat: no-repeat;
     background-size:contain;
-
 }
 
 .pushUpcreatePinInfo{
@@ -145,6 +146,8 @@
     background-color: #E20023;
     color: #FFFF;
     height: 48px;
+    width: 90%;
+    margin-right: 2.1%;
     margin-top: 10px;
     cursor: pointer;
     font-size: 16px;
@@ -157,6 +160,8 @@
     background-color: #E9E9E9;
     color: #FFFF;
     height: 48px;
+    width: 90%;
+    margin-right: 2.1%;
     margin-top: 10px;
     font-size: 16px;
     font-weight: 600;

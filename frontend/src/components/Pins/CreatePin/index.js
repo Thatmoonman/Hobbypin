@@ -58,7 +58,7 @@ const CreatePinModal = (props) => {
         setShowSelectBoard(false)
     }
 
-    const handleCreatePin = async (e) => {
+    const handleCreatePin = (e) => {
         e.preventDefault()
 
         const formData = new FormData();
@@ -72,13 +72,13 @@ const CreatePinModal = (props) => {
             return
         }
  
-        const pinId = await dispatch(createPin(formData))
-        setShowPinModal(false) 
-
+        const pinId = dispatch(createPin(formData))
+        
         if (selectedBoard) {
             dispatch(createPinnedBoard(pinId, selectedBoard.id))
         }
         
+        setShowPinModal(false) 
         history.push(`/users/${currentUser.id}/pins`)
     }
 
@@ -115,7 +115,7 @@ const CreatePinModal = (props) => {
                             <input type="file" id="pinImageUploader" onChange={handleFile} />
                         )}
                         {noPhoto && <div>{noPhotoError}</div>}
-                        {title && description && photoFile ? (
+                        {title && title.length > 2 && title.length < 26 && description && description.length < 101 && photoFile ? (
                             <button className="savePinButton">Save Pin</button>
                         ) : (
                             <button className="savePinButtonDisabled" disabled>Save Pin</button>
@@ -133,7 +133,7 @@ const CreatePinModal = (props) => {
                             />
                             {titleFocused ? (
                                 <div className="focusInputs">
-                                    {title.length <= 25 && title.length > 3 ? (
+                                    {title.length <= 25 && title.length >= 3 ? (
                                         <>
                                             <div>Title must be between 3 and 25 characters</div>
                                             <div>{title.length}/{25 - title.length}</div>
