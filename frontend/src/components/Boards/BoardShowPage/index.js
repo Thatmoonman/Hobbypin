@@ -83,7 +83,7 @@ const BoardShow = () => {
                             />}
                         </button>
                     </div>
-                    <div className="profilePic"><img src={user.profilePic}/></div>
+                    <div className="profilePic"><img src={user.profilePic} alt={user.username}/></div>
                     <p>{board.description}</p>
                     {showEditBoardModal && <EditBoardModal setShowEditBoardModal={setShowEditBoardModal}/>}
                     {showDeleteBoardModal && <DeleteBoardModal setShowDeleteBoardModal={setShowDeleteBoardModal} />}
