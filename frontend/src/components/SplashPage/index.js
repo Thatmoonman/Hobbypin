@@ -43,7 +43,7 @@ const SplashPage = () => {
 
     return (
         <div className="scrollContainer">
-            {pins.length >= 5 &&
+            {pins.length >= 20 &&
             <>
                 <>
                     <div className="circleDown" onClick={handleClickDown}><i className="fa-solid fa-chevron-down"></i></div>

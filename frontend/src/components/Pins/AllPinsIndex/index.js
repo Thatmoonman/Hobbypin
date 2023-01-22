@@ -30,7 +30,8 @@ const AllPinsIndex = () => {
     const boards = useSelector(getBoards)
 
     const [loading, setLoading] = useState(true)
-    setTimeout(() => setLoading(false), 4000)
+    
+    setTimeout(() => setLoading(false), 3000)
 
     useEffect(() => {
         dispatch(fetchBoards(userId))
