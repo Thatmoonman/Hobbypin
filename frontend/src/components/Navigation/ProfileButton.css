@@ -12,7 +12,7 @@
     min-height: 40px;
     max-height: 90vh;
     overflow: hidden;
-    z-index: 2;
+    z-index: 11;
     background-color: #FFFF;
 }
 
