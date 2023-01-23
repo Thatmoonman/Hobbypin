@@ -72,7 +72,7 @@ export const createPin = (pin) => async (dispatch) => {
 export const updatePin = (pin) => async (dispatch) => {
     const res = await csrfFetch(`/api/pins/${pin.id}`, {
         method: 'PATCH',
-        body: pin
+        body: JSON.stringify({pin: { ...pin, title: pin.title, description: pin.description}})
     })
     if (res.ok) {
         const data = await res.json()

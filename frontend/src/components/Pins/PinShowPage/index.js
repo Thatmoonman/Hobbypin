@@ -8,6 +8,7 @@ import './PinShow.css'
 import { createPinnedBoard } from "../../../store/pinned_boards";
 import CommentsIndex from "../../Comments/CommentsIndex";
 import CreateCommentForm from "../../Comments/CommentCreate";
+import UpdatePin from "../UpdatePin";
 
 
 const PinShowPage = () => {
@@ -24,6 +25,8 @@ const PinShowPage = () => {
     let pinOrientation = windowWidth > 1100 ? "horizontal" : "vertical"
 
     const [showSelectBoard, setShowSelectBoard] = useState(false)
+    const [showUpdatePin, setShowUpdatePin] = useState(false)
+
     // const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : "")
     // const [saved, setSaved] = useState(false)
 
@@ -35,19 +38,6 @@ const PinShowPage = () => {
         setLoaded(true)
     }, [userId, pinId])
 
-    // const handleAddBoardClick = (e, board) => {
-    //     e.preventDefault()
-    //     setSelectBoard(board)
-    //     setShowSelectBoard(false)
-    //     handleSavePin()
-    // }
-
-    // const handleSavePin = () => {
-    //     dispatch(createPinnedBoard(pin.id, selectBoard.id))
-    //     setSaved(true)
-        // history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
-    // }
-
     const handleAddBoard = (e, board) => {
         e.preventDefault();
         setShowSelectBoard(false)
@@ -58,6 +48,11 @@ const PinShowPage = () => {
     const toggleSelectBoardModal = (e) => {
         e.preventDefault();
         showSelectBoard ? setShowSelectBoard(false) : setShowSelectBoard(true)
+    }
+    
+    const toggleUpdatePin = (e) => {
+        e.preventDefault();
+        showUpdatePin ? setShowUpdatePin(false) : setShowUpdatePin(true)
     }
 
     if (!currentUser) return <Redirect to="/" />
@@ -81,7 +76,6 @@ const PinShowPage = () => {
         }   
     }
 
-
     return (
         <>
         {loaded && pin.id ? (
@@ -91,20 +85,12 @@ const PinShowPage = () => {
                 </div>
                 <div className="pinShowDetails">
                     <div className="boardSave">
-                        <button className="saveButton" onClick={toggleSelectBoardModal}>Save</button>
-                        {/* <div onClick={toggleSelectBoardModal}>
-                            {selectBoard.title}
-                            <i className="fa-solid fa-chevron-down" />
-                        </div> */}
-                        {/* {saved ? (
-                            <button className="saveButton" style={{"backgroundColor": "black", "color": "white"}}>
-                                Saved
-                            </button>
+                        {currentUser.id === pin.uploaderId ? (
+                            <div className="navIcon" onClick={toggleUpdatePin}><i className="fa-solid fa-pencil"></i></div>
                         ) : (
-                            <button className="saveButton" onClick={toggleSelectBoardModal}>
-                                Save
-                            </button>
-                        )} */}
+                            <div></div>
+                        )}
+                        <button className="saveButton" onClick={toggleSelectBoardModal}>Save</button>
                     </div>
                     <h1>{pin.title}</h1>
                     <p>{pin.description}</p>
@@ -122,6 +108,11 @@ const PinShowPage = () => {
                             ))}
                         </div>
                     </Modal>}
+                {showUpdatePin &&
+                    <Modal onClose={() => setShowUpdatePin(false)}>
+                        <UpdatePin pin={pin} setShowUpdatePin={setShowUpdatePin}/>
+                    </Modal>
+                }
             </div>
         ) : (
             <>

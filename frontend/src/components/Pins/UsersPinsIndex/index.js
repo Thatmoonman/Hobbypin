@@ -9,7 +9,7 @@ import './UserPinIndex.css'
 
 const UserAllPinsBoard = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const { userId } = useParams()
     const user = useSelector(getUser(userId))
     let pins = useSelector(getPins).filter(pin => pin.uploaderId === parseInt(userId))
@@ -49,9 +49,9 @@ const UserAllPinsBoard = () => {
     
     if (!currentUser) return <Redirect to="/" />
     
-    const handleClickPin = (pinId) => {
-        history.push(`/users/${userId}/pins/${pinId}`)
-    }
+    // const handleClickPin = (pinId) => {
+    //     history.push(`/users/${userId}/pins/${pinId}`)
+    // }
 
     return (
         <div >
