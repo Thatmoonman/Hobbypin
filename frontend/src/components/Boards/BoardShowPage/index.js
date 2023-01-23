@@ -18,6 +18,7 @@ const BoardShow = () => {
     const board = useSelector(getBoard(boardId))
     const user = useSelector(getUser(userId))
     const pins = useSelector(getPins)
+    
     let displayPins = pins.filter(pin => pin.boards.includes(parseInt(boardId)))
     
     const [showEditBoardDropdown, setShowEditBoardDropdown] = useState(false)
@@ -34,8 +35,6 @@ const BoardShow = () => {
             // if (boardId) dispatch(fetchBoardPins(boardId))
             dispatch(fetchAllPins())
             setLoaded(true)
-            const displayPins = pins.filter(pin => pin.boards.includes(boardId))
-            console.log(displayPins)
         }
     }, [dispatch, userId, boardId])
 

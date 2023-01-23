@@ -23,9 +23,9 @@ const PinShowPage = () => {
     const windowWidth = document.body.clientWidth
     let pinOrientation = windowWidth > 1100 ? "horizontal" : "vertical"
 
-    const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : "")
     const [showSelectBoard, setShowSelectBoard] = useState(false)
-    const [saved, setSaved] = useState(false)
+    // const [selectBoard, setSelectBoard] = useState(boards && boards.length ? boards[0] : "")
+    // const [saved, setSaved] = useState(false)
 
     const [loaded, setLoaded] = useState(false)
 
@@ -48,11 +48,11 @@ const PinShowPage = () => {
         // history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
     // }
 
-    const handleAddBoard = (e) => {
+    const handleAddBoard = (e, board) => {
         e.preventDefault();
         setShowSelectBoard(false)
-        dispatch(createPinnedBoard(pin.id, selectBoard.id))
-        history.push(`/users/${currentUser.id}/boards/${selectBoard.id}`)
+        dispatch(createPinnedBoard(pin.id, board.id))
+        history.push(`/users/${currentUser.id}/boards/${board.id}`)
     }
 
     const toggleSelectBoardModal = (e) => {
@@ -91,11 +91,12 @@ const PinShowPage = () => {
                 </div>
                 <div className="pinShowDetails">
                     <div className="boardSave">
-                        <div onClick={toggleSelectBoardModal}>
+                        <button className="saveButton" onClick={toggleSelectBoardModal}>Save</button>
+                        {/* <div onClick={toggleSelectBoardModal}>
                             {selectBoard.title}
                             <i className="fa-solid fa-chevron-down" />
-                        </div>
-                        {saved ? (
+                        </div> */}
+                        {/* {saved ? (
                             <button className="saveButton" style={{"backgroundColor": "black", "color": "white"}}>
                                 Saved
                             </button>
@@ -103,7 +104,7 @@ const PinShowPage = () => {
                             <button className="saveButton" onClick={toggleSelectBoardModal}>
                                 Save
                             </button>
-                        )}
+                        )} */}
                     </div>
                     <h1>{pin.title}</h1>
                     <p>{pin.description}</p>

@@ -29,7 +29,7 @@ class Api::BoardsController < ApplicationController
         if @board.update(board_params)
             render :show
         else
-            board = board.new(board_params)
+            board = Board.new(board_params)
             render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
         end
     end

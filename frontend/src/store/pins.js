@@ -69,6 +69,17 @@ export const createPin = (pin) => async (dispatch) => {
     return null
 }
 
+export const updatePin = (pin) => async (dispatch) => {
+    const res = await csrfFetch(`/api/pins/${pin.id}`, {
+        method: 'PATCH',
+        body: pin
+    })
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(receivePin(data.pin))
+    }
+}
+
 const pinsReducer = (state={}, action) => {
     Object.freeze(state)
     const nextState = { ...state }

@@ -24,6 +24,16 @@ class Api::PinsController < ApplicationController
         end
     end
 
+    def update
+        @pin = Pin.find_by(id: params[:id])
+        if @pin.update(pin_params)
+            render :show
+        else
+            pin = Pin.new(pin_params)
+            render json: { errors: pin.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def pin_params
