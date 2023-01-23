@@ -8,8 +8,10 @@ import SaveIdeas from "./SaveIdeas"
 import SplashSignUp from "./SplashSignUp"
 
 
-const SplashPage = () => {
+const SplashPage = (props) => {
     const dispatch = useDispatch();
+    const setLoading = props.setLoading
+    setLoading(true)
 
     const [currentPage, setCurrentPage] = useState("food")
     

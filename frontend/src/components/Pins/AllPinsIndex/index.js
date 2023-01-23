@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect } from "react-router-dom";
-import { Modal } from "../../../context/Modal";
 import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchAllPins, getPins } from "../../../store/pins";
 import SplashPage from "../../SplashPage";
@@ -24,14 +22,14 @@ const AllPinsIndex = () => {
         }
     })
 
-    const user = useSelector(state => state.session.user)
-    const userId = user ? user.id : null
+    const currentUser = useSelector(state => state.session.user)
+    const userId = currentUser ? currentUser.id : null
     
     const boards = useSelector(getBoards)
 
     const [loading, setLoading] = useState(true)
     
-    setTimeout(() => setLoading(false), 3000)
+    if (currentUser) setTimeout(() => setLoading(false), 3000)
 
     useEffect(() => {
         dispatch(fetchBoards(userId))
@@ -64,7 +62,7 @@ const AllPinsIndex = () => {
 
     return (
         <>
-            {user ? (
+            {currentUser ? (
                 <>
                 {loading &&
                         <div className="loader">
@@ -108,7 +106,7 @@ const AllPinsIndex = () => {
                 </>
             ) : (
                 <>
-                    <SplashPage />
+                    <SplashPage setLoading={setLoading} />
                 </>
             )}
         </>
