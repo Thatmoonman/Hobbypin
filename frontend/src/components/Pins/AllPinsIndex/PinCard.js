@@ -58,10 +58,11 @@ const PinCard = (props) => {
                         className="pinDetails" 
                         onMouseEnter={() => setHoverCard(true)}
                         onMouseOut={() => setHoverCard(false)}>
-                        <div onClick={(e) => toggleSelectBoardModal(e, pin)} className="showSelectBoard">
+                        {/* <div onClick={(e) => toggleSelectBoardModal(e, pin)} className="showSelectBoard">
                             <p>My boards</p>
                             <i className="fa-solid fa-chevron-down" />
-                        </div>
+                        </div> */}
+                        <div></div>
                         <button
                             className="saveButton"
                             onClick={(e) => toggleSelectBoardModal(e, pin)}

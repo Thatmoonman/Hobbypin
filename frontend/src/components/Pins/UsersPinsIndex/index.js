@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect, useHistory, useParams } from "react-router-dom";
+import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchUsersPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
+import PinCard from "../AllPinsIndex/PinCard";
 import './UserPinIndex.css'
 
 const UserAllPinsBoard = () => {
@@ -11,6 +13,7 @@ const UserAllPinsBoard = () => {
     const { userId } = useParams()
     const user = useSelector(getUser(userId))
     let pins = useSelector(getPins).filter(pin => pin.uploaderId === parseInt(userId))
+    const boards = useSelector(getBoards)
     
     const currentUser = useSelector(state => state.session.user)
 
@@ -39,6 +42,7 @@ const UserAllPinsBoard = () => {
         if (currentUser) {
             dispatch(fetchUsersPins(userId))
             dispatch(fetchUser(userId))
+            dispatch(fetchBoards(userId))
         }
     },[userId])
 
@@ -54,9 +58,10 @@ const UserAllPinsBoard = () => {
             <h1 className="pinIndexHeader">All {user.username}'s pins</h1>
             <ul className="userPinIndexColumns">
                 {pins.map(pin => (
-                <li key={pin.id} className="userPinContainer" onClick={() => handleClickPin(pin.id)}>
-                    <img src={pin.photoUrl} alt=""/>
-                </li>
+                    <PinCard key={pin.id} pin={pin} boards={boards} /> 
+                // <li key={pin.id} className="userPinContainer" onClick={() => handleClickPin(pin.id)}>
+                //     <img src={pin.photoUrl} alt=""/>
+                // </li>
                 ))}
             </ul>
         </div>  
