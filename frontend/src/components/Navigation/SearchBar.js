@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { fetchAllPins, getPins } from '../../store/pins'
 import { Link, useHistory } from 'react-router-dom';
 import { fetchUsers, getUsers } from '../../store/user';
+import SearchPins from './SearchPins';
+import SearchUsers from './SearchUsers';
 
 
 const SearchBar = () => {
@@ -13,7 +15,7 @@ const SearchBar = () => {
     const [searchModal, setSearchModal] = useState(false)
     
     const pins = useSelector(getPins)
-    const [searchPins, setSearchPins] = useState(pins)
+    const [searchPins, setSearchPins] = useState(pins) 
     const users = useSelector(getUsers)
     const [searchUsers, setSearchUsers] = useState(pins)
 
@@ -50,23 +52,17 @@ const SearchBar = () => {
                 />
             </div>
             {searchModal && 
-                    <div className="searchModal">
-                        <div>Pins:</div>
-                        {searchPins.map(pin => (
-                            <Link to={`/users/${pin.uploaderId}/pins/${pin.id}`} className="searchCard" key={pin.id} onClick={() => setSearch('')}>
-                                <img src={pin.photoUrl} alt=""/>
-                                {pin.title}
-                            </Link>
-                        ))}
-                        <div>Users:</div>
-                        {searchUsers.map(user => (
-                            <Link to={`/users/${user.id}`} key={user.id} className="searchCard" onClick={() => setSearch('')}>
-                                <img src={user.profilePic} alt="" />
-                                <div>{user.username}</div>
-                            </Link>
-                        ))}
-                    </div>
-            }
+                <div className="searchModal">
+                    {searchPins.length || searchUsers.length ? (
+                    <>
+                        <SearchPins pins={searchPins} setSearch={setSearch}/>
+                        <SearchUsers users={searchUsers} setSearch={setSearch}/>
+                    </>
+                    ) : (
+                    <div>{"Nothing matched your search. Try again."}</div>
+                    )}
+                </div>
+        }
         </div>
     )
 }
