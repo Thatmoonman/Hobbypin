@@ -18,9 +18,23 @@
     height: 56px
 }
 
+.navBarMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 56px;
+}
+
 .rightNav {
     display: flex;
     justify-content: space-evenly;
+}
+
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .externalLinks {
@@ -29,6 +43,13 @@
     align-items: center;
     margin-right: 24px;
     width: 240px;
+}
+
+.externalLinksMobile {
+    justify-content: space-evenly;
+    margin-top: 8px;
+    margin-right: 0;
+    width: 100%;
 }
 
 .externalLink {
@@ -50,6 +71,10 @@
     width: 48px;
     margin-left: 24px;
     text-decoration: none;
+}
+
+.logoNavLinkMobile {
+    margin-left: 0;
 }
 
 .logoNavLink > img {
