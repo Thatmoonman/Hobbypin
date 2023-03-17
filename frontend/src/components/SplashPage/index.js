@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchAllPins, getPins } from "../../store/pins"
 import SaveIdeas from "./SaveIdeas"
 import SplashSignUp from "./SplashSignUp"
+import MobileSplashPage from "./MobileSplash"
 
 
 const SplashPage = (props) => {
     const dispatch = useDispatch();
     const setLoading = props.setLoading
     setLoading(true)
+
+    const isMobile = /Android|iPhone/i.test(navigator.userAgent)
 
     const [currentPage, setCurrentPage] = useState("food")
     
@@ -43,25 +46,33 @@ const SplashPage = (props) => {
         window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
     }
 
-    return (
-        <div className="scrollContainer">
-            {pins.length >= 20 &&
+    if (isMobile) {
+        return (
             <>
-                <>
-                    <div className="circleDown" onClick={handleClickDown}><i className="fa-solid fa-chevron-down"></i></div>
-                    {currentPage === "food" && <FoodPage pins={pins}/>}
-                    {currentPage === "travel" && <TravelPage pins={pins}/>}
-                </>
-                <>
-                    <SaveIdeas pins={pins}/>
-                </>
-                <>
-                    <SplashSignUp handleClickUp={handleClickUp}/>
-                </>
+                <MobileSplashPage />
             </>
-            }
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className="scrollContainer">
+                {pins.length >= 20 &&
+                <>
+                    <>
+                        <div className="circleDown" onClick={handleClickDown}><i className="fa-solid fa-chevron-down"></i></div>
+                        {currentPage === "food" && <FoodPage pins={pins}/>}
+                        {currentPage === "travel" && <TravelPage pins={pins}/>}
+                    </>
+                    <>
+                        <SaveIdeas pins={pins}/>
+                    </>
+                    <>
+                        <SplashSignUp handleClickUp={handleClickUp}/>
+                    </>
+                </>
+                }
+            </div>
+        )
+    }
 }
 
 export default SplashPage

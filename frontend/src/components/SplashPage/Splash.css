@@ -261,3 +261,28 @@ html {
     margin: auto;
     cursor: pointer;
 }
+
+.mobileSplashContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 25% 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/background.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:100%;
+    width:100%;
+    color: #e6e6e6;
+}
+
+.mobileSplashContainer > * {
+    padding: 8px 0;
+}
+
+.mobileLogo {
+    height: 54px;
+    width: 54px;
+}

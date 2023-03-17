@@ -14,7 +14,6 @@ function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
   
     const isMobile = /Android|iPhone/i.test(navigator.userAgent)
-    console.log(isMobile)
 
     const [notificationIsHovering, setNotificationIsHovering] = useState(false)
     const [messageIsHovering, setMessageIsHovering] = useState(false)
@@ -92,23 +91,7 @@ function Navigation(){
                     </div>
                 );
             } else {
-                return (
-                    <div className='navBarMobile snap'>
-                        <div className='topNav'>
-                            <NavLink exact to="/" className="logoNavLink logoNavLinkMobile"><img src="./Hobbypinlogo.png" alt=""/></NavLink>
-                            <div className='rightNav'>
-                                <LoginFormModal />
-                                <SignupFormModal />
-                            </div>
-                        </div>
-                        <div className='externalLinks externalLinksMobile'>
-                            <div className='externalLink' onClick={() => setShowAboutModal(true)}>About</div>
-                            <Link to={{pathname: "https://github.com/Thatmoonman"}} target="_blank" className='externalLink'>Github</Link>
-                            <Link to={{pathname: "https://www.linkedin.com/in/justin-kilburn-3aa38a54/"}} target="_blank"className='externalLink'>LinkedIn</Link>
-                        </div>
-                        {showAboutModal && <AboutModal setShowAboutModal={setShowAboutModal} />}
-                    </div >
-                );
+                return
             };
         } else {
             if (sessionUser) {
@@ -181,9 +164,13 @@ function Navigation(){
 
 
     return (
-        <div className="navContainer">
-            {sessionLinks()}
-        </div>
+        <>
+        {!isMobile &&
+            <div className="navContainer">
+                {sessionLinks()}
+            </div>
+        }
+        </>
     );
 }
 
