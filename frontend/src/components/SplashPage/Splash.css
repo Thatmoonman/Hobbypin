@@ -273,8 +273,10 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height:100%;
-    width:100%;
+    background-repeat: no-repeat;
+    height: auto;
+    /* width: auto; */
+    overflow: hidden;
     color: #e6e6e6;
 }
 
