@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 import BoardShow from "./components/Boards/BoardShowPage";
 import Navigation from "./components/Navigation";
@@ -8,36 +9,46 @@ import UserEditPage from "./components/UserEditPage";
 import UserProfilePage from "./components/UserProfilePage";
 
 function App() {
+  const currentUser = useSelector(state => state.session.user)
+  console.log(currentUser)
+
   return (
-    <>
-      <Navigation />
-      < Switch>
-        <Route exact path='/users/:userId'>
-          <UserProfilePage />
-        </Route>
-        <Route exact path='/users/:userId/edit'>
-          <UserEditPage />
-        </Route>
-        <Route exact path='/users/:userId/boards/:boardId'>
-          <BoardShow />
-        </Route>
-        <Route exact path='/users/:userId/pins'>
-          <UserAllPinsBoard />
-        </Route>
-        <Route exact path='/users/:userId/pins/:pinId'>
-          <PinShowPage />
-        </Route>
-        <Route exact path='/'>
-          <AllPinsIndex />
-        </Route>
+      currentUser ? (
+      <>
+        <Navigation />
+        < Switch>
+          <Route exact path='/users/:userId'>
+            <UserProfilePage />
+          </Route>
+          <Route exact path='/users/:userId/edit'>
+            <UserEditPage />
+          </Route>
+          <Route exact path='/users/:userId/boards/:boardId'>
+            <BoardShow />
+          </Route>
+          <Route exact path='/users/:userId/pins'>
+            <UserAllPinsBoard />
+          </Route>
+          <Route exact path='/users/:userId/pins/:pinId'>
+            <PinShowPage />
+          </Route>
+          <Route exact path='/'>
+            <AllPinsIndex />
+          </Route>
+          <Route path='/'>
+            <Redirect to='/'/>
+          </Route>
+        </Switch>
+      </>
+    ) : (
+      <>
+        <Navigation />
         <Route path='/'>
-          <Redirect to='/'/>
+          <Redirect to='/' />
         </Route>
-      </Switch>
-    </>
-
-
-  );
+      </>
+    )
+  )
 }
 
 export default App;
