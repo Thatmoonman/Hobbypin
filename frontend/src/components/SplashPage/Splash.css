@@ -268,11 +268,11 @@ html {
     justify-content: space-evenly;
     align-items: center;
     padding: 25% 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/background.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../../../public/background.png');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: 100vh;
     background-repeat: no-repeat;
     height: auto;
     /* width: auto; */
