@@ -11,8 +11,6 @@ import MobileSplashPage from "./MobileSplash"
 
 const SplashPage = (props) => {
     const dispatch = useDispatch();
-    const setLoading = props.setLoading
-    setLoading(true)
 
     const isMobile = /Android|iPhone/i.test(navigator.userAgent)
 

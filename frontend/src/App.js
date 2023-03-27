@@ -9,8 +9,8 @@ import UserEditPage from "./components/UserEditPage";
 import UserProfilePage from "./components/UserProfilePage";
 
 function App() {
-  const currentUser = useSelector(state => state.session.user)
-  const isMobile = /Android|iPhone/i.test(navigator.userAgent)
+  // const currentUser = useSelector(state => state.session.user)
+  // const isMobile = /Android|iPhone/i.test(navigator.userAgent)
 
   return (
       <>

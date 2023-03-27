@@ -32,33 +32,12 @@ const AllPinsIndex = () => {
     if (currentUser) setTimeout(() => setLoading(false), 3000)
 
     useEffect(() => {
-        dispatch(fetchBoards(userId))
-    }, [dispatch, userId])
-    
-    // const window = document.body
-    // const [windowWidth, setWindowWidth] = useState(window.clientWidth)
-    
-    // useEffect(() => {
-    //     setWindowWidth(window.clientWidth)
-    // }, [window.clientWidth])
-
-    // window.addEventListener( 'resize', (e) => setWindowWidth(e.clientWidth))
-
-    // const columnNumber = () => {
-        
-    //     if (windowWidth > 1250) {
-    //         return 5
-    //     } else if (windowWidth < 1250 && windowWidth > 1000) {
-    //         return 4
-    //     } else {
-    //         return 3
-    //     }
-    // }
-    // const columnLength = Math.ceil(pins.length / columnNumber())
+        if (userId) dispatch(fetchBoards(userId))
+    }, [userId])
     
     useEffect(() => {
         dispatch(fetchAllPins())
-    }, [dispatch])
+    }, [])
 
     return (
         <>
@@ -66,9 +45,7 @@ const AllPinsIndex = () => {
                 <>
                 {loading &&
                         <div className="loader">
-                            {/* <Modal> */}
                             <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                    {/* </Modal> */}
                         </div>
                 }
                     <div className="pinIndexColumns">
@@ -77,36 +54,11 @@ const AllPinsIndex = () => {
                                 <PinCard key={pin.id} pin={pin} boards={boards} /> 
                             )}
                         </ul>
-                        {/* <ul>
-                            {pins.slice(0, columnLength).map(pin => (
-                                <PinCard key={pin.id} pin={pin} boards={boards} />
-                            ))}
-                        </ul>
-                        <ul>
-                            {pins.slice(columnLength, columnLength * 2).map(pin => (
-                                <PinCard key={pin.id} pin={pin} boards={boards}/>
-                            ))}
-                        </ul>
-                        <ul>
-                            {pins.slice(2 * columnLength, 3 * columnLength).map(pin => (
-                                <PinCard key={pin.id} pin={pin} boards={boards}/>
-                            ))}
-                        </ul>
-                        <ul>
-                            {pins.slice(3 * columnLength, 4 * columnLength).map(pin => (
-                                <PinCard key={pin.id} pin={pin} boards={boards}/>
-                            ))}
-                        </ul>
-                        <ul>
-                            {pins.slice(4 * columnLength).map(pin => (
-                                <PinCard key={pin.id} pin={pin} boards={boards}/>
-                            ))}
-                        </ul> */}
                     </div>
                 </>
             ) : (
                 <>
-                    <SplashPage setLoading={setLoading} />
+                    <SplashPage />
                 </>
             )}
         </>
