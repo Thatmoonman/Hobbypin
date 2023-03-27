@@ -10,10 +10,9 @@ import UserProfilePage from "./components/UserProfilePage";
 
 function App() {
   const currentUser = useSelector(state => state.session.user)
-  console.log(currentUser)
+  const isMobile = /Android|iPhone/i.test(navigator.userAgent)
 
   return (
-      currentUser ? (
       <>
         <Navigation />
         < Switch>
@@ -40,15 +39,7 @@ function App() {
           </Route>
         </Switch>
       </>
-    ) : (
-      <>
-        <Navigation />
-        <Route path='/'>
-          <Redirect to='/' />
-        </Route>
-      </>
-    )
-  )
+    ) 
 }
 
 export default App;
