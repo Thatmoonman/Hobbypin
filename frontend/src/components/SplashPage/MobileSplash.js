@@ -3,6 +3,9 @@ import SignupFormModal from "../SignupFormModal"
 
 const MobileSplashPage = () => {
 
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+
     // <div className='navBarMobile snap'>
     //                 //     <div className='topNav'>
     //                 //         <NavLink exact to="/" className="logoNavLink logoNavLinkMobile"><img src="./Hobbypinlogo.png" alt=""/></NavLink>
@@ -20,7 +23,7 @@ const MobileSplashPage = () => {
     //                 // </div >
 
     return (
-        <div className="mobileSplashContainer">
+        <div className="mobileSplashContainer" >
             <img src="./Hobbypinlogo_nobackground.png" alt="" className="mobileLogo"/>
             <h1>Welcome to Hobbypin</h1>
             <LoginFormModal />

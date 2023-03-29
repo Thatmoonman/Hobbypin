@@ -269,14 +269,15 @@ html {
     align-items: center;
     padding: 25% 0;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../../../public/background.png');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
     background-size: contain;
     background-repeat: repeat;
     overflow: hidden;
     color: #e6e6e6;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100)
 }
 
 .mobileSplashContainer > * {
