@@ -263,11 +263,12 @@ html {
 }
 
 .mobileSplashContainer {
+    font-weight: 600;
+    font-size: 36px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    padding: 25% 0;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../../../public/background.png');
     -webkit-background-size: contain;
     -moz-background-size: contain;
@@ -277,12 +278,18 @@ html {
     overflow: hidden;
     color: #e6e6e6;
     height: 100vh;
-    height: calc(var(--vh, 1vh) * 100)
+    /* height: calc(var(--vh, 1vh) * 100) */
 }
 
 .mobileSplashContainer > * {
-    padding: 8px 0;
+    margin: 16px 0;
 }
+
+.mobileSplashContainer > .loginFormButton {
+    margin-right: 0;
+}
+
+
 
 .mobileLogo {
     height: 54px;
