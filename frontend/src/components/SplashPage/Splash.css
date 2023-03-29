@@ -272,12 +272,11 @@ html {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 100vh;
-    background-repeat: no-repeat;
-    height: auto;
-    /* width: auto; */
+    background-size: contain;
+    background-repeat: repeat;
     overflow: hidden;
     color: #e6e6e6;
+    height: 100vh;
 }
 
 .mobileSplashContainer > * {
