@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Redirect } from "react-router-dom";
 import { fetchBoards, getBoards } from "../../../store/board";
 import { fetchAllPins, getPins } from "../../../store/pins";
 import SplashPage from "../../SplashPage";
 import './AllPinsIndex.css'
+import MobileAllPinsIndex from "./MobileAllPinsIndex";
 import PinCard from "./PinCard";
 
 const AllPinsIndex = () => {
     const dispatch = useDispatch();
     const pins = useSelector(getPins)
+    
+    const isMobile = /Android|iPhone/i.test(navigator.userAgent)
     
     pins.forEach(pin => pin.order = Math.random())
     const allPins = pins.map(pin => pin)
@@ -43,18 +47,24 @@ const AllPinsIndex = () => {
         <>
             {currentUser ? (
                 <>
-                {loading &&
-                        <div className="loader">
-                            <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                {isMobile ? (
+                    <MobileAllPinsIndex allPins={allPins} boards={boards}/>
+                ) : (
+                    <>
+                    {loading &&
+                            <div className="loader">
+                                <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            </div>
+                    }
+                        <div className="pinIndexColumns">
+                            <ul>
+                                {allPins.map(pin => 
+                                    <PinCard key={pin.id} pin={pin} boards={boards} /> 
+                                )}
+                            </ul>
                         </div>
-                }
-                    <div className="pinIndexColumns">
-                        <ul>
-                            {allPins.map(pin => 
-                                <PinCard key={pin.id} pin={pin} boards={boards} /> 
-                            )}
-                        </ul>
-                    </div>
+                    </>
+                )}
                 </>
             ) : (
                 <>
