@@ -205,4 +205,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #E60023;
+}
+
+.pinMobileTitle {
+  border: 1px solid #EEEE;
+  border-radius: 16px;
+  background-color: #eFEFEF;
+  padding: 8px;
 }

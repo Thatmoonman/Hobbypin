@@ -7,7 +7,7 @@ const MobileAllPinsIndex = ({allPins, boards}) => {
         <ul>
             {allPins.map((pin, i) =>
                 <div key={i} className="pinMobileContainer snap">
-                    <h1>{pin.title}</h1>
+                    <h1 className="pinMobileTitle">{pin.title}</h1>
                     <PinCard pin={pin} boards={boards}/>
                 </div>
             )}

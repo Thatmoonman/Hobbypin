@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory, useParams } from "react-router-dom"
-import { fetchBoard, getBoard } from "../../../store/board";
+import { fetchBoard, fetchBoards, getBoard, getBoards } from "../../../store/board";
 import { fetchAllPins, fetchBoardPins, getPins } from "../../../store/pins";
 import { fetchUser, getUser } from "../../../store/user";
 import PinCard from "../../Pins/AllPinsIndex/PinCard";
@@ -13,9 +13,9 @@ import EditBoardDropdown from "./EditBoardDropdown";
 
 const BoardShow = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { userId, boardId } = useParams();
     const board = useSelector(getBoard(boardId))
+    const boards = useSelector(getBoards)
     const user = useSelector(getUser(userId))
     const pins = useSelector(getPins)
     
@@ -32,7 +32,7 @@ const BoardShow = () => {
         if (currentUser) {
             dispatch(fetchBoard(userId, boardId))
             dispatch(fetchUser(userId))
-            // if (boardId) dispatch(fetchBoardPins(boardId))
+            dispatch(fetchBoards(userId))
             dispatch(fetchAllPins())
             setLoaded(true)
         }
@@ -91,7 +91,7 @@ const BoardShow = () => {
                 <div className="boardShowOuterContainer">
                     <ul className="boardShowContainer">
                         {displayPins.map(pin => (
-                            <PinCard key={pin.id} pin={pin}/>
+                            <PinCard key={pin.id} pin={pin} boards={boards}/>
                         ))}
                     </ul>
                 </div>
